@@ -20,11 +20,11 @@
 </tr>
 <tr>
 <td>Maximum Supply</td>
-<td>3,000,000,000 FUCU</td>
+<td>8,000,000,000 FUCU</td>
 </tr>
 <tr>
 <td>Premine</td>
-<td>15,000,000 FUCU</td>
+<td>400,000,000 FUCU</td>
 </tr>
 <tr>
 <td>Minimum Stake Age</td>
@@ -36,11 +36,11 @@
 </tr>
 <tr>
 <td>Port</td>
-<td>19660</td>
+<td>20008</td>
 </tr>
 <tr>
 <td>RPC Port</td>
-<td>19330</td>
+<td>28888</td>
 </tr>
 </tbody>
 </table>
