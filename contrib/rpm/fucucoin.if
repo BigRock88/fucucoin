@@ -1,0 +1,157 @@
+
+## <summary>policy for fucucoin</summary>
+
+
+########################################
+## <summary>
+##	Transition to fucucoin.
+## </summary>
+## <param name="domain">
+## <summary>
+##	Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`fucucoin_domtrans',`
+	gen_require(`
+		type fucucoin_t, fucucoin_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, fucucoin_exec_t, fucucoin_t)
+')
+
+
+########################################
+## <summary>
+##	Execute fucucoin server in the fucucoin domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`fucucoin_initrc_domtrans',`
+	gen_require(`
+		type fucucoin_initrc_exec_t;
+	')
+
+	init_labeled_script_domtrans($1, fucucoin_initrc_exec_t)
+')
+
+
+########################################
+## <summary>
+##	Search fucucoin lib directories.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`fucucoin_search_lib',`
+	gen_require(`
+		type fucucoin_var_lib_t;
+	')
+
+	allow $1 fucucoin_var_lib_t:dir search_dir_perms;
+	files_search_var_lib($1)
+')
+
+########################################
+## <summary>
+##	Read fucucoin lib files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`fucucoin_read_lib_files',`
+	gen_require(`
+		type fucucoin_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	read_files_pattern($1, fucucoin_var_lib_t, fucucoin_var_lib_t)
+')
+
+########################################
+## <summary>
+##	Manage fucucoin lib files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`fucucoin_manage_lib_files',`
+	gen_require(`
+		type fucucoin_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	manage_files_pattern($1, fucucoin_var_lib_t, fucucoin_var_lib_t)
+')
+
+########################################
+## <summary>
+##	Manage fucucoin lib directories.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`fucucoin_manage_lib_dirs',`
+	gen_require(`
+		type fucucoin_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	manage_dirs_pattern($1, fucucoin_var_lib_t, fucucoin_var_lib_t)
+')
+
+
+########################################
+## <summary>
+##	All of the rules required to administrate
+##	a fucucoin environment
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+## <param name="role">
+##	<summary>
+##	Role allowed access.
+##	</summary>
+## </param>
+## <rolecap/>
+#
+interface(`fucucoin_admin',`
+	gen_require(`
+		type fucucoin_t;
+		type fucucoin_initrc_exec_t;
+		type fucucoin_var_lib_t;
+	')
+
+	allow $1 fucucoin_t:process { ptrace signal_perms };
+	ps_process_pattern($1, fucucoin_t)
+
+	fucucoin_initrc_domtrans($1)
+	domain_system_change_exemption($1)
+	role_transition $2 fucucoin_initrc_exec_t system_r;
+	allow $2 system_r;
+
+	files_search_var_lib($1)
+	admin_pattern($1, fucucoin_var_lib_t)
+
+')
+

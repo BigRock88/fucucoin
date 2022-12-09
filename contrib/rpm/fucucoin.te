@@ -1,0 +1,81 @@
+policy_module(fucucoin, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type fucucoin_t;
+type fucucoin_exec_t;
+init_daemon_domain(fucucoin_t, fucucoin_exec_t)
+
+permissive fucucoin_t;
+
+type fucucoin_initrc_exec_t;
+init_script_file(fucucoin_initrc_exec_t)
+
+type fucucoin_conf_t;
+files_type(fucucoin_conf_t)
+
+type fucucoin_var_lib_t;
+files_type(fucucoin_var_lib_t)
+
+type fucucoin_var_run_t;
+files_type(fucucoin_var_run_t)
+
+type fucucoin_port_t;
+corenet_port(fucucoin_port_t)
+
+########################################
+#
+# fucucoin local policy
+#
+allow fucucoin_t self:process { fork };
+
+allow fucucoin_t self:fifo_file rw_fifo_file_perms;
+allow fucucoin_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(fucucoin_t, fucucoin_conf_t, fucucoin_conf_t)
+manage_files_pattern(fucucoin_t, fucucoin_conf_t, fucucoin_conf_t)
+
+manage_dirs_pattern(fucucoin_t, fucucoin_var_lib_t, fucucoin_var_lib_t)
+manage_files_pattern(fucucoin_t, fucucoin_var_lib_t, fucucoin_var_lib_t)
+files_var_lib_filetrans(fucucoin_t, fucucoin_var_lib_t, { dir file })
+
+manage_dirs_pattern(fucucoin_t, fucucoin_var_run_t, fucucoin_var_run_t)
+manage_files_pattern(fucucoin_t, fucucoin_var_run_t, fucucoin_var_run_t)
+
+sysnet_dns_name_resolve(fucucoin_t)
+corenet_all_recvfrom_unlabeled(fucucoin_t)
+
+allow fucucoin_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(fucucoin_t)
+corenet_tcp_sendrecv_generic_node(fucucoin_t)
+corenet_tcp_sendrecv_all_ports(fucucoin_t)
+corenet_tcp_bind_generic_node(fucucoin_t)
+
+gen_require(`
+    type fucucoin_port_t;
+')
+allow fucucoin_t fucucoin_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type fucucoin_port_t;
+')
+allow fucucoin_t fucucoin_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(fucucoin_t)
+
+files_read_etc_files(fucucoin_t)
+
+miscfiles_read_localization(fucucoin_t)
+
+sysnet_dns_name_resolve(fucucoin_t)
+
+allow fucucoin_t fucucoin_exec_t:file execute_no_trans;
+allow fucucoin_t self:process setsched;
+corecmd_exec_ls(fucucoin_t)
+corenet_tcp_connect_http_port(fucucoin_t)
+dev_read_urand(fucucoin_t)
+fs_getattr_xattr_fs(fucucoin_t)
+kernel_read_system_state(fucucoin_t)

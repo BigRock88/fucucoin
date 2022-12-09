@@ -1,0 +1,3 @@
+usr/local/bin/fucucoind usr/bin
+usr/local/bin/fucucoin-cli usr/bin
+debian/examples/fucucoin.conf etc/fucucoin

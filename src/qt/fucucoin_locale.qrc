@@ -1,0 +1,18 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="de">locale/fucucoin_de.qm</file>
+        <file alias="en">locale/fucucoin_en.qm</file>
+        <file alias="en_US">locale/fucucoin_en_US.qm</file>
+        <file alias="es">locale/fucucoin_es.qm</file>
+        <file alias="es_ES">locale/fucucoin_es_ES.qm</file>
+        <file alias="fr_FR">locale/fucucoin_fr_FR.qm</file>
+        <file alias="hr_HR">locale/fucucoin_hr_HR.qm</file>
+        <file alias="it">locale/fucucoin_it.qm</file>
+        <file alias="ko_KR">locale/fucucoin_ko_KR.qm</file>
+        <file alias="nl">locale/fucucoin_nl.qm</file>
+        <file alias="pl">locale/fucucoin_pl.qm</file>
+        <file alias="ru">locale/fucucoin_ru.qm</file>
+        <file alias="tr">locale/fucucoin_tr.qm</file>
+        <file alias="zh_CN">locale/fucucoin_zh_CN.qm</file>
+    </qresource>
+</RCC>
