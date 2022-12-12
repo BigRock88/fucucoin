@@ -47,11 +47,11 @@ versions of Tor see [Section 3](#3-automatically-listen-on-tor).*
 
 	HiddenServiceDir /var/lib/tor/fucucoin-service/
 	HiddenServiceVersion 2
-	HiddenServicePort 19660 127.0.0.1:19660
+	HiddenServicePort 28008 127.0.0.1:28008
 	HiddenServicePort 61472 127.0.0.1:61472
 
 The directory can be different of course, but (both) port numbers should be equal to
-your fucucoind's P2P listen port (19660 by default).
+your fucucoind's P2P listen port (28008 by default).
 
 	-externalip=X   You can tell fucucoin about its publicly reachable address using
 	                this option, and this can be a v2 .onion address (v3 .onion
@@ -87,7 +87,7 @@ as well, use `discover` instead:
 
 	./fucucoind ... -discover
 
-and open port 19660 on your firewall (or use -upnp).
+and open port 28008 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach .onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:

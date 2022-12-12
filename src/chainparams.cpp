@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Asa Coin Developers
+// Copyright (c) 2022 The Fucu Coin Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -175,16 +175,16 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x8f;
-        pchMessageStart[1] = 0x9c;
-        pchMessageStart[2] = 0x13;
-        pchMessageStart[3] = 0xf3;
+        pchMessageStart[0] = 0x88;
+        pchMessageStart[1] = 0x9a;
+        pchMessageStart[2] = 0x14;
+        pchMessageStart[3] = 0xf7;
         nDefaultPort = 20008;
 
-         vSeeds.push_back(CDNSSeedData("107.174.228.101", "107.174.228.101"));
-	    //vSeeds.push_back(CDNSSeedData("45.76.253.180", "45.76.253.180"));
-        //vSeeds.push_back(CDNSSeedData("155.138.210.180", "155.138.210.180"));
-        //vSeeds.push_back(CDNSSeedData("45.76.252.37", "45.76.252.37"));
+        vSeeds.push_back(CDNSSeedData("107.174.228.101", "107.174.228.101"));
+	    vSeeds.push_back(CDNSSeedData("192.3.253.73", "192.3.253.73"));
+        vSeeds.push_back(CDNSSeedData("96.8.119.253", "96.8.119.253"));
+        vSeeds.push_back(CDNSSeedData("107.173.89.60", "107.173.89.60"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 36);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 68);
@@ -223,7 +223,7 @@ public:
         //assert(genesis.hashMerkleRoot == uint256S("0x1b2ef6e2f28be914103a277377ae7729dcd125dfeb8bf97bd5964ba72b6dc39b"));
 
         consensus.fPowAllowMinDifficultyBlocks = true;
-        consensus.powLimit   = ~UINT256_ZERO >> 20;   // asacoin starting difficulty is 1 / 2^12
+        consensus.powLimit   = ~UINT256_ZERO >> 20;   // fucucoin starting difficulty is 1 / 2^12
         consensus.posLimitV1 = ~UINT256_ZERO >> 24;
         consensus.posLimitV2 = ~UINT256_ZERO >> 20;
         consensus.nBudgetCycleBlocks = 144;         // approx 10 cycles per day
@@ -231,7 +231,7 @@ public:
         consensus.nCoinbaseMaturity = 15;
         consensus.nFutureTimeDriftPoW = 7200;
         consensus.nFutureTimeDriftPoS = 180;
-        consensus.nMaxMoneyOut = 60000000 * COIN;
+        consensus.nMaxMoneyOut =8000000000 * COIN;
         consensus.nPoolMaxTransactions = 2;
         consensus.nProposalEstablishmentTime = 60 * 5;  // at least 5 min old to make it into a budget
         consensus.nStakeMinAge = 60 * 60;
@@ -283,24 +283,24 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        //vSeeds.push_back(CDNSSeedData("tseeder", "tseeder.asacoin.net"));
-	    //vSeeds.push_back(CDNSSeedData("tseed1", "tseed1.asacoin.net"));
-        //vSeeds.push_back(CDNSSeedData("tseed2", "tseed2.asacoin.net"));
-        //vSeeds.push_back(CDNSSeedData("tseed3", "tseed3.asacoin.net"));
-        //vSeeds.push_back(CDNSSeedData("tseed4", "tseed4.asacoin.net"));
-	    //vSeeds.push_back(CDNSSeedData("tseed5", "tseed5.asacoin.net"));
-	   // vSeeds.push_back(CDNSSeedData("tseed6", "tseed6.asacoin.net"));
-	    //vSeeds.push_back(CDNSSeedData("tseed7", "tseed7.asacoin.net"));
-	    //Seeds.push_back(CDNSSeedData("tseed8", "tseed8.asacoin.net"));
+        //vSeeds.push_back(CDNSSeedData("tseeder", "tseeder.fucucoin.net"));
+	    //vSeeds.push_back(CDNSSeedData("tseed1", "tseed1.fucucoin.net"));
+        //vSeeds.push_back(CDNSSeedData("tseed2", "tseed2.fucucoin.net"));
+        //vSeeds.push_back(CDNSSeedData("tseed3", "tseed3.fucucoin.net"));
+        //vSeeds.push_back(CDNSSeedData("tseed4", "tseed4.fucucoin.net"));
+	    //vSeeds.push_back(CDNSSeedData("tseed5", "tseed5.fucucoin.net"));
+	   // vSeeds.push_back(CDNSSeedData("tseed6", "tseed6.fucucoin.net"));
+	    //vSeeds.push_back(CDNSSeedData("tseed7", "tseed7.fucucoin.net"));
+	    //Seeds.push_back(CDNSSeedData("tseed8", "tseed8.fucucoin.net"));
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet asacoin addresses start with 'x' or 'y'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet asacoin script addresses start with '8' or '9'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet fucucoin addresses start with 'x' or 'y'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet fucucoin script addresses start with '8' or '9'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);     // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
-        // Testnet asacoin BIP32 pubkeys start with 'DRKV'
+        // Testnet fucucoin BIP32 pubkeys start with 'DRKV'
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x80)(0x61)(0xa0).convert_to_container<std::vector<unsigned char> >();
-        // Testnet asacoin BIP32 prvkeys start with 'DRKP'
+        // Testnet fucucoin BIP32 prvkeys start with 'DRKP'
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x80)(0x58)(0x37).convert_to_container<std::vector<unsigned char> >();
-        // Testnet asacoin BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet fucucoin BIP44 coin type is '1' (All coin's testnet default)
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -330,7 +330,7 @@ public:
         //assert(genesis.hashMerkleRoot == uint256S("0x1b2ef6e2f28be914103a277377ae7729dcd125dfeb8bf97bd5964ba72b6dc39b"));
 
         consensus.fPowAllowMinDifficultyBlocks = true;
-        consensus.powLimit   = ~UINT256_ZERO >> 20;   // asacoin starting difficulty is 1 / 2^12
+        consensus.powLimit   = ~UINT256_ZERO >> 20;   // fucucoin starting difficulty is 1 / 2^12
         consensus.posLimitV1 = ~UINT256_ZERO >> 24;
         consensus.posLimitV2 = ~UINT256_ZERO >> 20;
         consensus.nBudgetCycleBlocks = 144;         // approx 10 cycles per day
@@ -338,7 +338,7 @@ public:
         consensus.nCoinbaseMaturity = 100;
         consensus.nFutureTimeDriftPoW = 7200;
         consensus.nFutureTimeDriftPoS = 180;
-        consensus.nMaxMoneyOut = 43199500 * COIN;
+        consensus.nMaxMoneyOut = 8000000000 * COIN;
         consensus.nPoolMaxTransactions = 2;
         consensus.nProposalEstablishmentTime = 60 * 5;  // at least 5 min old to make it into a budget
         consensus.nStakeMinAge = 0;
@@ -385,7 +385,7 @@ public:
         pchMessageStart[1] = 0xcf;
         pchMessageStart[2] = 0x7e;
         pchMessageStart[3] = 0xac;
-        nDefaultPort = 42190;
+        nDefaultPort = 48008;
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.

@@ -23,7 +23,7 @@ public:
     CBaseMainParams() 
     {
         networkID = CBaseChainParams::MAIN;
-        nRPCPort = 28888;
+        nRPCPort = 58008;
     }
 };
 static CBaseMainParams mainParams;
@@ -37,7 +37,7 @@ public:
     CBaseTestNetParams()
     {
         networkID = CBaseChainParams::TESTNET;
-        nRPCPort = 48888;
+        nRPCPort = 98008;
         strDataDir = "testnet1";
     }
 };

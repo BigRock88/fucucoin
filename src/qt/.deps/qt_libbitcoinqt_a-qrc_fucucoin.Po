@@ -1,4 +1,0 @@
-qt/qt_libbitcoinqt_a-qrc_fucucoin.o: qt/qrc_fucucoin.cpp \
- /usr/include/stdc-predef.h
-
-/usr/include/stdc-predef.h:
