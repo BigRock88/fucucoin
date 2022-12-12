@@ -73,7 +73,7 @@ If you want to build the windows installer with `make deploy` you need [NSIS](ht
 
 Acquire the source in the usual way:
 
-    git clone https://github.com/fucucoin910/fucucoin.git
+    git clone https://github.com/BigRock88/fucucoin.git
     cd fucucoin
 
 ## Building for 64-bit Windows
