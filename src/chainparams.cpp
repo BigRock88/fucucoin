@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The fucu Coin Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -53,8 +53,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Three Arrows Keep Hurting Crypto Market";
-    const CScript genesisOutputScript = CScript() << ParseHex("04f8e575ae6a7faf97b4cb8b213a74a550ccbdb4cabff3d0bfe93c15f5b863ae758acb3aead94933428425dd5e934dced26f022c0b33682b4ebf5fdce242bbe0f6") << OP_CHECKSIG;
+    const char* pszTimestamp = "On Dec 14th 2022, from the cold ashes of the crypto winter FucUcoin shall rise";
+    const CScript genesisOutputScript = CScript() << ParseHex("0456a59d7e7af80c2e3c229252138af10e3e241e2976249e20c218d49aaffb2b189452034e912ff3e185e064c1e3a0de0e76193d50aa8243fae053f22d3b723e02") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -70,14 +70,14 @@ static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits
  */
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256S("0x000001573f1c8285c1d19007300ec2719780abfffce2d9b83be8b04ba41abe81"))
-    //(500, uint256S("0x000000f88590bebeefc1cc2f50bad1513ef8ca089aea5715582123409be17d87"))	
-    //(501, uint256S("0x94f3ef98ca780c08afb2ef867253eb49bb82acf4538627658d3be4b3ea29381a"))	
+    (0, uint256S("0x000000c409816e20477f31072ea2abfa8b31497fb8c64fe1c54806abdbda0e99"))
+    //(200, uint256S(""))	
+    //(501, uint256S(""))	
 ; 
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1657598400, // * UNIX timestamp of last checkpoint block
+    1670985106, // * UNIX timestamp of last checkpoint block
     0,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the UpdateTip debug.log lines)
     2500        // * estimated number of transactions per day after checkpoint
@@ -85,20 +85,20 @@ static const Checkpoints::CCheckpointData data = {
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
     boost::assign::map_list_of
-    (0, uint256S("0x0"));
+    (0, uint256S("0x00000a79474f60f4897901ec45717a654c4b042d31c6107762386dec36dff173"));
 
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
-    1670405112,
+    1670985106,
     0,
     250};
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
-    boost::assign::map_list_of(0, uint256S("0x0"));
+    boost::assign::map_list_of(0, uint256S("0x00000ad3451be7767c4b762548a85f78873c478d045a65f86e7a724213a9d2e7"));
 
 static const Checkpoints::CCheckpointData dataRegtest = {
     &mapCheckpointsRegtest,
-   1670405112,
+   1670986611,
     0,
     100};
 
@@ -110,12 +110,12 @@ public:
         networkID = CBaseChainParams::MAIN;
         strNetworkID = "main";
 
-        genesis = CreateGenesisBlock(1657598400, 384535, 0x1e0ffff0, 1, 0 * COIN);
+        genesis = CreateGenesisBlock(1670984933, 5666100, 0x1e0ffff0, 1, 250 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x000001573f1c8285c1d19007300ec2719780abfffce2d9b83be8b04ba41abe81"));
-        assert(genesis.hashMerkleRoot == uint256S("0x810d6e53a742534433c31f536f5f5cb19aacf63f2fe4d6218ca6052504fc18ab"));
-
-        consensus.fPowAllowMinDifficultyBlocks = false;
+        assert(consensus.hashGenesisBlock == uint256S("0x000000c409816e20477f31072ea2abfa8b31497fb8c64fe1c54806abdbda0e99"));
+        assert(genesis.hashMerkleRoot == uint256S("0x5c49b18f3a0e8273e1566fc40e23dd965c1c462c977ddb71036d414730d24369"));
+        
+        consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.powLimit   = ~UINT256_ZERO >> 20;
         consensus.posLimitV1 = ~UINT256_ZERO >> 4;
         consensus.posLimitV2 = ~UINT256_ZERO >> 4;
@@ -137,7 +137,7 @@ public:
 
         // spork keys
         consensus.strSporkPubKey = "040f79ea67a6dbf84268e813cb2b153cf0a0ff035e6324f1fd1efda9c90745259b31f00b612e595f8ed63bcebb62c793d6caf8836a7088d8e62de4ae31a7d62510";
-        consensus.strSporkPubKeyOld = "04f84add8ae1952b6e9935eb69fff56660f23c8abd7d941d3ae7286007b40293a49203426ccc8bb465f4acf53b70e6ede48022c8d13267f1928985fbf5a0706d64";
+        consensus.strSporkPubKeyOld = "";
         consensus.nTime_EnforceNewSporkKey = 1683008850;
         consensus.nTime_RejectOldSporkKey = 1683008850;
 
@@ -175,16 +175,16 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x88;
-        pchMessageStart[1] = 0x9a;
-        pchMessageStart[2] = 0x14;
-        pchMessageStart[3] = 0xf7;
+        pchMessageStart[0] = 0x8f;
+        pchMessageStart[1] = 0x9c;
+        pchMessageStart[2] = 0x13;
+        pchMessageStart[3] = 0xf3;
         nDefaultPort = 20008;
 
-        vSeeds.push_back(CDNSSeedData("107.174.228.101", "107.174.228.101"));
-	    vSeeds.push_back(CDNSSeedData("192.3.253.73", "192.3.253.73"));
-        vSeeds.push_back(CDNSSeedData("96.8.119.253", "96.8.119.253"));
-        vSeeds.push_back(CDNSSeedData("107.173.89.60", "107.173.89.60"));
+         vSeeds.push_back(CDNSSeedData("107.174.228.101", "107.174.228.101"));
+	    //vSeeds.push_back(CDNSSeedData("45.76.253.180", "45.76.253.180"));
+        //vSeeds.push_back(CDNSSeedData("155.138.210.180", "155.138.210.180"));
+        //vSeeds.push_back(CDNSSeedData("45.76.252.37", "45.76.252.37"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 36);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 68);
@@ -217,10 +217,10 @@ public:
         networkID = CBaseChainParams::TESTNET;
         strNetworkID = "test";
 
-        genesis = CreateGenesisBlock(1454124731, 2402015, 0x1e0ffff0, 1, 250 * COIN);
+        genesis = CreateGenesisBlock(1670985106, 6087029, 0x1e0ffff0, 1, 250 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        //assert(consensus.hashGenesisBlock == uint256S("0x0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"));
-        //assert(genesis.hashMerkleRoot == uint256S("0x1b2ef6e2f28be914103a277377ae7729dcd125dfeb8bf97bd5964ba72b6dc39b"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00000a79474f60f4897901ec45717a654c4b042d31c6107762386dec36dff173"));
+        assert(genesis.hashMerkleRoot == uint256S("0x5c49b18f3a0e8273e1566fc40e23dd965c1c462c977ddb71036d414730d24369"));
 
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.powLimit   = ~UINT256_ZERO >> 20;   // fucucoin starting difficulty is 1 / 2^12
@@ -231,7 +231,7 @@ public:
         consensus.nCoinbaseMaturity = 15;
         consensus.nFutureTimeDriftPoW = 7200;
         consensus.nFutureTimeDriftPoS = 180;
-        consensus.nMaxMoneyOut =8000000000 * COIN;
+        consensus.nMaxMoneyOut = 60000000 * COIN;
         consensus.nPoolMaxTransactions = 2;
         consensus.nProposalEstablishmentTime = 60 * 5;  // at least 5 min old to make it into a budget
         consensus.nStakeMinAge = 60 * 60;
@@ -274,10 +274,10 @@ public:
          * a large 4-byte int at any alignment.
          */
 
-        pchMessageStart[0] = 0x54;
-        pchMessageStart[1] = 0x67;
-        pchMessageStart[2] = 0x56;
-        pchMessageStart[3] = 0xab;
+        pchMessageStart[0] = 0x81;
+        pchMessageStart[1] = 0x1c;
+        pchMessageStart[2] = 0xb6;
+        pchMessageStart[3] = 0xa9;
         nDefaultPort =30008;
 
         vFixedSeeds.clear();
@@ -324,10 +324,10 @@ public:
         networkID = CBaseChainParams::REGTEST;
         strNetworkID = "regtest";
 
-        genesis = CreateGenesisBlock(1454124731, 2402015, 0x1e0ffff0, 1, 250 * COIN);
+        genesis = CreateGenesisBlock(1670986611, 3673680, 0x1e0ffff0, 1, 250 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        //assert(consensus.hashGenesisBlock == uint256S("0x0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"));
-        //assert(genesis.hashMerkleRoot == uint256S("0x1b2ef6e2f28be914103a277377ae7729dcd125dfeb8bf97bd5964ba72b6dc39b"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00000ad3451be7767c4b762548a85f78873c478d045a65f86e7a724213a9d2e7"));
+        assert(genesis.hashMerkleRoot == uint256S("0x5c49b18f3a0e8273e1566fc40e23dd965c1c462c977ddb71036d414730d24369"));
 
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.powLimit   = ~UINT256_ZERO >> 20;   // fucucoin starting difficulty is 1 / 2^12
@@ -338,7 +338,7 @@ public:
         consensus.nCoinbaseMaturity = 100;
         consensus.nFutureTimeDriftPoW = 7200;
         consensus.nFutureTimeDriftPoS = 180;
-        consensus.nMaxMoneyOut = 8000000000 * COIN;
+        consensus.nMaxMoneyOut = 43199500 * COIN;
         consensus.nPoolMaxTransactions = 2;
         consensus.nProposalEstablishmentTime = 60 * 5;  // at least 5 min old to make it into a budget
         consensus.nStakeMinAge = 0;
@@ -381,11 +381,11 @@ public:
          * a large 4-byte int at any alignment.
          */
 
-        pchMessageStart[0] = 0xa1;
-        pchMessageStart[1] = 0xcf;
-        pchMessageStart[2] = 0x7e;
-        pchMessageStart[3] = 0xac;
-        nDefaultPort = 48008;
+        pchMessageStart[0] = 0x5a;
+        pchMessageStart[1] = 0x9b;
+        pchMessageStart[2] = 0x4e;
+        pchMessageStart[3] = 0xb3;
+        nDefaultPort = 42190;
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
