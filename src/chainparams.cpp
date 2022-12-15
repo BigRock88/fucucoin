@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Asa Coin Developers
+// Copyright (c) 2022 The Fucu Coin Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -70,10 +70,7 @@ static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits
  */
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256S("0x000000c409816e20477f31072ea2abfa8b31497fb8c64fe1c54806abdbda0e99"))
-    //(500, uint256S("0x000000f88590bebeefc1cc2f50bad1513ef8ca089aea5715582123409be17d87"))	
-    //(501, uint256S("0x94f3ef98ca780c08afb2ef867253eb49bb82acf4538627658d3be4b3ea29381a"))	
-; 
+    (0, uint256S("0x000000c409816e20477f31072ea2abfa8b31497fb8c64fe1c54806abdbda0e99"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
@@ -138,26 +135,26 @@ public:
         // spork keys
         consensus.strSporkPubKey = "040f79ea67a6dbf84268e813cb2b153cf0a0ff035e6324f1fd1efda9c90745259b31f00b612e595f8ed63bcebb62c793d6caf8836a7088d8e62de4ae31a7d62510";
         consensus.strSporkPubKeyOld = "04f84add8ae1952b6e9935eb69fff56660f23c8abd7d941d3ae7286007b40293a49203426ccc8bb465f4acf53b70e6ede48022c8d13267f1928985fbf5a0706d64";
-        consensus.nTime_EnforceNewSporkKey = 1683008850;
-        consensus.nTime_RejectOldSporkKey = 1683008850;
+        consensus.nTime_EnforceNewSporkKey =  1680000000;
+        consensus.nTime_RejectOldSporkKey =   1680000001;              
 
         // dev address
-        consensus.devAddress = "FrJ1affKNzByh8RN9J8pTZEXDcJFrJ8eYW";
+        consensus.devAddress = "FqqnhLmbA8ZYAC4DSJwxwQUZyk2ZGzMTTe";
 
         // burn addresses
         consensus.mBurnAddresses = {
-           { "FXXXXXXXXXXXXXXXXXXXXXXXXXXXVtkn93", 0 }
-        };
+           { "FXXXXXXXXXXXXXXXXXXXXXXXXXXXBpb5yN", 0 }
+        };    
 
         // Network upgrades
         consensus.vUpgrades[Consensus::BASE_NETWORK].nActivationHeight                   = Consensus::NetworkUpgrade::ALWAYS_ACTIVE;
         consensus.vUpgrades[Consensus::UPGRADE_TESTDUMMY].nActivationHeight              = Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
-        consensus.vUpgrades[Consensus::UPGRADE_POS].nActivationHeight                    = 501;
-        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].nActivationHeight                 = 502;
-        consensus.vUpgrades[Consensus::UPGRADE_BIP65].nActivationHeight                  = 503;
-        consensus.vUpgrades[Consensus::UPGRADE_STAKE_MODIFIER_V2].nActivationHeight      = 501;
-        consensus.vUpgrades[Consensus::UPGRADE_TIME_PROTOCOL_V2].nActivationHeight       = 530;
-        consensus.vUpgrades[Consensus::UPGRADE_P2PKH_BLOCK_SIGNATURES].nActivationHeight = 530;
+        consensus.vUpgrades[Consensus::UPGRADE_POS].nActivationHeight                    = 201;
+        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].nActivationHeight                 = 202;
+        consensus.vUpgrades[Consensus::UPGRADE_BIP65].nActivationHeight                  = 203;
+        consensus.vUpgrades[Consensus::UPGRADE_STAKE_MODIFIER_V2].nActivationHeight      = 201;
+        consensus.vUpgrades[Consensus::UPGRADE_TIME_PROTOCOL_V2].nActivationHeight       = 230;
+        consensus.vUpgrades[Consensus::UPGRADE_P2PKH_BLOCK_SIGNATURES].nActivationHeight = 230;
         consensus.vUpgrades[Consensus::UPGRADE_STAKE_MIN_DEPTH_V2].nActivationHeight     = Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
         consensus.vUpgrades[Consensus::UPGRADE_MASTERNODE_RANK_V2].nActivationHeight     = Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
 
@@ -182,17 +179,17 @@ public:
         nDefaultPort = 20008;
 
          vSeeds.push_back(CDNSSeedData("107.174.228.101", "107.174.228.101"));
-	     vSeeds.push_back(CDNSSeedData("45.76.253.180", "45.76.253.180"));
-         vSeeds.push_back(CDNSSeedData("155.138.210.180", "155.138.210.180"));
-         vSeeds.push_back(CDNSSeedData("45.76.252.37", "45.76.252.37"));
+	     vSeeds.push_back(CDNSSeedData("192.3.253.73", "192.3.253.73"));
+         vSeeds.push_back(CDNSSeedData("23.234.244.96", "23.234.244.96"));
+         vSeeds.push_back(CDNSSeedData("107.175.111.23", "107.175.111.23"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 36);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 68);
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 122);
-        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x36).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x67)(0x36).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x24)(0x25)(0x2B).convert_to_container<std::vector<unsigned char> >();
         // BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
-        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x84)(0x98)(0x025)(0x62).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x84)(0x98)(0xa9)(0x62).convert_to_container<std::vector<unsigned char> >();
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
         //convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main)); // added
@@ -243,13 +240,13 @@ public:
         consensus.nTimeSlotLength = 15;
 
         // spork keys
-        consensus.strSporkPubKey = "04E88BB455E2A04E65FCC41D88CD367E9CCE1F5A409BE94D8C2B4B35D223DED9C8E2F4E061349BA3A38839282508066B6DC4DB72DD432AC4067991E6BF20176127";
+        consensus.strSporkPubKey = "";
         consensus.strSporkPubKeyOld = "";
         consensus.nTime_EnforceNewSporkKey = 0;
         consensus.nTime_RejectOldSporkKey = 0;
 
         // dev address
-        consensus.devAddress = "FbKoYRPfm2rfUPWeqeeMoegMYxdsuwWduY";
+        consensus.devAddress = "Fn7k34SUTPaxGzHrbQM1Z7Tc3eXaqkywqP";
 
         // Network upgrades
         consensus.vUpgrades[Consensus::BASE_NETWORK].nActivationHeight                      = Consensus::NetworkUpgrade::ALWAYS_ACTIVE;
@@ -283,25 +280,18 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        //vSeeds.push_back(CDNSSeedData("tseeder", "tseeder.asacoin.net"));
-	    //vSeeds.push_back(CDNSSeedData("tseed1", "tseed1.asacoin.net"));
-        //vSeeds.push_back(CDNSSeedData("tseed2", "tseed2.asacoin.net"));
-        //vSeeds.push_back(CDNSSeedData("tseed3", "tseed3.asacoin.net"));
-        //vSeeds.push_back(CDNSSeedData("tseed4", "tseed4.asacoin.net"));
-	    //vSeeds.push_back(CDNSSeedData("tseed5", "tseed5.asacoin.net"));
-	   // vSeeds.push_back(CDNSSeedData("tseed6", "tseed6.asacoin.net"));
-	    //vSeeds.push_back(CDNSSeedData("tseed7", "tseed7.asacoin.net"));
-	    //Seeds.push_back(CDNSSeedData("tseed8", "tseed8.asacoin.net"));
+        //vSeeds.push_back(CDNSSeedData("tseeder", "tseeder.fucucoin.net"));
+	   
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet asacoin addresses start with 'x' or 'y'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet asacoin script addresses start with '8' or '9'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet fucucoin addresses start with 'x' or 'y'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet fucucoin script addresses start with '8' or '9'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);     // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
-        // Testnet asacoin BIP32 pubkeys start with 'DRKV'
-        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x80)(0x61)(0xa0).convert_to_container<std::vector<unsigned char> >();
-        // Testnet asacoin BIP32 prvkeys start with 'DRKP'
-        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x80)(0x58)(0x37).convert_to_container<std::vector<unsigned char> >();
-        // Testnet asacoin BIP44 coin type is '1' (All coin's testnet default)
-        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x08)(0x01).convert_to_container<std::vector<unsigned char> >();
+        // Testnet fucucoin BIP32 pubkeys start with 'DRKV'
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x2b)(0x42)(0x29)(0xa9).convert_to_container<std::vector<unsigned char> >();
+        // Testnet fucucoin BIP32 prvkeys start with 'DRKP'
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x2b)(0x87)(0xe9)(0xf4).convert_to_container<std::vector<unsigned char> >();
+        // Testnet fucucoin BIP44 coin type is '1' (All coin's testnet default)
+        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x74)(0xa1)(0x0c4)(0xd1).convert_to_container<std::vector<unsigned char> >();
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
     }
@@ -330,7 +320,7 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0x5c49b18f3a0e8273e1566fc40e23dd965c1c462c977ddb71036d414730d24369"));
 
         consensus.fPowAllowMinDifficultyBlocks = true;
-        consensus.powLimit   = ~UINT256_ZERO >> 20;   // asacoin starting difficulty is 1 / 2^12
+        consensus.powLimit   = ~UINT256_ZERO >> 20;   // fucucoin starting difficulty is 1 / 2^12
         consensus.posLimitV1 = ~UINT256_ZERO >> 24;
         consensus.posLimitV2 = ~UINT256_ZERO >> 20;
         consensus.nBudgetCycleBlocks = 144;         // approx 10 cycles per day
@@ -353,28 +343,27 @@ public:
         private key hex: bd4960dcbd9e7f2223f24e7164ecb6f1fe96fc3a416f5d3a830ba5720c84b8ca
         Address: yCvUVd72w7xpimf981m114FSFbmAmne7j9
         */
-        consensus.strSporkPubKey = "043969b1b0e6f327de37f297a015d37e2235eaaeeb3933deecd8162c075cee0207b13537618bde640879606001a8136091c62ec272dd0133424a178704e6e75bb7";
+        consensus.strSporkPubKey = "";
         consensus.strSporkPubKeyOld = "";
         consensus.nTime_EnforceNewSporkKey = 0;
         consensus.nTime_RejectOldSporkKey = 0;
 
         // dev address
-        consensus.devAddress = "FoPaxo45pDXzhkpTDrKL9EWK69hDi9tqsJ";
+        consensus.devAddress = "FhwJrvJNuCEHTgYZz46wcgg677Kp2qS5oj";
 
         // Network upgrades
-        consensus.vUpgrades[Consensus::BASE_NETWORK].nActivationHeight =
+       consensus.vUpgrades[Consensus::BASE_NETWORK].nActivationHeight =
                 Consensus::NetworkUpgrade::ALWAYS_ACTIVE;
         consensus.vUpgrades[Consensus::UPGRADE_TESTDUMMY].nActivationHeight =
                 Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
-        consensus.vUpgrades[Consensus::UPGRADE_POS].nActivationHeight           = 251;
-        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].nActivationHeight        = 251;
+        consensus.vUpgrades[Consensus::UPGRADE_POS].nActivationHeight           = 201;
+        consensus.vUpgrades[Consensus::UPGRADE_POS_V2].nActivationHeight        = 301;
         consensus.vUpgrades[Consensus::UPGRADE_BIP65].nActivationHeight         =
                 Consensus::NetworkUpgrade::ALWAYS_ACTIVE;
-        consensus.vUpgrades[Consensus::UPGRADE_STAKE_MODIFIER_V2].nActivationHeight          = 251;
+        consensus.vUpgrades[Consensus::UPGRADE_STAKE_MODIFIER_V2].nActivationHeight          = 351;
         consensus.vUpgrades[Consensus::UPGRADE_TIME_PROTOCOL_V2].nActivationHeight          =
                 Consensus::NetworkUpgrade::ALWAYS_ACTIVE;
-        consensus.vUpgrades[Consensus::UPGRADE_P2PKH_BLOCK_SIGNATURES].nActivationHeight       = 300;
-
+        consensus.vUpgrades[Consensus::UPGRADE_P2PKH_BLOCK_SIGNATURES].nActivationHeight       = 303;
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
@@ -385,7 +374,7 @@ public:
         pchMessageStart[1] = 0xcf;
         pchMessageStart[2] = 0x7e;
         pchMessageStart[3] = 0xac;
-        nDefaultPort = 42190;
+        nDefaultPort = 40008;
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.

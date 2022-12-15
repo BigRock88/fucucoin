@@ -359,10 +359,10 @@ CAmount CMasternode::GetBlockValue(int nHeight)
     if (nHeight >  120000) return     200 * COIN;
     if (nHeight >  105000) return      35 * COIN;
     if (nHeight >   75000) return      65 * COIN;
-    if (nHeight >   60000) return     100 * COIN;  // this is the end of POW
-    if (nHeight >     500) return     150 * COIN; // POW ends here in test phase
-    if (nHeight >     200) return    2000 * COIN;
-	if (nHeight >     100) return    1000 * COIN;  //experimental stage
+    if (nHeight >   60000) return     100 * COIN;  // this is the end of POW 
+    if (nHeight >     500) return     150 * COIN; 
+    if (nHeight >     200) return    2000 * COIN;  // POW ends here in test phase
+	if (nHeight >     100) return    1000 * COIN; 
     if (nHeight >       1) return     500 * COIN; 
     if (nHeight >       0) return    400000000 * COIN;
 
@@ -395,10 +395,10 @@ CAmount CMasternode::GetMasternodePayment(int nHeight)
     if (nHeight >   75000) return      46 * COIN;
     if (nHeight >   60000) return      65 * COIN;
     if (nHeight >   45000) return     100 * COIN;
-    if (nHeight >   15000) return     100  * COIN;
-    if (nHeight >     500) return     100 * COIN;  //test wher POW ends
-    if (nHeight >     200) return     600 * COIN;
-	if (nHeight >     100) return     300 * COIN;
+    if (nHeight >   15000) return     100 * COIN;
+    if (nHeight >     500) return     100 * COIN; 
+    if (nHeight >     200) return    1200 * COIN; //test where POW ends
+	if (nHeight >     100) return     600 * COIN;
 	if (nHeight >     1) return       300 * COIN; //test setup
 
     return 0;
@@ -430,8 +430,8 @@ CAmount CMasternode::GetDevPayment(int nHeight)
     if (nHeight >   60000) return        5 * COIN;
     if (nHeight >   45000) return       10 * COIN;
     if (nHeight >   15000) return        9 * COIN;
-    if (nHeight >     500) return        8 * COIN;  //test wher POW ends
-    if (nHeight >     200) return       30 * COIN;
+    if (nHeight >     500) return        8 * COIN;  
+    if (nHeight >     200) return       30 * COIN;  //test where POW ends
     if (nHeight >     100) return       15 * COIN;
     if (nHeight >       1) return       15 * COIN;
 	
