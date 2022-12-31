@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -267,11 +267,11 @@ UniValue stop(const JSONRPCRequest& jsonRequest)
     if (jsonRequest.fHelp || jsonRequest.params.size() > 1)
         throw std::runtime_error(
             "stop\n"
-            "\nStop FUCU server.");
+            "\nStop FUCUCOIN server.");
     // Event loop will exit after current HTTP requests have been handled, so
     // this reply will get back to the client.
     StartShutdown();
-    return "FUCU server stopping";
+    return "FUCUCOIN server stopping";
 }
 
 
@@ -301,7 +301,9 @@ static const CRPCCommand vRPCCommands[] =
         {"network", "clearbanned", &clearbanned, true },
 
         /* Block chain and UTXO */
-        /*{"blockchain", "getblockindexstats", &getblockindexstats, true },*/
+        {"blockchain", "findserial", &findserial, true },
+        {"blockchain", "getblockindexstats", &getblockindexstats, true },
+        {"blockchain", "getserials", &getserials, true },
         {"blockchain", "getblockchaininfo", &getblockchaininfo, true },
         {"blockchain", "getbestblockhash", &getbestblockhash, true },
         {"blockchain", "getblockcount", &getblockcount, true },
@@ -394,6 +396,27 @@ static const CRPCCommand vRPCCommands[] =
         {"wallet", "getaddressinfo", &getaddressinfo, true },
         {"wallet", "getstakingstatus", &getstakingstatus, false },
         {"wallet", "multisend", &multisend, false },
+        {"zerocoin", "createrawzerocoinspend", &createrawzerocoinspend, false },
+        {"zerocoin", "getzerocoinbalance", &getzerocoinbalance, false },
+        {"zerocoin", "listmintedzerocoins", &listmintedzerocoins, false },
+        {"zerocoin", "listspentzerocoins", &listspentzerocoins, false },
+        {"zerocoin", "listzerocoinamounts", &listzerocoinamounts, false },
+        {"zerocoin", "mintzerocoin", &mintzerocoin, false },
+        {"zerocoin", "spendzerocoin", &spendzerocoin, false },
+        {"zerocoin", "spendrawzerocoin", &spendrawzerocoin, true },
+        {"zerocoin", "spendzerocoinmints", &spendzerocoinmints, false },
+        {"zerocoin", "resetmintzerocoin", &resetmintzerocoin, false },
+        {"zerocoin", "resetspentzerocoin", &resetspentzerocoin, false },
+        {"zerocoin", "getarchivedzerocoin", &getarchivedzerocoin, false },
+        {"zerocoin", "importzerocoins", &importzerocoins, false },
+        {"zerocoin", "exportzerocoins", &exportzerocoins, false },
+        {"zerocoin", "reconsiderzerocoins", &reconsiderzerocoins, false },
+        {"zerocoin", "getspentzerocoinamount", &getspentzerocoinamount, false },
+        {"zerocoin", "getzfucuseed", &getzfucuseed, false },
+        {"zerocoin", "setzfucuseed", &setzfucuseed, false },
+        {"zerocoin", "generatemintlist", &generatemintlist, false },
+        {"zerocoin", "searchdzfucu", &searchdzfucu, false },
+        {"zerocoin", "dzfucustate", &dzfucustate, false },
 
 #endif // ENABLE_WALLET
 };
@@ -590,7 +613,7 @@ std::string HelpExampleRpc(std::string methodname, std::string args)
 {
     return "> curl --user myusername --data-binary '{\"jsonrpc\": \"1.0\", \"id\":\"curltest\", "
            "\"method\": \"" +
-           methodname + "\", \"params\": [" + args + "] }' -H 'content-type: text/plain;' http://127.0.0.1:58008/\n";
+           methodname + "\", \"params\": [" + args + "] }' -H 'content-type: text/plain;' http://127.0.0.1:22191/\n";
 }
 
 void RPCSetTimerInterfaceIfUnset(RPCTimerInterface *iface)

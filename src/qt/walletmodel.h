@@ -2,12 +2,12 @@
 // Copyright (c) 2014-2016 The Dash developers
 // Copyright (c) 2017-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FUCU_QT_WALLETMODEL_H
-#define FUCU_QT_WALLETMODEL_H
+#ifndef FUCUCOIN_QT_WALLETMODEL_H
+#define FUCUCOIN_QT_WALLETMODEL_H
 
 #include "askpassphrasedialog.h"
 #include "paymentrequestplus.h"
@@ -329,4 +329,4 @@ public Q_SLOTS:
     bool updateAddressBookLabels(const CTxDestination& address, const std::string& strName, const std::string& strPurpose);
 };
 
-#endif // FUCU_QT_WALLETMODEL_H
+#endif // FUCUCOIN_QT_WALLETMODEL_H

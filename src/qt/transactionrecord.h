@@ -2,7 +2,7 @@
 // Copyright (c) 2014-2016 The Dash developers
 // Copyright (c) 2016-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -75,6 +75,7 @@ public:
         Other,
         Generated,
         StakeMint,
+        StakeZFUCU,
         SendToAddress,
         SendToOther,
         RecvWithAddress,
@@ -82,6 +83,11 @@ public:
         DevReward,
         RecvFromOther,
         SendToSelf,
+        ZerocoinMint,
+        ZerocoinSpend,
+        RecvFromZerocoinSpend,
+        ZerocoinSpend_Change_zFucu,
+        ZerocoinSpend_FromMe,
     };
 
     /** Number of confirmation recommended for accepting a transaction */
@@ -109,6 +115,10 @@ public:
     static bool decomposeCoinStake(const CWallet* wallet, const CWalletTx& wtx,
                                    const CAmount& nCredit, const CAmount& nDebit, bool fZSpendFromMe,
                                    QList<TransactionRecord>& parts);
+
+    static bool decomposeZcSpendTx(const CWallet* wallet, const CWalletTx& wtx,
+                                    const CAmount& nCredit, const CAmount& nDebit, bool fZSpendFromMe,
+                                    QList<TransactionRecord>& parts);
 
     static bool decomposeCreditTransaction(const CWallet* wallet, const CWalletTx& wtx,
                                     QList<TransactionRecord>& parts);

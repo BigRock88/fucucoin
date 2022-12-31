@@ -117,7 +117,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="labelAmountBib">
+               <widget class="QLabel" name="labelAmountFucu">
                 <property name="text">
                  <string notr="true">-- FUCU</string>
                 </property>
@@ -151,7 +151,7 @@
                <number>0</number>
               </property>
               <item alignment="Qt::AlignTop">
-               <widget class="QLabel" name="labelAmountTopBib">
+               <widget class="QLabel" name="labelAmountTopFucu">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -454,7 +454,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="labelAvailableBib">
+                  <widget class="QLabel" name="labelAvailableFucu">
                    <property name="text">
                     <string>-- FUCU</string>
                    </property>
@@ -468,7 +468,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="labelImmatureBib">
+                  <widget class="QLabel" name="labelImmatureFucu">
                    <property name="text">
                     <string notr="true">- FUCU</string>
                    </property>
@@ -489,7 +489,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="labelLockedBib">
+                  <widget class="QLabel" name="labelLockedFucu">
                    <property name="text">
                     <string>- FUCU</string>
                    </property>
@@ -503,7 +503,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="labelPendingBib">
+                  <widget class="QLabel" name="labelPendingFucu">
                    <property name="text">
                     <string notr="true">-- FUCU</string>
                    </property>
@@ -565,7 +565,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="labelCollateralBib">
+              <widget class="QLabel" name="labelCollateralFucu">
                <property name="text">
                 <string notr="true">-- FUCU</string>
                </property>

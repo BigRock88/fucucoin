@@ -747,6 +747,10 @@ voor bewijs van Inzet</translation>
         <translation>Filter volgens</translation>
     </message>
     <message>
+        <source>Amount of FUCU and zFUCU staked.</source>
+        <translation>Hoeveelheid aan gestaked FUCU en zFUCU.</translation>
+    </message>
+    <message>
         <source>Please wait until the wallet is fully synced to see your correct balance</source>
         <translation>Wacht tot de portemonnee volledig gesynchroniseerd is om uw juiste saldo te zien</translation>
     </message>
@@ -892,16 +896,16 @@ Het zal automatisch starten zodra de portemonnee voldoende bevestigingen heeft o
         <translation>versie</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About FUCU</source>
-        <translation>Over FUCU</translation>
+        <source>About FUCUCOIN</source>
+        <translation>Over FUCUCOIN</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -955,16 +959,16 @@ Het zal automatisch starten zodra de portemonnee voldoende bevestigingen heeft o
         <translation>Welkom</translation>
     </message>
     <message>
-        <source>Welcome to FUCU.</source>
-        <translation>Welkom bij FUCU.</translation>
+        <source>Welcome to FUCUCOIN.</source>
+        <translation>Welkom bij FUCUCOIN.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where FUCU will store its data.</source>
-        <translation>Aangezien dit de eerste keer is dat het programma is gestart, kun je kiezen waar FUCU zijn data opslaat.</translation>
+        <source>As this is the first time the program is launched, you can choose where FUCUCOIN will store its data.</source>
+        <translation>Aangezien dit de eerste keer is dat het programma is gestart, kun je kiezen waar FUCUCOIN zijn data opslaat.</translation>
     </message>
     <message>
-        <source>FUCU will download and store a copy of the FUCU block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>FUCU zal een kopie van de FUCU blockchain downloaden en opslaan. Tenminste %1GB aan data zal worden opgeslagen in deze map en het zal over de tijd groeien. De portemonnee zal ook in deze map worden opgeslagen.</translation>
+        <source>FUCUCOIN will download and store a copy of the FUCU block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>FUCUCOIN zal een kopie van de FUCU blockchain downloaden en opslaan. Tenminste %1GB aan data zal worden opgeslagen in deze map en het zal over de tijd groeien. De portemonnee zal ook in deze map worden opgeslagen.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -983,8 +987,8 @@ Het zal automatisch starten zodra de portemonnee voldoende bevestigingen heeft o
         <translation>Akkoord</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1613,21 +1617,45 @@ NODES</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-        https://discord.gg/PENeFRWvEj</source>
+        https://discord.gg/T3CYMwTfjJ</source>
         <translation>Taal ontbreekt of vertaling onvolledig? Help om bij te dragen aan vertalingen:
-        https://discord.gg/PENeFRWvEj</translation>
+        https://discord.gg/T3CYMwTfjJ</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Map poort gebruikt &amp;UPnP</translation>
     </message>
     <message>
+        <source>Enable automatic minting of FUCU units to zFUCU</source>
+        <translation>Schakel automatisch slaan van FUCU-eenheden in op zFUCU</translation>
+    </message>
+    <message>
+        <source>Enable zFUCU Automint</source>
+        <translation>Schakel zFUCU Automint in</translation>
+    </message>
+    <message>
+        <source>Enable automatic zFUCU minting from specific addresses</source>
+        <translation>Automatische zFUCU munting inschakelen vanuit specifiek adres</translation>
+    </message>
+    <message>
         <source>Enable Automint Addresses</source>
         <translation>Automint Adressen Inschakelen</translation>
     </message>
     <message>
+        <source>Percentage of incoming FUCU which get automatically converted to zFUCU via Zerocoin Protocol (min: 10%)</source>
+        <translation>Percentage inkomende FUCU die automatisch wordt omgezet naar zFUCU via Zerocoin Protocol (min: 10%)</translation>
+    </message>
+    <message>
+        <source>Percentage of autominted zFUCU</source>
+        <translation>Percentage autominted zFUCU</translation>
+    </message>
+    <message>
         <source>Wait with automatic conversion to Zerocoin until enough FUCU for this denomination is available</source>
         <translation>Wacht met automatische omzetting naar Zerocoin totdat er genoeg FUCU voor deze denominatie beschikbaar is</translation>
+    </message>
+    <message>
+        <source>Preferred Automint zFUCU Denomination</source>
+        <translation>Gewenste Automint zFUCU denominatie</translation>
     </message>
     <message>
         <source>Stake split threshold:</source>
@@ -1779,10 +1807,10 @@ NODES</translation>
     </message>
 </context>
 <context>
-    <name>FUCUGUI</name>
+    <name>FUCUCOINGUI</name>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -1809,8 +1837,8 @@ NODES</translation>
         <translation>Programma afsluiten</translation>
     </message>
     <message>
-        <source>FUCU client</source>
-        <translation>FUCU client</translation>
+        <source>FUCUCOIN client</source>
+        <translation>FUCUCOIN client</translation>
     </message>
     <message>
         <source>Error</source>
@@ -2014,8 +2042,8 @@ Adres: %4
         <translation>Een kritieke fout is opgelopen. FUCU kan niet langer veilig uitgevoerd worden en zal afsluiten.</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" does not exist.</source>
@@ -2034,8 +2062,8 @@ Adres: %4
         <translation>Fout bij het lezen van het masternode configuratiebestand: %1</translation>
     </message>
     <message>
-        <source>FUCU didn't yet exit safely...</source>
-        <translation>FUCU is nog niet veilig afgesloten...</translation>
+        <source>FUCUCOIN didn't yet exit safely...</source>
+        <translation>FUCUCOIN is nog niet veilig afgesloten...</translation>
     </message>
     <message>
         <source>Contact</source>
@@ -2387,6 +2415,10 @@ Adres: %4
     <message>
         <source>Custom Backup Path:</source>
         <translation>Aangepast back-up pad:</translation>
+    </message>
+    <message>
+        <source>Custom zFUCU Backup Path:</source>
+        <translation>Aangepast zFUCU back-up pad:</translation>
     </message>
     <message>
         <source>Custom Backups Threshold:</source>
@@ -3400,12 +3432,12 @@ Controleer of u een vooraf bepaalde teksteditor hebt geïnstalleerd.</translatio
         <translation>Exporteer Adreslijst</translation>
     </message>
     <message>
-        <source>FUCU_tx_csv_export(*.csv)</source>
-        <translation>FUCU_tx_csv_export(*.csv)</translation>
+        <source>FUCUCOIN_tx_csv_export(*.csv)</source>
+        <translation>FUCUCOIN_tx_csv_export(*.csv)</translation>
     </message>
     <message>
-        <source>FUCU_addresses_csv_export(*.csv)</source>
-        <translation>FUCU_addresses_csv_export(*.csv)</translation>
+        <source>FUCUCOIN_addresses_csv_export(*.csv)</source>
+        <translation>FUCUCOIN_addresses_csv_export(*.csv)</translation>
     </message>
     <message>
         <source>Please select a folder to export the csv file first.</source>
@@ -3483,8 +3515,8 @@ Er was een fout opgetreden tijdens het opslaan van deze adreslijst naar %1. Prob
         <translation>2) Waarom is mijn FUCU niet besteedbaar?</translation>
     </message>
     <message>
-        <source>https://www.fucucoin.org</source>
-        <translation>https://www.fucucoin.org</translation>
+        <source>https://fucucoincoin.io/</source>
+        <translation>https://fucucoincoin.io/</translation>
     </message>
     <message>
         <source>1</source>
@@ -3584,14 +3616,14 @@ Er was een fout opgetreden tijdens het opslaan van deze adreslijst naar %1. Prob
         <source>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
                            We have support channels in most of our official chat groups, for example
-                           &lt;a style='color: #CCB363' href='https://discord.gg/PENeFRWvEj'&gt;
+                           &lt;a style='color: #b088ff' href='https://discord.gg/T3CYMwTfjJ'&gt;
                            #support in our Discord&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </source>
         <translation>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
                            We hebben ondersteuningskanalen in de meeste van onze officiële chatgroepen, bijvoorbeeld
-                           &lt;a style='color: #CCB363' href='https://discord.gg/PENeFRWvEj'&gt;
+                           &lt;a style='color: #b088ff' href='https://discord.gg/T3CYMwTfjJ'&gt;
                            #support in onze Discord&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </translation>
@@ -4482,8 +4514,8 @@ Weet je zeker dat?
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>FUCU is shutting down...</source>
-        <translation>FUCU is aan het afsluiten...</translation>
+        <source>FUCUCOIN is shutting down...</source>
+        <translation>FUCUCOIN is aan het afsluiten...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -4512,8 +4544,8 @@ Weet je zeker dat?
         <translation>Laden...</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
 </context>
 <context>
@@ -5032,9 +5064,9 @@ Selecteer minder invoeren met muntcontrole.</translation>
     </message>
     <message>
         <source>Welcome to
-FUCU Wallet</source>
+FUCUCOIN Wallet</source>
         <translation>Welkom bij
-FUCU Portemonnee</translation>
+FUCUCOIN Portemonnee</translation>
     </message>
     <message>
         <source>FUCU is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
@@ -5084,8 +5116,8 @@ FUCU Portemonnee</translation>
         <translation>Bind naar het opgegeven adres om te luisteren naar JSON-RPC verbindingen. Gebruik [host]:poort notatie voor IPv6. Deze optie kan meerdere keren worden opgegeven (standaard: bind aan alle interfaces)</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. FUCU is probably already running.</source>
-        <translation>Kan geen vergrendeling op data directory %s verkrijgen. FUCU loopt waarschijnlijk al.</translation>
+        <source>Cannot obtain a lock on data directory %s. FUCUCOIN is probably already running.</source>
+        <translation>Kan geen vergrendeling op data directory %s verkrijgen. FUCUCOIN loopt waarschijnlijk al.</translation>
     </message>
     <message>
         <source>Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)</source>
@@ -5244,8 +5276,8 @@ FUCU Portemonnee</translation>
         <translation>De totale lengte van de netwerkversie (%i) overschrijdt de maximale lengte (%i). Verminder het aantal of de grootte van uacommentaren.</translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. FUCU is probably already running.</source>
-        <translation>Niet mogelijk te binden aan %s op deze computer. FUCU loopt waarschijnlijk al.</translation>
+        <source>Unable to bind to %s on this computer. FUCUCOIN is probably already running.</source>
+        <translation>Niet mogelijk te binden aan %s op deze computer. FUCUCOIN loopt waarschijnlijk al.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -5260,8 +5292,8 @@ FUCU Portemonnee</translation>
         <translation>Waarschuwing: -paytxfee is zeer hoog ingesteld! Dit zijn de transactie kosten die je betaalt als je een transactie verstuurt.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong FUCU will not work properly.</source>
-        <translation>Waarschuwing: Controleer of de datum en tijd van je computer juist zijn! Als je klok verkeerd staat, werkt FUCU niet goed.</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong FUCUCOIN will not work properly.</source>
+        <translation>Waarschuwing: Controleer of de datum en tijd van je computer juist zijn! Als je klok verkeerd staat, werkt FUCUCOIN niet goed.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -5336,8 +5368,8 @@ FUCU Portemonnee</translation>
         <translation>Copyright (C) 2014-%i The Dash Kernontwikkelaars</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The Fucu Coin Developers</source>
-        <translation>Copyright (C) 2015-%i The FUCU Kernontwikkelaars</translation>
+        <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
+        <translation>Copyright (C) 2015-%i The FUCUCOIN Kernontwikkelaars</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -5398,6 +5430,10 @@ FUCU Portemonnee</translation>
     <message>
         <source>Error reading from database, shutting down.</source>
         <translation>Error tijdens het lezen van de database, aan het afsluiten.</translation>
+    </message>
+    <message>
+        <source>Error writing zerocoinDB to disk</source>
+        <translation>Fout bij het schrijven van zerocoinDB naar schijf</translation>
     </message>
     <message>
         <source>Error</source>
@@ -5464,8 +5500,8 @@ FUCU Portemonnee</translation>
         <translation>Informatie</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. FUCU is shutting down.</source>
-        <translation>Initialisatie saniteitscontrole mislukt. FUCU wordt afgesloten.</translation>
+        <source>Initialization sanity check failed. FUCUCOIN is shutting down.</source>
+        <translation>Initialisatie saniteitscontrole mislukt. FUCUCOIN wordt afgesloten.</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -5594,6 +5630,10 @@ FUCU Portemonnee</translation>
     <message>
         <source>Failed to select a zerocoin</source>
         <translation>Het is niet gelukt om een zerocoin te selecteren</translation>
+    </message>
+    <message>
+        <source>Failed to wipe zerocoinDB</source>
+        <translation>Mislukt om zerocoinDB te legen.</translation>
     </message>
     <message>
         <source>Failed to write coin serial number into wallet</source>
@@ -5784,8 +5824,8 @@ FUCU Portemonnee</translation>
         <translation>Minimum geldige waarde (in FUCU) toegestaan bij GUI en RPC voor de staking splitsdrempel (standaard: %s)</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong FUCU will not work properly.</source>
-        <translation>Controleer of de datum en tijd van je computer juist zijn! Als je klok verkeerd ingesteld staat, werkt FUCU niet goed.</translation>
+        <source>Please check that your computer's date and time are correct! If your clock is wrong FUCUCOIN will not work properly.</source>
+        <translation>Controleer of de datum en tijd van je computer juist zijn! Als je klok verkeerd ingesteld staat, werkt FUCUCOIN niet goed.</translation>
     </message>
     <message>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
@@ -6058,6 +6098,10 @@ FUCU Portemonnee</translation>
         <translation>Synchroniseren sporks...</translation>
     </message>
     <message>
+        <source>Syncing zFUCU wallet...</source>
+        <translation>Synchroniseren zFUCU portemonnee...</translation>
+    </message>
+    <message>
         <source>The threshold value cannot be less than %s</source>
         <translation>De drempelwaarde kan niet lager zijn dan %s</translation>
     </message>
@@ -6174,6 +6218,10 @@ FUCU Portemonnee</translation>
         <translation>Gebruikersnaam voor JSON-RPC verbindingen</translation>
     </message>
     <message>
+        <source>Value is below the smallest available denomination (= 1) of zFUCU</source>
+        <translation>Waarde is minder dan de kleinst beschikbare denominatie (=1) van zFUCU</translation>
+    </message>
+    <message>
         <source>Verifying blocks...</source>
         <translation>Blokken verifiëren...</translation>
     </message>
@@ -6186,8 +6234,8 @@ FUCU Portemonnee</translation>
         <translation>Portemonnee %s verblijft buiten de data directory %s</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart FUCU to complete</source>
-        <translation>Wallet moest worden herschreven: start FUCU opnieuw om te voltooien</translation>
+        <source>Wallet needed to be rewritten: restart FUCUCOIN to complete</source>
+        <translation>Wallet moest worden herschreven: start FUCUCOIN opnieuw om te voltooien</translation>
     </message>
     <message>
         <source>Wallet options:</source>

@@ -6,11 +6,11 @@ CONFIGFOLDER='/root/.fucucoin'
 COIN_DAEMON='fucucoind'
 COIN_CLI='fucucoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ=`curl -s https://api.github.com/repos/fucucoin910/fucucoin/releases/latest | grep "browser_download_url.*Linux\\.zip" | cut -d : -f 2,3 | tr -d \" | xargs`
+COIN_TGZ=`curl -s https://api.github.com/repos/fucucoin/FUCU/releases/latest | grep "browser_download_url.*Linux\\.zip" | cut -d : -f 2,3 | tr -d \" | xargs`
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='fucucoin'
-COIN_PORT=28008
-RPC_PORT=58008
+COIN_PORT=22190
+RPC_PORT=22191
 
 BLUE="\033[0;34m"
 YELLOW="\033[0;33m"

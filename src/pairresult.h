@@ -1,10 +1,10 @@
 // Copyright (c) 2019 The PIVX developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FUCU_PAIRRESULT_H
-#define FUCU_PAIRRESULT_H
+#ifndef FUCUCOIN_PAIRRESULT_H
+#define FUCUCOIN_PAIRRESULT_H
 
 
 class PairResult {
@@ -18,4 +18,4 @@ public:
 };
 
 
-#endif //FUCU_PAIRRESULT_H
+#endif //FUCUCOIN_PAIRRESULT_H

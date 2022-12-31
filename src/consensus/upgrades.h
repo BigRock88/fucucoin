@@ -1,12 +1,12 @@
 // Copyright (c) 2018 The Zcash developers
 // Copyright (c) 2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FUCU_CONSENSUS_UPGRADES_H
-#define FUCU_CONSENSUS_UPGRADES_H
+#ifndef FUCUCOIN_CONSENSUS_UPGRADES_H
+#define FUCUCOIN_CONSENSUS_UPGRADES_H
 
 #include "consensus/params.h"
 #include "optional.h"
@@ -83,4 +83,4 @@ Optional<int> NextActivationHeight(
         int nHeight,
         const Consensus::Params& params);
 
-#endif // FUCU_CONSENSUS_UPGRADES_H
+#endif // FUCUCOIN_CONSENSUS_UPGRADES_H

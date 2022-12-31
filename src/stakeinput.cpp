@@ -1,6 +1,6 @@
 // Copyright (c) 2017-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -9,10 +9,13 @@
 #include "chain.h"
 #include "main.h"
 #include "txdb.h"
+#include "zfucu/deterministicmint.h"
 #include "wallet/wallet.h"
 
-bool CBibStake::InitFromTxIn(const CTxIn& txin)
+bool CFucuStake::InitFromTxIn(const CTxIn& txin)
 {
+    if (txin.IsZerocoinSpend())
+        return error("%s: unable to initialize CFUCUStake from zerocoin spend", __func__);
 
     // Find the previous transaction in database
     uint256 hashBlock;
@@ -34,14 +37,14 @@ bool CBibStake::InitFromTxIn(const CTxIn& txin)
     return true;
 }
 
-bool CBibStake::SetPrevout(CTransaction txPrev, unsigned int n)
+bool CFucuStake::SetPrevout(CTransaction txPrev, unsigned int n)
 {
     this->txFrom = txPrev;
     this->nPosition = n;
     return true;
 }
 
-bool CBibStake::GetTxFrom(CTransaction& tx) const
+bool CFucuStake::GetTxFrom(CTransaction& tx) const
 {
     if (txFrom.IsNull())
         return false;
@@ -49,7 +52,7 @@ bool CBibStake::GetTxFrom(CTransaction& tx) const
     return true;
 }
 
-bool CBibStake::GetTxOutFrom(CTxOut& out) const
+bool CFucuStake::GetTxOutFrom(CTxOut& out) const
 {
     if (txFrom.IsNull() || nPosition >= txFrom.vout.size())
         return false;
@@ -57,18 +60,18 @@ bool CBibStake::GetTxOutFrom(CTxOut& out) const
     return true;
 }
 
-bool CBibStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
+bool CFucuStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
 {
     txIn = CTxIn(txFrom.GetHash(), nPosition);
     return true;
 }
 
-CAmount CBibStake::GetValue() const
+CAmount CFucuStake::GetValue() const
 {
     return txFrom.vout[nPosition].nValue;
 }
 
-bool CBibStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmount nTotal, const bool onlyP2PK)
+bool CFucuStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmount nTotal, const bool onlyP2PK)
 {
     std::vector<valtype> vSolutions;
     txnouttype whichType;
@@ -117,7 +120,7 @@ bool CBibStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmoun
     return true;
 }
 
-CDataStream CBibStake::GetUniqueness() const
+CDataStream CFucuStake::GetUniqueness() const
 {
     //The unique identifier for a FUCU stake is the outpoint
     CDataStream ss(SER_NETWORK, 0);
@@ -126,7 +129,7 @@ CDataStream CBibStake::GetUniqueness() const
 }
 
 //The block that the UTXO was added to the chain
-CBlockIndex* CBibStake::GetIndexFrom()
+CBlockIndex* CFucuStake::GetIndexFrom()
 {
     if (pindexFrom)
         return pindexFrom;
@@ -147,7 +150,7 @@ CBlockIndex* CBibStake::GetIndexFrom()
 }
 
 // Verify stake contextual checks
-bool CBibStake::ContextCheck(int nHeight, uint32_t nTime)
+bool CFucuStake::ContextCheck(int nHeight, uint32_t nTime)
 {
     const Consensus::Params& consensus = Params().GetConsensus();
     // Get Stake input block time/height

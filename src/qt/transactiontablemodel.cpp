@@ -2,7 +2,7 @@
 // Copyright (c) 2014-2016 The Dash developers
 // Copyright (c) 2016-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -198,7 +198,7 @@ public:
 
             if (!hasZcTxes) {
                 for (const TransactionRecord &record : records) {
-                    /*hasZcTxes = HasZcTxesIfNeeded(record);*/
+                    hasZcTxes = HasZcTxesIfNeeded(record);
                     if (hasZcTxes) break;
                 }
             }
@@ -217,6 +217,13 @@ public:
             tablePriv->hasZcTxes = true;
 
         return res;
+    }
+
+    static bool HasZcTxesIfNeeded(const TransactionRecord& record) {
+        return (record.type == TransactionRecord::ZerocoinMint ||
+                record.type == TransactionRecord::ZerocoinSpend ||
+                record.type == TransactionRecord::ZerocoinSpend_Change_zFucu ||
+                record.type == TransactionRecord::ZerocoinSpend_FromMe);
     }
 
     /* Update our model of the wallet incrementally, to synchronize our model of the wallet
@@ -292,7 +299,7 @@ public:
                             int insert_idx = lowerIndex;
                             for (const TransactionRecord& rec : toInsert) {
                                 cachedWallet.insert(insert_idx, rec);
-                                /*if (!hasZcTxes) hasZcTxes = HasZcTxesIfNeeded(rec);*/
+                                if (!hasZcTxes) hasZcTxes = HasZcTxesIfNeeded(rec);
                                 insert_idx += 1;
                                 ret = rec; // Return record
                             }
@@ -514,8 +521,20 @@ QString TransactionTableModel::formatTxType(const TransactionRecord* wtx) const
         return tr("Payment to yourself");
     case TransactionRecord::StakeMint:
         return tr("%1 Stake").arg(CURRENCY_UNIT.c_str());
+    case TransactionRecord::StakeZFUCU:
+        return tr("z%1 Stake").arg(CURRENCY_UNIT.c_str());
     case TransactionRecord::Generated:
         return tr("Mined");
+    case TransactionRecord::ZerocoinMint:
+        return tr("Converted %1 to z%1").arg(CURRENCY_UNIT.c_str());
+    case TransactionRecord::ZerocoinSpend:
+        return tr("Spent z%1").arg(CURRENCY_UNIT.c_str());
+    case TransactionRecord::RecvFromZerocoinSpend:
+        return tr("Received %1 from z%1").arg(CURRENCY_UNIT.c_str());
+    case TransactionRecord::ZerocoinSpend_Change_zFucu:
+        return tr("Minted Change as z%1 from z%1 Spend").arg(CURRENCY_UNIT.c_str());
+    case TransactionRecord::ZerocoinSpend_FromMe:
+        return tr("Converted z%1 to %1").arg(CURRENCY_UNIT.c_str());
     default:
         return QString();
     }
@@ -526,14 +545,17 @@ QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord* wtx
     switch (wtx->type) {
     case TransactionRecord::Generated:
     case TransactionRecord::StakeMint:
+    case TransactionRecord::StakeZFUCU:
     case TransactionRecord::MNReward:
     case TransactionRecord::DevReward:
         return QIcon(":/icons/tx_mined");
     case TransactionRecord::RecvWithAddress:
     case TransactionRecord::RecvFromOther:
+    case TransactionRecord::RecvFromZerocoinSpend:
         return QIcon(":/icons/tx_input");
     case TransactionRecord::SendToAddress:
     case TransactionRecord::SendToOther:
+    case TransactionRecord::ZerocoinSpend:
         return QIcon("://ic-transaction-sent");
     default:
         return QIcon(":/icons/tx_inout");
@@ -557,9 +579,16 @@ QString TransactionTableModel::formatTxToAddress(const TransactionRecord* wtx, b
     case TransactionRecord::SendToAddress:
     case TransactionRecord::Generated:
     case TransactionRecord::StakeMint:
+    case TransactionRecord::ZerocoinSpend:
+    case TransactionRecord::ZerocoinSpend_FromMe:
+    case TransactionRecord::RecvFromZerocoinSpend:
         return lookupAddress(wtx->address, tooltip);
     case TransactionRecord::SendToOther:
         return QString::fromStdString(wtx->address) + watchAddress;
+    case TransactionRecord::ZerocoinMint:
+    case TransactionRecord::ZerocoinSpend_Change_zFucu:
+    case TransactionRecord::StakeZFUCU:
+        return tr("Anonymous");
     case TransactionRecord::SendToSelf: {
         QString label = walletModel->getAddressTableModel()->labelForAddress(QString::fromStdString(wtx->address));
         return label.isEmpty() ? "" : label;
@@ -708,7 +737,8 @@ QVariant TransactionTableModel::data(const QModelIndex& index, int role) const
         return column_alignments[index.column()];
     case Qt::ForegroundRole:
         // Minted
-        if (rec->type == TransactionRecord::Generated || rec->type == TransactionRecord::StakeMint || rec->type == TransactionRecord::MNReward || rec->type == TransactionRecord::DevReward) {
+        if (rec->type == TransactionRecord::Generated || rec->type == TransactionRecord::StakeMint ||
+                rec->type == TransactionRecord::StakeZFUCU || rec->type == TransactionRecord::MNReward || rec->type == TransactionRecord::DevReward) {
             if (rec->status.status == TransactionStatus::Conflicted || rec->status.status == TransactionStatus::NotAccepted)
                 return COLOR_ORPHAN;
             else

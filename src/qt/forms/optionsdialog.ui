@@ -131,8 +131,8 @@
         </spacer>
        </item>
        <item>
-        <widget class="QWidget" name="verticalZbibOptionsWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalZbibOptionsLayout">
+        <widget class="QWidget" name="verticalZfucuOptionsWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalZfucuOptionsLayout">
           <property name="margin">
            <number>0</number>
           </property>
@@ -533,7 +533,7 @@
          </property>
          <property name="text">
           <string>Language missing or translation incomplete? Help contributing translations here:
-https://discord.gg/PENeFRWvEj</string>
+https://discord.gg/T3CYMwTfjJ</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -561,8 +561,8 @@ https://discord.gg/PENeFRWvEj</string>
         </layout>
        </item>
        <item>
-        <widget class="QWidget" name="verticalZbibDisplayWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalZbibDisplayLayout">
+        <widget class="QWidget" name="verticalZfucuDisplayWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalZfucuDisplayLayout">
           <property name="margin">
            <number>0</number>
           </property>

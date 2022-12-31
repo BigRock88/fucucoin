@@ -1,7 +1,7 @@
 // Copyright (c) 2018 The Zcash developers
 // Copyright (c) 2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -17,7 +17,7 @@
 const struct NUInfo NetworkUpgradeInfo[Consensus::MAX_NETWORK_UPGRADES] = {
         {
                 /*.strName =*/ "Base",
-                /*.strInfo =*/ "FUCU network",
+                /*.strInfo =*/ "FUCUCOIN network",
         },
         {
                 /*.strName =*/ "PoS",
@@ -28,8 +28,20 @@ const struct NUInfo NetworkUpgradeInfo[Consensus::MAX_NETWORK_UPGRADES] = {
                 /*.strInfo =*/ "New selection for stake modifier",
         },
         {
+                /*.strName =*/ "Zerocoin",
+                /*.strInfo =*/ "ZeroCoin protocol activation - start block v4",
+        },
+        {
+                /*.strName =*/ "Zerocoin_v2",
+                /*.strInfo =*/ "new zerocoin serials and zPOS start",
+        },
+        {
                 /*.strName =*/ "BIP65",
                 /*.strInfo =*/ "CLTV (BIP65) activation - start block v5",
+        },
+        {
+                /*.strName =*/ "Zerocoin_Public",
+                /*.strInfo =*/ "activation of zerocoin public spends (spend v3)",
         },
         {
                 /*.strName =*/ "stake_modifier_v2",

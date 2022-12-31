@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -22,6 +22,7 @@
 #include "pairresult.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
+#include "zfucu/zerocoin.h"
 #include "guiinterface.h"
 #include "util.h"
 #include "util/memory.h"
@@ -29,6 +30,9 @@
 #include "script/ismine.h"
 #include "wallet/scriptpubkeyman.h"
 #include "wallet/walletdb.h"
+#include "zfucu/zfucumodule.h"
+#include "zfucu/zfucuwallet.h"
+#include "zfucu/zfucutracker.h"
 
 #include <algorithm>
 #include <atomic>
@@ -98,7 +102,7 @@ enum WalletFeature {
     FEATURE_WALLETCRYPT = 40000, // wallet encryption
     FEATURE_COMPRPUBKEY = 60000, // compressed public keys
 
-    FEATURE_PRE_FUCU = 61000, // inherited version..
+    FEATURE_PRE_FUCUCOIN = 61000, // inherited version..
 
     // The following features were implemented in BTC but not in our wallet, we can simply skip them.
     // FEATURE_HD = 130000,  Hierarchical key derivation after BIP32 (HD Wallet)
@@ -113,6 +117,27 @@ enum AvailableCoinsType {
     ALL_COINS = 1,
     ONLY_10000 = 5,                                 // find masternode outputs including locked ones (use with caution)
     STAKEABLE_COINS = 6                             // UTXO's that are valid for staking
+};
+
+// Possible states for zFUCU send
+enum ZerocoinSpendStatus {
+    ZFUCU_SPEND_OKAY = 0,                            // No error
+    ZFUCU_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
+    ZFUCU_WALLET_LOCKED = 2,                         // Wallet was locked
+    ZFUCU_COMMIT_FAILED = 3,                         // Commit failed, reset status
+    ZFUCU_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
+    ZFUCU_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
+    ZFUCU_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
+    ZFUCU_TRX_CREATE = 7,                            // Everything related to create the transaction
+    ZFUCU_TRX_CHANGE = 8,                            // Everything related to transaction change
+    ZFUCU_TXMINT_GENERAL = 9,                        // General errors in MintsToInputVectorPublicSpend
+    ZFUCU_INVALID_COIN = 10,                         // Selected mint coin is not valid
+    ZFUCU_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
+    ZFUCU_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
+    ZFUCU_BAD_SERIALIZATION = 13,                    // Transaction verification failed
+    ZFUCU_SPENT_USED_ZFUCU = 14,                      // Coin has already been spend
+    ZFUCU_TX_TOO_LARGE = 15,                         // The transaction is larger than the max tx size
+    ZFUCU_SPEND_V1_SEC_LEVEL                         // Spend is V1 and security level is not set to 100
 };
 
 /** A key pool entry */
@@ -255,6 +280,9 @@ private:
     void SyncMetaData(std::pair<TxSpends::iterator, TxSpends::iterator>);
 
     bool IsKeyUsed(const CPubKey& vchPubKey);
+
+    // Zerocoin wallet
+    CzFUCUWallet* zwallet{nullptr};
 
 public:
 
@@ -615,6 +643,58 @@ public:
 
     /** notify wallet file backed up */
     boost::signals2::signal<void (const bool& fSuccess, const std::string& filename)> NotifyWalletBacked;
+
+
+    /* Legacy ZC - implementations in wallet_zerocoin.cpp */
+
+    bool GetDeterministicSeed(const uint256& hashSeed, uint256& seed);
+    bool AddDeterministicSeed(const uint256& seed);
+
+    // Par of the tx rescan process
+    void doZFucuRescan(const CBlockIndex* pindex, const CBlock& block, std::set<uint256>& setAddedToWallet, const Consensus::Params& consensus, bool fCheckZFUCU);
+
+    //- ZC Mints (Only for regtest)
+    std::string MintZerocoin(CAmount nValue, CWalletTx& wtxNew, std::vector<CDeterministicMint>& vDMints, const CCoinControl* coinControl = NULL);
+    std::string MintZerocoinFromOutPoint(CAmount nValue, CWalletTx& wtxNew, std::vector<CDeterministicMint>& vDMints, const std::vector<COutPoint> vOutpts);
+    bool CreateZFUCUOutPut(libzerocoin::CoinDenomination denomination, CTxOut& outMint, CDeterministicMint& dMint);
+    bool CreateZerocoinMintTransaction(const CAmount nValue,
+            CMutableTransaction& txNew,
+            std::vector<CDeterministicMint>& vDMints,
+            CReserveKey* reservekey,
+            std::string& strFailReason,
+            const CCoinControl* coinControl = NULL);
+
+    // - ZC PublicSpends
+    bool SpendZerocoin(CAmount nAmount, CWalletTx& wtxNew, CZerocoinSpendReceipt& receipt, std::vector<CZerocoinMint>& vMintsSelected, std::list<std::pair<CTxDestination,CAmount>> addressesTo, CTxDestination* changeAddress = nullptr);
+    bool MintsToInputVectorPublicSpend(std::map<CBigNum, CZerocoinMint>& mapMintsSelected, const uint256& hashTxOut, std::vector<CTxIn>& vin, CZerocoinSpendReceipt& receipt, libzerocoin::SpendType spendType, CBlockIndex* pindexCheckpoint = nullptr);
+    bool CreateZCPublicSpendTransaction(
+            CAmount nValue,
+            CWalletTx& wtxNew,
+            CReserveKey& reserveKey,
+            CZerocoinSpendReceipt& receipt,
+            std::vector<CZerocoinMint>& vSelectedMints,
+            std::vector<CDeterministicMint>& vNewMints,
+            std::list<std::pair<CTxDestination,CAmount>> addressesTo,
+            CTxDestination* changeAddress = nullptr);
+
+    // - ZC Balances
+    CAmount GetZerocoinBalance(bool fMatureOnly) const;
+    CAmount GetUnconfirmedZerocoinBalance() const;
+    CAmount GetImmatureZerocoinBalance() const;
+    std::map<libzerocoin::CoinDenomination, CAmount> GetMyZerocoinDistribution() const;
+
+    // zFUCU wallet
+    std::unique_ptr<CzFUCUTracker> zfucuTracker{nullptr};
+    void setZWallet(CzFUCUWallet* zwallet);
+    CzFUCUWallet* getZWallet();
+    bool IsMyZerocoinSpend(const CBigNum& bnSerial) const;
+    bool IsMyMint(const CBigNum& bnValue) const;
+    void ReconsiderZerocoins(std::list<CZerocoinMint>& listMintsRestored, std::list<CDeterministicMint>& listDMintsRestored);
+    bool GetMint(const uint256& hashSerial, CZerocoinMint& mint);
+    bool SetMintUnspent(const CBigNum& bnSerial);
+    bool UpdateMint(const CBigNum& bnValue, const int& nHeight, const uint256& txid, const libzerocoin::CoinDenomination& denom);
+    // Zerocoin entry changed. (called with lock cs_wallet held)
+    boost::signals2::signal<void(CWallet* wallet, const std::string& pubCoin, const std::string& isUsed, ChangeType status)> NotifyZerocoinChanged;
 };
 
 /** A key allocated from the key pool. */

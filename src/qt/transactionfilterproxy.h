@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
 // Copyright (c) 2017-2019 The PIVX developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -87,6 +87,7 @@ private:
     bool fOnlyZc = false;
     bool fOnlyStakesandMN = false;
 
+    bool isZcTx(int type) const;
     bool isStakeTx(int type) const;
 	bool isMasternodeRewardTx(int type) const;
 };

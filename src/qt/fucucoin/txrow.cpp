@@ -1,6 +1,6 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -63,7 +63,12 @@ void TxRow::setType(bool isLightTheme, int type, bool isConfirmed)
     QString css;
     bool sameIcon = false;
     switch (type) {
+        case TransactionRecord::ZerocoinMint:
+            path = "://ic-transaction-mint";
+            css = "text-list-amount-send";
+            break;
         case TransactionRecord::Generated:
+        case TransactionRecord::StakeZFUCU:
         case TransactionRecord::MNReward:
         case TransactionRecord::StakeMint:
             path = "://ic-transaction-staked";
@@ -71,11 +76,15 @@ void TxRow::setType(bool isLightTheme, int type, bool isConfirmed)
             break;
         case TransactionRecord::RecvWithAddress:
         case TransactionRecord::RecvFromOther:
+        case TransactionRecord::RecvFromZerocoinSpend:
             path = "://ic-transaction-received";
             css = "text-list-amount-receive";
             break;
         case TransactionRecord::SendToAddress:
         case TransactionRecord::SendToOther:
+        case TransactionRecord::ZerocoinSpend:
+        case TransactionRecord::ZerocoinSpend_Change_zFucu:
+        case TransactionRecord::ZerocoinSpend_FromMe:
             path = "://ic-transaction-sent";
             css = "text-list-amount-send";
             break;

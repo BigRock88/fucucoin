@@ -1,15 +1,15 @@
-# TOR SUPPORT IN FUCU
+# TOR SUPPORT IN FUCUCOIN
 
-It is possible to run FUCU Core as a Tor hidden service, and connect to such services.
+It is possible to run FUCUCOIN Core as a Tor hidden service, and connect to such services.
 
 The following directions assume you have a Tor proxy running on port 9050. Many distributions default to having a SOCKS proxy listening on port 9050, but others may not. In particular, the Tor Browser Bundle defaults to listening on port 9150. See [Tor Project FAQ:TBBSocksPort](https://www.torproject.org/docs/faq.html.en#TBBSocksPort) for how to properly
 configure Tor.
 
 
-## 1. Run FUCU Core behind a Tor proxy
+## 1. Run FUCUCOIN Core behind a Tor proxy
 ----------------------------------
 
-The first step is running FUCU behind a Tor proxy. This will already anonymize all
+The first step is running FUCUCOIN behind a Tor proxy. This will already anonymize all
 outgoing connections, but more is possible.
 
 	-proxy=ip:port  Set the proxy server. If SOCKS5 is selected (default), this proxy
@@ -38,7 +38,7 @@ In a typical situation, this suffices to run behind a Tor proxy:
 	./fucucoind -proxy=127.0.0.1:9050
 
 
-## 2. Run a FUCU Core hidden server
+## 2. Run a FUCUCOIN Core hidden server
 
 If you configure your Tor system accordingly, it is possible to make your node also
 reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equivalent
@@ -47,15 +47,15 @@ versions of Tor see [Section 3](#3-automatically-listen-on-tor).*
 
 	HiddenServiceDir /var/lib/tor/fucucoin-service/
 	HiddenServiceVersion 2
-	HiddenServicePort 28008 127.0.0.1:28008
+	HiddenServicePort 22190 127.0.0.1:22190
 	HiddenServicePort 61472 127.0.0.1:61472
 
 The directory can be different of course, but (both) port numbers should be equal to
-your fucucoind's P2P listen port (28008 by default).
+your fucucoind's P2P listen port (22190 by default).
 
 	-externalip=X   You can tell fucucoin about its publicly reachable address using
 	                this option, and this can be a v2 .onion address (v3 .onion
-	                addresses are not supported by the FUCU network). Given the above
+	                addresses are not supported by the FUCUCOIN network). Given the above
 	                configuration, you can find your .onion address in
 	                /var/lib/tor/fucucoin-service/hostname. For connections
 	                coming from unroutable addresses (such as 127.0.0.1, where the
@@ -87,7 +87,7 @@ as well, use `discover` instead:
 
 	./fucucoind ... -discover
 
-and open port 28008 on your firewall (or use -upnp).
+and open port 22190 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach .onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
@@ -98,13 +98,13 @@ for normal IPv4/IPv6 communication, use:
 
 Starting with Tor version 0.2.7.1 it is possible, through Tor's control socket
 API, to create and destroy 'ephemeral' hidden services programmatically.
-FUCU Core has been updated to make use of this.
+FUCUCOIN Core has been updated to make use of this.
 
 This means that if Tor is running (and proper authentication has been configured),
-FUCU Core automatically creates a hidden service to listen on. This will positively
+FUCUCOIN Core automatically creates a hidden service to listen on. This will positively
 affect the number of available .onion nodes.
 
-This new feature is enabled by default if FUCU Core is listening (`-listen`), and
+This new feature is enabled by default if FUCUCOIN Core is listening (`-listen`), and
 requires a Tor connection to work. It can be explicitly disabled with `-listenonion=0`
 and, if not disabled, configured using the `-torcontrol` and `-torpassword` settings.
 To show verbose debugging information, pass `-debug=tor`.
@@ -127,7 +127,7 @@ in the tor configuration file. The hashed password can be obtained with the comm
 
 ## 4. Privacy recommendations
 
-- Do not add anything but FUCU Core ports to the hidden service created in section 2.
+- Do not add anything but FUCUCOIN Core ports to the hidden service created in section 2.
   If you run a web service too, create a new hidden service for that.
   Otherwise it is trivial to link them, which may reduce privacy. Hidden
   services created automatically (as in section 3) always have only one port

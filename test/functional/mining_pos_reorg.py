@@ -5,7 +5,7 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 from test_framework.authproxy import JSONRPCException
-from test_framework.test_framework import FucuTestFramework
+from test_framework.test_framework import FucucoinTestFramework
 from test_framework.util import (
     sync_blocks,
     assert_equal,
@@ -17,7 +17,7 @@ from test_framework.util import (
     DecimalAmt,
 )
 
-class ReorgStakeTest(FucuTestFramework):
+class ReorgStakeTest(FucucoinTestFramework):
 
     def set_test_params(self):
         self.num_nodes = 3
@@ -52,13 +52,13 @@ class ReorgStakeTest(FucuTestFramework):
         wi = self.nodes[nodeid].getwalletinfo()
         return wi['balance'] + wi['immature_balance']
 
-    def check_money_supply(self, expected_bib, expected_zbib):
+    def check_money_supply(self, expected_fucu, expected_zfucu):
         g_info = [self.nodes[i].getinfo() for i in range(self.num_nodes)]
         # verify that nodes have the expected FUCU and zFUCU supply
         for node in g_info:
-            assert_equal(node['moneysupply'], DecimalAmt(expected_bib))
+            assert_equal(node['moneysupply'], DecimalAmt(expected_fucu))
             for denom in node['zFUCUsupply']:
-                assert_equal(node['zFUCUsupply'][denom], DecimalAmt(expected_zbib[denom]))
+                assert_equal(node['zFUCUsupply'][denom], DecimalAmt(expected_zfucu[denom]))
 
 
     def run_test(self):
@@ -72,7 +72,7 @@ class ReorgStakeTest(FucuTestFramework):
         # Check FUCU and zFUCU supply at the beginning
         # ------------------------------------------
         # zFUCU supply: 2 coins for each denomination
-        expected_zbib_supply = {
+        expected_zfucu_supply = {
             "1": 2,
             "5": 10,
             "10": 20,
@@ -85,7 +85,7 @@ class ReorgStakeTest(FucuTestFramework):
         }
         # FUCU supply: block rewards minus burned fees for minting
         expected_money_supply = 250.0 * 330 - 16 * 0.01
-        self.check_money_supply(expected_money_supply, expected_zbib_supply)
+        self.check_money_supply(expected_money_supply, expected_zfucu_supply)
 
         # Stake with node 0 and node 1 up to public spend activation (400)
         # 70 blocks: 5 blocks each (x7)
@@ -236,10 +236,10 @@ class ReorgStakeTest(FucuTestFramework):
         expected_money_supply += 250.0 * (self.nodes[1].getblockcount() - 330)
         spent_coin_0 = mints[0]["denomination"]
         spent_coin_1 = mints[1]["denomination"]
-        expected_zbib_supply[str(spent_coin_0)] -= spent_coin_0
-        expected_zbib_supply[str(spent_coin_1)] -= spent_coin_1
-        expected_zbib_supply["total"] -= (spent_coin_0 + spent_coin_1)
-        self.check_money_supply(expected_money_supply, expected_zbib_supply)
+        expected_zfucu_supply[str(spent_coin_0)] -= spent_coin_0
+        expected_zfucu_supply[str(spent_coin_1)] -= spent_coin_1
+        expected_zfucu_supply["total"] -= (spent_coin_0 + spent_coin_1)
+        self.check_money_supply(expected_money_supply, expected_zfucu_supply)
         self.log.info("Supply checks out.")
 
 

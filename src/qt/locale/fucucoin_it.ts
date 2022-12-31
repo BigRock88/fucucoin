@@ -747,6 +747,10 @@ per lo staking</translation>
         <translation>Filtra per</translation>
     </message>
     <message>
+        <source>Amount of FUCU and zFUCU staked.</source>
+        <translation>Quantità di FUCU e zFUCU dallo stake.</translation>
+    </message>
+    <message>
         <source>Please wait until the wallet is fully synced to see your correct balance</source>
         <translation>Attendi fino a quando il portafoglio non è completamente sincronizzato per vedere il tuo saldo corretto</translation>
     </message>
@@ -892,16 +896,16 @@ Si avvierà automaticamente non appena il portafoglio avrà sufficienti conferme
         <translation>versione</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About FUCU</source>
-        <translation>Informazioni su FUCU</translation>
+        <source>About FUCUCOIN</source>
+        <translation>Informazioni su FUCUCOIN</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -955,16 +959,16 @@ Si avvierà automaticamente non appena il portafoglio avrà sufficienti conferme
         <translation>Benvenuto</translation>
     </message>
     <message>
-        <source>Welcome to FUCU.</source>
-        <translation>Benvenuto in FUCU.</translation>
+        <source>Welcome to FUCUCOIN.</source>
+        <translation>Benvenuto in FUCUCOIN.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where FUCU will store its data.</source>
-        <translation>Essendo il primo avvio dell'applicazione, puoi scegliere dove FUCU salverà i propri dati.</translation>
+        <source>As this is the first time the program is launched, you can choose where FUCUCOIN will store its data.</source>
+        <translation>Essendo il primo avvio dell'applicazione, puoi scegliere dove FUCUCOIN salverà i propri dati.</translation>
     </message>
     <message>
-        <source>FUCU will download and store a copy of the FUCU block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>FUCU scaricherà e salverà una copia della blockchain FUCU. Verranno salvati almeno %1GB di dati in questa cartella, che cresceranno nel tempo. In questa cartella verrà salvato anche il portafoglio.</translation>
+        <source>FUCUCOIN will download and store a copy of the FUCU block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>FUCUCOIN scaricherà e salverà una copia della blockchain FUCU. Verranno salvati almeno %1GB di dati in questa cartella, che cresceranno nel tempo. In questa cartella verrà salvato anche il portafoglio.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -983,8 +987,8 @@ Si avvierà automaticamente non appena il portafoglio avrà sufficienti conferme
         <translation>OK</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1613,21 +1617,45 @@ NODE</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-        https://discord.gg/PENeFRWvEj</source>
+        https://discord.gg/T3CYMwTfjJ</source>
         <translation>Lingua mancante o traduzione incompleta? Aiutaci a contribuire alle traduzioni qui:
-        https://discord.gg/PENeFRWvEj</translation>
+        https://discord.gg/T3CYMwTfjJ</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Mappa la porta utilizzando &amp;UPnP</translation>
     </message>
     <message>
+        <source>Enable automatic minting of FUCU units to zFUCU</source>
+        <translation>Attiva la forgiatura automatica di unità FUCU in zFUCU</translation>
+    </message>
+    <message>
+        <source>Enable zFUCU Automint</source>
+        <translation>Attiva forgiatura automatica zFUCU</translation>
+    </message>
+    <message>
+        <source>Enable automatic zFUCU minting from specific addresses</source>
+        <translation>Attiva la forgiatura automatica di zFUCU da indirizzi specifici</translation>
+    </message>
+    <message>
         <source>Enable Automint Addresses</source>
         <translation>Abilita indirizzi forgiatura automatica</translation>
     </message>
     <message>
+        <source>Percentage of incoming FUCU which get automatically converted to zFUCU via Zerocoin Protocol (min: 10%)</source>
+        <translation>Percentuale di FUCU in entrata che viene automaticamente convertita in zFUCU attraverso il protocollo Zerocoin (min: 10%)</translation>
+    </message>
+    <message>
+        <source>Percentage of autominted zFUCU</source>
+        <translation>Percentuale di zFUCU Percentuale di zFUCU da forgiare automaticamente</translation>
+    </message>
+    <message>
         <source>Wait with automatic conversion to Zerocoin until enough FUCU for this denomination is available</source>
         <translation>Attendere la conversione automatica in Zerocoin fino a quando non saranno disponibili abbastanza FUCU per questa denominazione</translation>
+    </message>
+    <message>
+        <source>Preferred Automint zFUCU Denomination</source>
+        <translation>Denominazione preferita forgiatura automatica zFUCU</translation>
     </message>
     <message>
         <source>Stake split threshold:</source>
@@ -1779,10 +1807,10 @@ NODE</translation>
     </message>
 </context>
 <context>
-    <name>FUCUGUI</name>
+    <name>FUCUCOINGUI</name>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -1809,8 +1837,8 @@ NODE</translation>
         <translation>Chiude l'applicazione</translation>
     </message>
     <message>
-        <source>FUCU client</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN client</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Error</source>
@@ -2014,8 +2042,8 @@ Indirizzo: %4
         <translation>Si è verificato un errore irreversibile. FUCU non può più continuare in modo sicuro e verrà chiuso.</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" does not exist.</source>
@@ -2034,8 +2062,8 @@ Indirizzo: %4
         <translation>Errore durante la lettura del file di configurazione del Masternode: %1</translation>
     </message>
     <message>
-        <source>FUCU didn't yet exit safely...</source>
-        <translation>FUCU non è ancora uscito in modo sicuro...</translation>
+        <source>FUCUCOIN didn't yet exit safely...</source>
+        <translation>FUCUCOIN non è ancora uscito in modo sicuro...</translation>
     </message>
     <message>
         <source>Contact</source>
@@ -2387,6 +2415,10 @@ Indirizzo: %4
     <message>
         <source>Custom Backup Path:</source>
         <translation>Percorso di backup personalizzato:</translation>
+    </message>
+    <message>
+        <source>Custom zFUCU Backup Path:</source>
+        <translation>Percorso di backup zFUCU personalizzato:</translation>
     </message>
     <message>
         <source>Custom Backups Threshold:</source>
@@ -3400,12 +3432,12 @@ Verifica di aver installato un editor di testo predeterminato.</translation>
         <translation>Esporta elenco indirizzi</translation>
     </message>
     <message>
-        <source>FUCU_tx_csv_export(*.csv)</source>
-        <translation>FUCU_tx_csv_export(*.csv)</translation>
+        <source>FUCUCOIN_tx_csv_export(*.csv)</source>
+        <translation>FUCUCOIN_tx_csv_export(*.csv)</translation>
     </message>
     <message>
-        <source>FUCU_addresses_csv_export(*.csv)</source>
-        <translation>FUCU_addresses_csv_export(*.csv)</translation>
+        <source>FUCUCOIN_addresses_csv_export(*.csv)</source>
+        <translation>FUCUCOIN_addresses_csv_export(*.csv)</translation>
     </message>
     <message>
         <source>Please select a folder to export the csv file first.</source>
@@ -3483,8 +3515,8 @@ Si è verificato un errore nel tentativo di salvare l'elenco degli indirizzi in 
         <translation>2) Perché i miei FUCU non sono spendibili?</translation>
     </message>
     <message>
-        <source>https://www.fucucoin.org</source>
-        <translation>https://www.fucucoin.org</translation>
+        <source>https://fucucoincoin.io/</source>
+        <translation>https://fucucoincoin.io/</translation>
     </message>
     <message>
         <source>1</source>
@@ -3584,14 +3616,14 @@ per vedere e spendere i saldi sulla rete.
         <source>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
                            We have support channels in most of our official chat groups, for example
-                           &lt;a style='color: #CCB363' href='https://discord.gg/PENeFRWvEj'&gt;
+                           &lt;a style='color: #b088ff' href='https://discord.gg/T3CYMwTfjJ'&gt;
                            #support in our Discord&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </source>
         <translation>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
                            Abbiamo canali di supporto nella maggior parte dei nostri gruppi di chat ufficiali, ad esempio
-                           &lt;a style='color: #CCB363' href='https://discord.gg/PENeFRWvEj'&gt;
+                           &lt;a style='color: #b088ff' href='https://discord.gg/T3CYMwTfjJ'&gt;
                            #support nel nostro Discord&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </translation>
@@ -4482,8 +4514,8 @@ Sei sicuro?
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>FUCU is shutting down...</source>
-        <translation>FUCU si sta spegnendo...</translation>
+        <source>FUCUCOIN is shutting down...</source>
+        <translation>FUCUCOIN si sta spegnendo...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -4512,8 +4544,8 @@ Sei sicuro?
         <translation>Caricamento...</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
 </context>
 <context>
@@ -5032,13 +5064,13 @@ Selezionare meno ingressi con controllo coin.</translation>
     </message>
     <message>
         <source>Welcome to
-FUCU Wallet</source>
+FUCUCOIN Wallet</source>
         <translation>Benvenuto in
-Portafoglio FUCU.</translation>
+Portafoglio FUCUCOIN.</translation>
     </message>
     <message>
         <source>FUCU is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
-        <translation>FUCU è la tecnologia bfucuta su blockchain Proof of Stake più innovativa al mondo. Sviluppato da un team di sviluppatori e crittografi di grande esperienza.</translation>
+        <translation>FUCU è la tecnologia basata su blockchain Proof of Stake più innovativa al mondo. Sviluppato da un team di sviluppatori e crittografi di grande esperienza.</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;As our manifesto says: Privacy is a non-negotiable basic human right; it grants users the freedom to share their data whenever and with whomever they want - FUCU believes in self sovereignty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -5084,8 +5116,8 @@ Portafoglio FUCU.</translation>
         <translation>Associa l'indirizzo indicato per ascoltare le connessioni JSON-RPC. Usa la notazione [host]:porta per IPv6. Questa opzione può essere specificata più volte (impostazione predefinita: associa a tutte le interfacce)</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. FUCU is probably already running.</source>
-        <translation>Impossibile allocare la directory di dati %s. Probabilmente FUCU è già in esecuzione.</translation>
+        <source>Cannot obtain a lock on data directory %s. FUCUCOIN is probably already running.</source>
+        <translation>Impossibile allocare la directory di dati %s. Probabilmente FUCUCOIN è già in esecuzione.</translation>
     </message>
     <message>
         <source>Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)</source>
@@ -5244,8 +5276,8 @@ Portafoglio FUCU.</translation>
         <translation>La lunghezza totale della stringa della versione di rete (%i) supera la lunghezza massima (%i). Ridurre il numero o la dimensione degli uacomments.</translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. FUCU is probably already running.</source>
-        <translation>Impossibile associare %s su questo computer. Probabilmente FUCU è già in esecuzione.</translation>
+        <source>Unable to bind to %s on this computer. FUCUCOIN is probably already running.</source>
+        <translation>Impossibile associare %s su questo computer. Probabilmente FUCUCOIN è già in esecuzione.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -5260,8 +5292,8 @@ Portafoglio FUCU.</translation>
         <translation>Attenzione: -paytxfee è impostato molto alto! Questa è la commissione di transazione che dovrai pagare se invii una transazione.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong FUCU will not work properly.</source>
-        <translation>Avvertenza: verificare che la data e l'ora del computer siano corrette! Se l'orologio è sbagliato, FUCU non funzionerà correttamente.</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong FUCUCOIN will not work properly.</source>
+        <translation>Avvertenza: verificare che la data e l'ora del computer siano corrette! Se l'orologio è sbagliato, FUCUCOIN non funzionerà correttamente.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -5336,8 +5368,8 @@ Portafoglio FUCU.</translation>
         <translation>Copyright (C) 2014-%i Gli sviluppatori di Dash Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The Fucu Coin Developers</source>
-        <translation>Copyright (C) 2015-%i Gli sviluppatori di FUCU Core</translation>
+        <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
+        <translation>Copyright (C) 2015-%i Gli sviluppatori di FUCUCOIN Core</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -5398,6 +5430,10 @@ Portafoglio FUCU.</translation>
     <message>
         <source>Error reading from database, shutting down.</source>
         <translation>Errore durante la lettura dal database, arresto.</translation>
+    </message>
+    <message>
+        <source>Error writing zerocoinDB to disk</source>
+        <translation>Errore durante la scrittura di zerocoinDB sul disco</translation>
     </message>
     <message>
         <source>Error</source>
@@ -5464,8 +5500,8 @@ Portafoglio FUCU.</translation>
         <translation>Informazioni</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. FUCU is shutting down.</source>
-        <translation>Verifica dell'integrità dell'inizializzazione non riuscita. FUCU si sta spegnendo.</translation>
+        <source>Initialization sanity check failed. FUCUCOIN is shutting down.</source>
+        <translation>Verifica dell'integrità dell'inizializzazione non riuscita. FUCUCOIN si sta spegnendo.</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -5594,6 +5630,10 @@ Portafoglio FUCU.</translation>
     <message>
         <source>Failed to select a zerocoin</source>
         <translation>Impossibile selezionare uno zerocoin</translation>
+    </message>
+    <message>
+        <source>Failed to wipe zerocoinDB</source>
+        <translation>Impossibile cancellare zerocoinDB</translation>
     </message>
     <message>
         <source>Failed to write coin serial number into wallet</source>
@@ -5784,8 +5824,8 @@ Portafoglio FUCU.</translation>
         <translation>Importo positivo minimo (in FUCU) consentito da GUI e RPC per la soglia di ripartizione della partecipazione (default: %s)</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong FUCU will not work properly.</source>
-        <translation>Verificare che la data e l'ora del computer siano corrette! Se l'orologio sincronizzato, FUCU non funzionerà correttamente.</translation>
+        <source>Please check that your computer's date and time are correct! If your clock is wrong FUCUCOIN will not work properly.</source>
+        <translation>Verificare che la data e l'ora del computer siano corrette! Se l'orologio sincronizzato, FUCUCOIN non funzionerà correttamente.</translation>
     </message>
     <message>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
@@ -6058,6 +6098,10 @@ Portafoglio FUCU.</translation>
         <translation>Sincronizzazione sporks...</translation>
     </message>
     <message>
+        <source>Syncing zFUCU wallet...</source>
+        <translation>Sincronizzazione del portafoglio zFUCU...</translation>
+    </message>
+    <message>
         <source>The threshold value cannot be less than %s</source>
         <translation>Il valore di soglia non può essere inferiore a %s</translation>
     </message>
@@ -6174,6 +6218,10 @@ Portafoglio FUCU.</translation>
         <translation>Nome utente per connessioni JSON-RPC</translation>
     </message>
     <message>
+        <source>Value is below the smallest available denomination (= 1) of zFUCU</source>
+        <translation>Il valore è inferiore alla denominazione più piccola disponibile (=1) di zFUCU</translation>
+    </message>
+    <message>
         <source>Verifying blocks...</source>
         <translation>Verifica dei blocchi...</translation>
     </message>
@@ -6186,8 +6234,8 @@ Portafoglio FUCU.</translation>
         <translation>Il portafoglio %s risiede al di fuori della directory di dati %s</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart FUCU to complete</source>
-        <translation>Il portafoglio doveva essere riscritto: riavviare FUCU per completare</translation>
+        <source>Wallet needed to be rewritten: restart FUCUCOIN to complete</source>
+        <translation>Il portafoglio doveva essere riscritto: riavviare FUCUCOIN per completare</translation>
     </message>
     <message>
         <source>Wallet options:</source>

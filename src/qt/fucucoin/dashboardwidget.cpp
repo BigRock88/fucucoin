@@ -1,6 +1,6 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -27,7 +27,7 @@
 #define REQUEST_LOAD_TASK 1
 #define CHART_LOAD_MIN_TIME_INTERVAL 15
 
-DashboardWidget::DashboardWidget(FUCUGUI* parent) :
+DashboardWidget::DashboardWidget(FUCUCOINGUI* parent) :
     PWidget(parent),
     ui(new Ui::DashboardWidget)
 {
@@ -57,8 +57,8 @@ DashboardWidget::DashboardWidget(FUCUGUI* parent) :
     // Staking Information
     ui->labelMessage->setText(tr("Amount of FUCU earned via Staking & Masternodes"));
     setCssSubtitleScreen(ui->labelMessage);
-    setCssProperty(ui->labelSquareBib, "square-chart-bib");
-    setCssProperty(ui->labelBib, "text-chart-bib");
+    setCssProperty(ui->labelSquareFucu, "square-chart-fucu");
+    setCssProperty(ui->labelFucu, "text-chart-fucu");
 	setCssProperty(ui->labelSquareMNRewards, "square-chart-mnrewards");
 	setCssProperty(ui->labelMNRewards, "text-chart-mnrewards");
 
@@ -69,7 +69,7 @@ DashboardWidget::DashboardWidget(FUCUGUI* parent) :
     fontBold.setWeight(QFont::Bold);
 
     setCssProperty(ui->labelChart, "legend-chart");
-    setCssProperty(ui->labelAmountBib, "text-stake-bib-disable");
+    setCssProperty(ui->labelAmountFucu, "text-stake-fucu-disable");
 	ui->labelAmountMNRewards->setText("0 FUCU");
 	setCssProperty(ui->labelAmountMNRewards, "text-stake-mnrewards-disable");
 
@@ -150,7 +150,7 @@ bool hasCharts = false;
     connect(ui->pushButtonMonth, &QPushButton::clicked, [this](){setChartShow(MONTH);});
     connect(ui->pushButtonAll, &QPushButton::clicked, [this](){setChartShow(ALL);});
     if (window)
-        connect(window, &FUCUGUI::windowResizeEvent, this, &DashboardWidget::windowResizeEvent);
+        connect(window, &FUCUCOINGUI::windowResizeEvent, this, &DashboardWidget::windowResizeEvent);
 #endif
 
     if (hasCharts) {
@@ -211,8 +211,8 @@ void DashboardWidget::loadWalletModel()
             ui->comboBoxSort->setVisible(false);
         }
 
-        connect(ui->pushImgEmpty, &QPushButton::clicked, window, &FUCUGUI::openFAQ);
-        connect(ui->btnHowTo, &QPushButton::clicked, window, &FUCUGUI::openFAQ);
+        connect(ui->pushImgEmpty, &QPushButton::clicked, window, &FUCUCOINGUI::openFAQ);
+        connect(ui->btnHowTo, &QPushButton::clicked, window, &FUCUCOINGUI::openFAQ);
         connect(txModel, &TransactionTableModel::txArrived, this, &DashboardWidget::onTxArrived);
 
         // Notification pop-up for new transaction
@@ -464,14 +464,14 @@ void DashboardWidget::changeChartColors()
     QColor backgroundColor;
     QColor gridY;
     if (isLightTheme()) {
-        gridLineColorX = QColor(50,44,25,0.3);
+        gridLineColorX = QColor(255,255,255);
         linePenColorY = gridLineColorX;
         backgroundColor = linePenColorY;
         axisY->setGridLineColor(QColor("#1a000000"));
     } else {
         gridY = QColor("#40ffffff");
         axisY->setGridLineColor(gridY);
-        gridLineColorX = QColor(50,44,25);
+        gridLineColorX = QColor(221,122,35);
         linePenColorY =  gridLineColorX;
         backgroundColor = linePenColorY;
     }
@@ -530,7 +530,7 @@ const QMap<int, QMap<QString, qint64>> DashboardWidget::getAmountBy()
         QModelIndex modelIndex = stakesFilter->index(i, TransactionTableModel::ToAddress);
         qint64 amount = llabs(modelIndex.data(TransactionTableModel::AmountRole).toLongLong());
         QDate date = modelIndex.data(TransactionTableModel::DateRole).toDateTime().date();
-        bool isBib = modelIndex.data(TransactionTableModel::TypeRole).toInt() == TransactionRecord::StakeMint;
+        bool isFucu = modelIndex.data(TransactionTableModel::TypeRole).toInt() == TransactionRecord::StakeMint;
 		bool isMN = modelIndex.data(TransactionTableModel::TypeRole).toInt() == TransactionRecord::MNReward;
 
         int time = 0;
@@ -552,18 +552,18 @@ const QMap<int, QMap<QString, qint64>> DashboardWidget::getAmountBy()
                 return amountBy;
         }
         if (amountBy.contains(time)) {
-            if (isBib) {
-                amountBy[time]["bib"] += amount;
+            if (isFucu) {
+                amountBy[time]["fucu"] += amount;
             } else if (isMN) {
                 amountBy[time]["mn"] += amount;
                 hasMNRewards = true;
             }
         } else {
-            if (isBib) {
-                amountBy[time]["bib"] = amount;
+            if (isFucu) {
+                amountBy[time]["fucu"] = amount;
                 amountBy[time]["mn"] = 0;
             } else if (isMN) {
-                amountBy[time]["bib"] = 0;
+                amountBy[time]["fucu"] = 0;
                 amountBy[time]["mn"] = amount;
                 hasMNRewards = true;
             }
@@ -593,22 +593,22 @@ bool DashboardWidget::loadChartData(bool withMonthNames)
 
     for (int j = range.first; j < range.second; j++) {
         int num = (isOrderedByMonth && j > daysInMonth) ? (j % daysInMonth) : j;
-        qreal bib = 0;
+        qreal fucu = 0;
 		qreal mnrewards = 0;
         if (chartData->amountsByCache.contains(num)) {
             QMap<QString, qint64> pair = chartData->amountsByCache[num];
-            bib = (pair["bib"] != 0) ? pair["bib"] / 100000000 : 0;
+            fucu = (pair["fucu"] != 0) ? pair["fucu"] / 100000000 : 0;
             mnrewards = (pair["mn"] != 0) ? pair["mn"] / 100000000 : 0;
-            chartData->totalBib += pair["bib"];
+            chartData->totalFucu += pair["fucu"];
             chartData->totalMNRewards += pair["mn"];
         }
 
         chartData->xLabels << ((withMonthNames) ? monthsNames[num - 1] : QString::number(num));
 
-        chartData->valuesBib.append(bib);    
+        chartData->valuesFucu.append(fucu);    
         chartData->valuesMNRewards.append(mnrewards);    
 
-        int max = std::max(bib, mnrewards);
+        int max = std::max(fucu, mnrewards);
         if (max > chartData->maxValue) {
             chartData->maxValue = max;
         }
@@ -667,8 +667,8 @@ void DashboardWidget::onChartRefreshed()
     // init sets
     set0 = new QBarSet(CURRENCY_UNIT.c_str());
 	set1 = new QBarSet("MN_" + QString(CURRENCY_UNIT.c_str()));
-    set0->setColor(QColor(204,179,99));
-	set1->setColor(QColor(117,96,28));
+    set0->setColor(QColor(235,255,174));
+	set1->setColor(QColor(238,166,255));
 
     if (!series) {
         series = new QBarSeries();
@@ -677,21 +677,21 @@ void DashboardWidget::onChartRefreshed()
     series->attachAxis(axisX);
     series->attachAxis(axisY);
 
-    set0->append(chartData->valuesBib);
+    set0->append(chartData->valuesFucu);
     set1->append(chartData->valuesMNRewards);
 
     // Total
     nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
-    if (chartData->totalBib > 0 || chartData->totalMNRewards > 0) {
-        setCssProperty(ui->labelAmountBib, "text-stake-bib");
+    if (chartData->totalFucu > 0 || chartData->totalMNRewards > 0) {
+        setCssProperty(ui->labelAmountFucu, "text-stake-fucu");
 		setCssProperty(ui->labelAmountMNRewards, "text-stake-mnrewards");
     } else {
-        setCssProperty(ui->labelAmountBib, "text-stake-bib-disable");
+        setCssProperty(ui->labelAmountFucu, "text-stake-fucu-disable");
 		setCssProperty(ui->labelAmountMNRewards, "text-stake-mnrewards-disable");
     }
 
-	forceUpdateStyle({ui->labelAmountBib, ui->labelAmountMNRewards});
-    ui->labelAmountBib->setText(GUIUtil::formatBalance(chartData->totalBib, nDisplayUnit));
+	forceUpdateStyle({ui->labelAmountFucu, ui->labelAmountMNRewards});
+    ui->labelAmountFucu->setText(GUIUtil::formatBalance(chartData->totalFucu, nDisplayUnit));
 	ui->labelAmountMNRewards->setText(GUIUtil::formatBalance(chartData->totalMNRewards, nDisplayUnit));
 
     series->append(set0);

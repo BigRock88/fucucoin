@@ -21,7 +21,7 @@ if(RUSTC_PROGRAM)
     message(STATUS "Found rustc: ${RUSTC_PROGRAM}")
 endif()
 
-project(FUCU)
+project(FUCUCOIN)
 
 set(BDB_VER "4.8.30")
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/contrib/cmake")
@@ -92,6 +92,7 @@ find_package(GMP)
 if(GMP_FOUND)
 else()
     message(WARNING "GMP not found, falling back to OpenSSL for bignum!")
+    set(BIGNUM_CONFIGURE_FLAGS "--with-zerocoin-bignum=openssl")
 endif()
 
 find_package(ZMQ)
@@ -195,6 +196,7 @@ set(SERVER_SOURCES
         ./src/init.cpp
         ./src/interface/wallet.cpp
         ./src/dbwrapper.cpp
+        ./src/legacy/validation_zerocoin_legacy.cpp
         ./src/main.cpp
         ./src/merkleblock.cpp
         ./src/miner.cpp
@@ -220,6 +222,7 @@ set(SERVER_SOURCES
         ./src/txdb.cpp
         ./src/txmempool.cpp
         ./src/validationinterface.cpp
+        ./src/zfucuchain.cpp
         )
 add_library(SERVER_A STATIC ${BitcoinHeaders} ${SERVER_SOURCES})
 if(MINIUPNP_FOUND)
@@ -247,6 +250,7 @@ endif()
 set(WALLET_SOURCES
         ./src/activemasternode.cpp
         ./src/bip38.cpp
+        ./src/denomination_functions.cpp
         ./src/wallet/db.cpp
         ./src/addressbook.cpp
         ./src/crypter.cpp
@@ -258,14 +262,22 @@ set(WALLET_SOURCES
         ./src/masternodeconfig.cpp
         ./src/masternodeman.cpp
         ./src/messagesigner.cpp
+        ./src/zfucu/mintpool.cpp
         ./src/wallet/hdchain.cpp
         ./src/wallet/rpcdump.cpp
+        ./src/zfucu/deterministicmint.cpp
+        ./src/zfucu/zerocoin.cpp
         ./src/wallet/scriptpubkeyman.cpp
         ./src/wallet/rpcwallet.cpp
         ./src/kernel.cpp
         ./src/legacy/stakemodifier.cpp
         ./src/wallet/wallet.cpp
+        ./src/wallet/wallet_zerocoin.cpp
         ./src/wallet/walletdb.cpp
+        ./src/zfucu/zfucuwallet.cpp
+        ./src/zfucu/zfucutracker.cpp
+        ./src/zfucu/zfucumodule.cpp
+        ./src/zfucu/zpos.cpp
         ./src/stakeinput.cpp
         )
 add_library(WALLET_A STATIC ${BitcoinHeaders} ${WALLET_SOURCES})
@@ -316,6 +328,37 @@ set(BITCOIN_CRYPTO_SOURCES
 add_library(BITCOIN_CRYPTO_A STATIC ${BITCOIN_CRYPTO_SOURCES})
 target_include_directories(BITCOIN_CRYPTO_A PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src ${OPENSSL_INCLUDE_DIR})
 
+set(ZEROCOIN_SOURCES
+        ./src/libzerocoin/Accumulator.h
+        ./src/libzerocoin/bignum.h
+        ./src/libzerocoin/bignum.cpp
+        ./src/libzerocoin/Coin.h
+        ./src/libzerocoin/CoinRandomnessSchnorrSignature.h
+        ./src/libzerocoin/CoinSpend.h
+        ./src/libzerocoin/Commitment.h
+        ./src/libzerocoin/Denominations.h
+        ./src/libzerocoin/ParamGeneration.h
+        ./src/libzerocoin/Params.h
+        ./src/libzerocoin/SpendType.h
+        ./src/libzerocoin/ZerocoinDefines.h
+        ./src/libzerocoin/Accumulator.cpp
+        ./src/libzerocoin/Coin.cpp
+        ./src/libzerocoin/CoinRandomnessSchnorrSignature.cpp
+        ./src/libzerocoin/Denominations.cpp
+        ./src/libzerocoin/CoinSpend.cpp
+        ./src/libzerocoin/ParamGeneration.cpp
+        ./src/libzerocoin/Params.cpp
+        )
+if(GMP_FOUND)
+    list(APPEND ZEROCOIN_SOURCES ./src/libzerocoin/bignum_gmp.cpp)
+else()
+    list(APPEND ZEROCOIN_SOURCES ./src/libzerocoin/bignum_openssl.cpp)
+endif()
+add_library(ZEROCOIN_A STATIC ${ZEROCOIN_SOURCES})
+target_include_directories(ZEROCOIN_A PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${OPENSSL_INCLUDE_DIR}
+        )
+
 set(COMMON_SOURCES
         ./src/allocators.cpp
         ./src/amount.cpp
@@ -329,11 +372,15 @@ set(COMMON_SOURCES
         ./src/compressor.cpp
         ./src/consensus/merkle.cpp
         ./src/consensus/tx_verify.cpp
+        ./src/consensus/zerocoin_verify.cpp
         ./src/primitives/block.cpp
+        ./src/zfucu/deterministicmint.cpp
         ./src/primitives/transaction.cpp
+        ./src/zfucu/zerocoin.cpp
         ./src/core_read.cpp
         ./src/core_write.cpp
         ./src/hash.cpp
+        ./src/invalid.cpp
         ./src/key.cpp
         ./src/keystore.cpp
         ./src/netaddress.cpp
@@ -451,6 +498,7 @@ add_dependencies(fucucoin-tx libunivalue libsecp256k1 libzcashrust)
 target_link_libraries(fucucoin-tx
         univalue
         COMMON_A
+        ZEROCOIN_A
         UTIL_A
         BITCOIN_CRYPTO_A
         secp256k1
@@ -482,6 +530,7 @@ target_link_libraries(fucucoind
         WALLET_A
         COMMON_A
         univalue
+        ZEROCOIN_A
         UTIL_A
         SAPLING_A
         BITCOIN_CRYPTO_A

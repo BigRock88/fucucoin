@@ -58,6 +58,7 @@ from .util import (
     SPORK_DEACTIVATION_TIME,
     sync_blocks,
     sync_mempools,
+    vZC_DENOMS,
 )
 
 class TestStatus(Enum):
@@ -72,7 +73,7 @@ TEST_EXIT_SKIPPED = 77
 TMPDIR_PREFIX = "fucucoin_func_test_"
 
 
-class FucuTestFramework():
+class FucucoinTestFramework():
     """Base class for a fucucoin test script.
 
     Individual fucucoin test scripts should subclass this class and override the set_test_params() and run_test() methods.
@@ -96,7 +97,7 @@ class FucuTestFramework():
         self.supports_cli = False
         self.set_test_params()
 
-        assert hfucuttr(self, "num_nodes"), "Test must set self.num_nodes in set_test_params()"
+        assert hasattr(self, "num_nodes"), "Test must set self.num_nodes in set_test_params()"
 
     def main(self):
         """Main function. This should not be overridden by the subclass test scripts."""
@@ -243,7 +244,7 @@ class FucuTestFramework():
     def setup_nodes(self):
         """Override this method to customize test node setup"""
         extra_args = None
-        if hfucuttr(self, "extra_args"):
+        if hasattr(self, "extra_args"):
             extra_args = self.extra_args
         self.add_nodes(self.num_nodes, extra_args)
         self.start_nodes()
@@ -693,6 +694,11 @@ class FucuTestFramework():
         # 62 pow + 20 pos (26 immature)
         # - Nodes 3 gets 84 blocks:
         # 64 pow + 20 pos (34 immature)
+        # - Nodes 2 and 3 have 6666 FUCU worth of zerocoins
+        zc_tot = sum(vZC_DENOMS)
+        zc_fee = len(vZC_DENOMS) * 0.01
+        used_utxos = (zc_tot // 250) + 1
+        zc_change = 250 * used_utxos - zc_tot - zc_fee
 
         # check at least 1 node and at most 5
         num_nodes = min(5, len(self.nodes))
@@ -709,8 +715,8 @@ class FucuTestFramework():
         w_info = [self.nodes[i].getwalletinfo() for i in range(num_nodes)]
         assert_equal(w_info[0]["balance"], DecimalAmt(250.0 * (62 - 20)))
         assert_equal(w_info[1]["balance"], DecimalAmt(250.0 * (62 - 20)))
-        assert_equal(w_info[2]["balance"], DecimalAmt(250.0 * (56 - 20) - (used_utxos * 250)))
-        assert_equal(w_info[3]["balance"], DecimalAmt(250.0 * (50 - 20) - (used_utxos * 250)))
+        assert_equal(w_info[2]["balance"], DecimalAmt(250.0 * (56 - 20) - (used_utxos * 250) + zc_change))
+        assert_equal(w_info[3]["balance"], DecimalAmt(250.0 * (50 - 20) - (used_utxos * 250) + zc_change))
         for i in range(4, num_nodes):
             # only first 4 nodes have mined/staked
             assert_equal(w_info[i]["balance"], DecimalAmt(0))
@@ -731,10 +737,13 @@ class FucuTestFramework():
                 zcBalance = self.nodes[peer].getzerocoinbalance()
                 zclist = self.nodes[peer].listmintedzerocoins(True)
                 zclist_spendable = self.nodes[peer].listmintedzerocoins(True, True)
+                assert_equal(len(zclist), len(vZC_DENOMS))
                 assert_equal(zcBalance['Total'], 6666)
                 assert_equal(zcBalance['Immature'], 0)
                 if peer == 2:
                     assert_equal(len(zclist), len(zclist_spendable))
+                assert_equal(set([x['denomination'] for x in zclist]), set(vZC_DENOMS))
+                assert_equal([x['confirmations'] for x in zclist], [30-peer] * len(vZC_DENOMS))
 
         self.log.info("Balances of first %d nodes check out" % num_nodes)
 
@@ -870,7 +879,7 @@ class FucuTestFramework():
             coinstakeTx_unsigned.vout.append(CTxOut(outNValue, hex_str_to_bytes(prevScript)))
             if privKeyWIF == "":
                 # Use dummy key
-                if not hfucuttr(self, 'DUMMY_KEY'):
+                if not hasattr(self, 'DUMMY_KEY'):
                     self.init_dummy_key()
                 block_sig_key = self.DUMMY_KEY
                 # replace coinstake output script
@@ -1088,7 +1097,7 @@ class FucuTestFramework():
 
 ### ------------------------------------------------------
 
-class ComparisonTestFramework(FucuTestFramework):
+class ComparisonTestFramework(FucucoinTestFramework):
     """Test framework for doing p2p comparison testing
 
     Sets up some fucucoind binaries:
@@ -1110,7 +1119,7 @@ class ComparisonTestFramework(FucuTestFramework):
 
     def setup_network(self):
         extra_args = [['-whitelist=127.0.0.1']] * self.num_nodes
-        if hfucuttr(self, "extra_args"):
+        if hasattr(self, "extra_args"):
             extra_args = self.extra_args
         self.add_nodes(self.num_nodes, extra_args,
                        binary=[self.options.testbinary] +

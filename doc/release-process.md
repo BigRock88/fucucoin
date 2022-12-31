@@ -5,8 +5,8 @@ Release Process
 
 ### Before every release candidate
 
-* Update translations (ping Fuzzbawls on Discord) see [translation_process.md](https://github.com/FUCU-Project/FUCU/blob/master/doc/translation_process.md#synchronising-translations).
-* Update manpages, see [gen-manpages.sh](https://github.com/fucucoin910/fucucoin/blob/master/contrib/devtools/README.md#gen-manpagessh).
+* Update translations (ping Fuzzbawls on Discord) see [translation_process.md](https://github.com/FUCUCOIN-Project/FUCUCOIN/blob/master/doc/translation_process.md#synchronising-translations).
+* Update manpages, see [gen-manpages.sh](https://github.com/fucucoin-project/fucucoin/blob/master/contrib/devtools/README.md#gen-manpagessh).
 * Update release candidate version in `configure.ac` (`CLIENT_VERSION_RC`)
 
 ### Before every major and minor release
@@ -50,11 +50,11 @@ Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
     git clone https://github.com/fucucoin-project/gitian.sigs.git
-    git clone https://github.com/fucucoin910/fucucoin-detached-sigs.git
+    git clone https://github.com/fucucoin-project/fucucoin-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
-    git clone https://github.com/fucucoin910/fucucoin.git
+    git clone https://github.com/fucucoin-project/fucucoin.git
 
-### FUCU maintainers/release engineers, suggestion for writing release notes
+### FUCUCOIN maintainers/release engineers, suggestion for writing release notes
 
 Write release notes. git shortlog helps a lot, for example:
 
@@ -124,7 +124,7 @@ NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from 
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign FUCU Core for Linux, Windows, and macOS:
+### Build and sign FUCUCOIN Core for Linux, Windows, and macOS:
 
     pushd ./gitian-builder
     ./bin/gbuild --num-make 2 --memory 3000 --commit fucucoin=v${VERSION} ../fucucoin/contrib/gitian-descriptors/gitian-linux.yml
@@ -285,6 +285,6 @@ Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spur
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Create a [new GitHub release](https://github.com/FUCU-Project/FUCU/releases/new) with a link to the archived release notes.
+  - Create a [new GitHub release](https://github.com/FUCUCOIN-Project/FUCUCOIN/releases/new) with a link to the archived release notes.
 
   - Celebrate

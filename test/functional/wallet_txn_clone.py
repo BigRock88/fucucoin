@@ -5,12 +5,12 @@
 """Test the wallet accounts properly when there are cloned transactions with malleated scriptsigs."""
 
 import io
-from test_framework.test_framework import FucuTestFramework
+from test_framework.test_framework import FucucoinTestFramework
 from test_framework.util import *
 from test_framework.messages import CTransaction, COIN
 
 
-class TxnMallTest(FucuTestFramework):
+class TxnMallTest(FucucoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 4
 

@@ -1,6 +1,6 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -21,7 +21,7 @@
 #include "qt/fucucoin/settings/settingsinformationwidget.h"
 #include "qt/fucucoin/settings/settingsconsolewidget.h"
 
-class FUCUGUI;
+class FUCUCOINGUI;
 
 QT_BEGIN_NAMESPACE
 class QDataWidgetMapper;
@@ -36,7 +36,7 @@ class SettingsWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit SettingsWidget(FUCUGUI* parent);
+    explicit SettingsWidget(FUCUCOINGUI* parent);
     ~SettingsWidget();
 
     void loadClientModel() override;

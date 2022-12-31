@@ -1,6 +1,6 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,7 +20,7 @@
 
 static const int MAX_SEND_POPUP_ENTRIES = 8;
 
-class FUCUGUI;
+class FUCUCOINGUI;
 class ClientModel;
 class WalletModel;
 class WalletModelTransaction;
@@ -35,7 +35,7 @@ class SendWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit SendWidget(FUCUGUI* parent);
+    explicit SendWidget(FUCUCOINGUI* parent);
     ~SendWidget();
 
     void addEntry();

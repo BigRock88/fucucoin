@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "FUCU"
-            VALUE "FileDescription",    "fucucoin-tx (CLI FUCU transaction editor utility)"
+            VALUE "CompanyName",        "FUCUCOIN"
+            VALUE "FileDescription",    "fucucoin-tx (CLI FUCUCOIN transaction editor utility)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "fucucoin-tx"
             VALUE "LegalCopyright",     COPYRIGHT_STR

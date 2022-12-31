@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -144,11 +144,35 @@ static const CRPCConvertParam vRPCConvertParams[] =
         {"setstakesplitthreshold", 0},
         {"autocombinerewards", 0},
         {"autocombinerewards", 1},
+        {"getzerocoinbalance", 0},
+        {"listmintedzerocoins", 0},
+        {"listmintedzerocoins", 1},
+        {"listspentzerocoins", 0},
+        {"listzerocoinamounts", 0},
+        {"mintzerocoin", 0},
+        {"mintzerocoin", 1},
+        {"spendzerocoin", 0},
+        {"spendrawzerocoin", 2},
+        {"spendzerocoinmints", 0},
+        {"importzerocoins", 0},
+        {"exportzerocoins", 0},
+        {"exportzerocoins", 1},
+        {"resetmintzerocoin", 0},
+        {"getspentzerocoinamount", 1},
+        {"generatemintlist", 0},
+        {"generatemintlist", 1},
+        {"searchdzfucu", 0},
+        {"searchdzfucu", 1},
+        {"searchdzfucu", 2},
         {"getmintsvalues", 2},
         {"enableautomintaddress", 0},
         {"getblockindexstats", 0},
         {"getblockindexstats", 1},
         {"getblockindexstats", 2},
+        {"getserials", 0},
+        {"getserials", 1},
+        {"getserials", 2},
+        {"getfeeinfo", 0},
         {"getburnaddresses", 0},
     };
 

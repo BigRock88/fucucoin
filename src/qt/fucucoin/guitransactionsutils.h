@@ -1,10 +1,10 @@
 // Copyright (c) 2019 The PIVX developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FURSZY_FUCU_GUITRANSACTIONSUTILS_H
-#define FURSZY_FUCU_GUITRANSACTIONSUTILS_H
+#ifndef FURSZY_FUCUCOIN_GUITRANSACTIONSUTILS_H
+#define FURSZY_FUCUCOIN_GUITRANSACTIONSUTILS_H
 
 #include "walletmodel.h"
 #include "qt/fucucoin/pwidget.h"
@@ -35,4 +35,4 @@ namespace GuiTransactionsUtils {
 }
 
 
-#endif //FURSZY_FUCU_GUITRANSACTIONSUTILS_H
+#endif //FURSZY_FUCUCOIN_GUITRANSACTIONSUTILS_H

@@ -2,14 +2,14 @@
 
 [Desktop Entry]
 Encoding=UTF-8
-Name=FUCU Core
-Comment=FUCU Core QT main network
-GenericName=FUCU Digital Currency QT client main network
+Name=FUCUCOIN Core
+Comment=FUCUCOIN Core QT main network
+GenericName=FUCUCOIN Digital Currency QT client main network
 Exec=fucucoin-core.qt %u
 Terminal=false
 Type=Application
 Icon=${SNAP}/share/pixmaps/fucucoin.png
 MimeType=x-scheme-handler/fucucoin;
 Categories=X-Office;X-Finance;
-Keywords=internet;fucucoin;bib;core;wallet;qt;main;snap;launchpad;crypto;digital;currency;coin;token;
+Keywords=internet;fucucoin;zfucu;fucu;core;wallet;qt;main;snap;launchpad;crypto;digital;currency;coin;token;zerocoin;
 Version=1.0

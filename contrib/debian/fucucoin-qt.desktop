@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Name=FUCU
+Name=FUCUCOIN
 Comment= FUCU P2P Cryptocurrency
 Comment[fr]= FUCU, monnaie virtuelle cryptographique pair à pair
 Comment[tr]= FUCU, eşten eşe kriptografik sanal para birimi
@@ -10,4 +10,4 @@ Type=Application
 Icon=fucucoin128
 MimeType=x-scheme-handler/fucucoin;
 Categories=Office;Finance;
-StartupWMClass=FUCU-qt
+StartupWMClass=FUCUCOIN-qt

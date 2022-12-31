@@ -2,12 +2,12 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FUCU_KEY_H
-#define FUCU_KEY_H
+#ifndef FUCUCOIN_KEY_H
+#define FUCUCOIN_KEY_H
 
 #include "allocators.h"
 #include "serialize.h"
@@ -183,4 +183,4 @@ void ECC_Stop(void);
 /** Check that required EC support is available at runtime. */
 bool ECC_InitSanityCheck(void);
 
-#endif // FUCU_KEY_H
+#endif // FUCUCOIN_KEY_H

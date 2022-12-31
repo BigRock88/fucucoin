@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2015-2019 The PIVX developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -28,6 +28,23 @@ CScript ParseScript(std::string s)
     CScript result;
 
     static std::map<std::string, opcodetype> mapOpNames;
+
+    if (mapOpNames.empty()) {
+        for (int op = 0; op <= OP_ZEROCOINSPEND; op++) {
+            // Allow OP_RESERVED to get into mapOpNames
+            if (op < OP_NOP && op != OP_RESERVED)
+                continue;
+
+            const char* name = GetOpName((opcodetype)op);
+            if (strcmp(name, "OP_UNKNOWN") == 0)
+                continue;
+            std::string strName(name);
+            mapOpNames[strName] = (opcodetype)op;
+            // Convenience: OP_ADD and just ADD are both recognized:
+            boost::algorithm::replace_first(strName, "OP_", "");
+            mapOpNames[strName] = (opcodetype)op;
+        }
+    }
 
     std::vector<std::string> words;
     boost::algorithm::split(words, s, boost::algorithm::is_any_of(" \t\n"), boost::algorithm::token_compress_on);

@@ -1,10 +1,10 @@
-![Example-Logo](https://sappcoin.com/wp-content/uploads/2021/05/FUCU-logo-with-text-transparent-600x600-1.png)
+![Example-Logo](https://sappcoin.com/wp-content/uploads/2021/05/FUCUCOIN-logo-with-text-transparent-600x600-1.png)
 
-# FUCU Masternode Setup Guide
+# FUCUCOIN Masternode Setup Guide
 ***
 ## Required
 1) **FUCU collateral value at current block** ([consult the collateral table](../../README.md#rewards-breakdown))
-2) **Local Wallet https://github.com/fucucoin910/fucucoin/releases**
+2) **Local Wallet https://github.com/fucucoin/FUCU/releases**
 3) **VPS with UBUNTU 18.04** (it is possible to work on other versions but it is not tested)
 4) **Putty https://www.putty.org/**
 5) **Text editor on your local pc to save data for copy/paste**
@@ -30,7 +30,7 @@ You will then receive your private key, save it in a txt to use it later.
 * Once logged in your vps, *copy/paste* each line one by one with *Enter*
 
 ```
-wget -q https://raw.githubusercontent.com/fucucoin910/fucucoin/master/contrib/masternodesetup/masternodesetup.sh
+wget -q https://raw.githubusercontent.com/fucucoin/FUCU/master/contrib/masternodesetup/masternodesetup.sh
 ```
 
 ```
@@ -58,10 +58,10 @@ Do not close your terminal/ command prompt window at this point.
 
 * Open the Masternode Configuration file (tools – open masternode configuration file) and add a new line (without #) using this template (bold needs to be changed) in the final save it and close the editor
 
-**ALIAS VPS_IP**:28008 **masternodeprivkey TXhash Output**
+**ALIAS VPS_IP**:22190 **masternodeprivkey TXhash Output**
 
 		Example:
-		MN1 125.67.32.10:28008 w8723KqiiqtiLH6y2ktjfwzuSrNucGAbagpmTmCn1KnNEeQTJKf 12fce79c1a5623aa5b5830abff1a9feb6a682b75ee9fe22c647725a3gef42saa 0
+		MN1 125.67.32.10:22190 w8723KqiiqtiLH6y2ktjfwzuSrNucGAbagpmTmCn1KnNEeQTJKf 12fce79c1a5623aa5b5830abff1a9feb6a682b75ee9fe22c647725a3gef42saa 0
 
 * Close and Re-open Local Wallet, and at Masternode Tab you will find your MN with status MISSING
 
@@ -81,4 +81,4 @@ fucucoin-cli getmasternodestatus
 
 You need to get **"status" : 4** 
 
-## Congratulations your FUCU node it's running
+## Congratulations your FUCUCOIN node it's running

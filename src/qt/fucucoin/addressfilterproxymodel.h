@@ -1,10 +1,10 @@
 // Copyright (c) 2019 The PIVX developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FUCU_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
-#define FUCU_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
+#ifndef FUCUCOIN_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
+#define FUCUCOIN_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
 
 #include <QSortFilterProxyModel>
 #include "addresstablemodel.h"
@@ -45,4 +45,4 @@ private:
 };
 
 
-#endif //FUCU_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
+#endif //FUCUCOIN_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H

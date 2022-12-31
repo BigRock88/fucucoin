@@ -342,7 +342,7 @@
                   <enum>Qt::NoFocus</enum>
                  </property>
                  <property name="text">
-                  <string>https://www.fucucoin.org</string>
+                  <string>https://fucucoincoin.io/</string>
                  </property>
                 </widget>
                </item>
@@ -525,9 +525,9 @@
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;
                            FUCU is a form of digital online money using blockchain technology
                            that can be easily transferred globally, instantly, and with near
-                           zero fees.&amp;FUCU coin is a project with the goal of professionally creating,
-                           developing and publishing projects whitepapers for project teams on the FUCU network. 
-                           Create the concept and we will bring it to reality.
+                           zero fees.  FUCU incorporates market leading security &amp;
+                           privacy and is also the first PoS (Proof of Stake) Cryptocurrency
+                           to implement ZeroCoin(zFUCU) and Zerocoin staking.
                            &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;
                            FUCU utilizes a Proof of Stake (PoS) consensus system algorithm,
                            allowing all owners of FUCU to participate in earning block rewards
@@ -818,7 +818,7 @@
                          <string>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;
                            We have support channels in most of our official chat groups, for example
-                           &lt;a style='color: #CCB363' href='https://discord.gg/PENeFRWvEj'&gt;
+                           &lt;a style='color: #dd7a23' href='https://discord.gg/T3CYMwTfjJ'&gt;
                            #support in our Discord&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </string>

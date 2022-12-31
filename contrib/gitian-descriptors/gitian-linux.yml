@@ -33,7 +33,7 @@ packages:
 - "ca-certificates"
 - "python3"
 remotes:
-- "url": "https://github.com/fucucoin910/fucucoin.git"
+- "url": "https://github.com/fucucoin-project/fucucoin.git"
   "dir": "fucucoin"
 files: []
 script: |

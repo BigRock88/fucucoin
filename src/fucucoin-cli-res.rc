@@ -16,14 +16,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "FUCU"
-            VALUE "FileDescription",    "FUCU-cli (OSS RPC client for FUCU)"
+            VALUE "CompanyName",        "FUCUCOIN"
+            VALUE "FileDescription",    "FUCUCOIN-cli (OSS RPC client for FUCUCOIN)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "fucucoin-cli"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
             VALUE "OriginalFilename",   "fucucoin-cli.exe"
-            VALUE "ProductName",        "FUCU-cli"
+            VALUE "ProductName",        "FUCUCOIN-cli"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

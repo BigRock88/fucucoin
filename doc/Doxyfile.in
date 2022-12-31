@@ -32,7 +32,7 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = "FUCU Core"
+PROJECT_NAME           = "FUCUCOIN Core"
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -705,15 +705,15 @@ FILE_VERSION_FILTER    =
 
 LAYOUT_FILE            =
 
-# The CITE_FUCU_FILES tag can be used to specify one or more bib files containing
+# The CITE_BIB_FILES tag can be used to specify one or more bib files containing
 # the reference definitions. This must be a list of .bib files. The .bib
 # extension is automatically appended if omitted. This requires the bibtex tool
 # to be installed. See also http://en.wikipedia.org/wiki/BibTeX for more info.
 # For LaTeX the style of the bibliography can be controlled using
-# LATEX_FUCU_STYLE. To use this feature you need bibtex and perl available in the
+# LATEX_BIB_STYLE. To use this feature you need bibtex and perl available in the
 # search path. See also \cite for info how to create references.
 
-CITE_FUCU_FILES         =
+CITE_BIB_FILES         =
 
 #---------------------------------------------------------------------------
 # Configuration options related to warning and progress messages
@@ -1266,7 +1266,7 @@ DOCSET_FEEDNAME        = "Doxygen generated docs"
 # The default value is: org.doxygen.Project.
 # This tag requires that the tag GENERATE_DOCSET is set to YES.
 
-DOCSET_BUNDLE_ID       = io.fucucoin.FUCU
+DOCSET_BUNDLE_ID       = io.fucucoin.FUCUCOIN
 
 # The DOCSET_PUBLISHER_ID tag specifies a string that should uniquely identify
 # the documentation publisher. This should be a reverse domain-name style
@@ -1274,7 +1274,7 @@ DOCSET_BUNDLE_ID       = io.fucucoin.FUCU
 # The default value is: org.doxygen.Publisher.
 # This tag requires that the tag GENERATE_DOCSET is set to YES.
 
-DOCSET_PUBLISHER_ID    = io.fucucoin.FUCU
+DOCSET_PUBLISHER_ID    = io.fucucoin.FUCUCOIN
 
 # The DOCSET_PUBLISHER_NAME tag identifies the documentation publisher.
 # The default value is: Publisher.
@@ -1786,13 +1786,13 @@ LATEX_HIDE_INDICES     = NO
 
 LATEX_SOURCE_CODE      = NO
 
-# The LATEX_FUCU_STYLE tag can be used to specify the style to use for the
+# The LATEX_BIB_STYLE tag can be used to specify the style to use for the
 # bibliography, e.g. plainnat, or ieeetr. See
 # http://en.wikipedia.org/wiki/BibTeX and \cite for more info.
 # The default value is: plain.
 # This tag requires that the tag GENERATE_LATEX is set to YES.
 
-LATEX_FUCU_STYLE        = plain
+LATEX_BIB_STYLE        = plain
 
 # If the LATEX_TIMESTAMP tag is set to YES then the footer of each generated
 # page will contain the date and time when the page was generated. Setting this

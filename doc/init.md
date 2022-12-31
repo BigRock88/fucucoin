@@ -84,9 +84,9 @@ OpenRC).
 ### macOS
 
 Binary:              `/usr/local/bin/fucucoind`
-Configuration file:  `~/Library/Application Support/FUCU/fucucoin.conf`
-Data directory:      `~/Library/Application Support/FUCU`
-Lock file:           `~/Library/Application Support/FUCU/.lock`
+Configuration file:  `~/Library/Application Support/FUCUCOIN/fucucoin.conf`
+Data directory:      `~/Library/Application Support/FUCUCOIN`
+Lock file:           `~/Library/Application Support/FUCUCOIN/.lock`
 
 Installing Service Configuration
 -----------------------------------
@@ -124,7 +124,7 @@ use old versions of Upstart and do not supply the start-stop-daemon utility.
 Copy fucucoind.init to /etc/init.d/fucucoind. Test by running `service fucucoind start`.
 
 Using this script, you can adjust the path and flags to the fucucoind program by
-setting the FUCUD and FLAGS environment variables in the file
+setting the FUCUCOIND and FLAGS environment variables in the file
 /etc/sysconfig/fucucoind. You can also use the DAEMONOPTS environment variable here.
 
 ### macOS

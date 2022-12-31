@@ -1,6 +1,6 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -60,7 +60,7 @@ public:
 };
 
 
-AddressesWidget::AddressesWidget(FUCUGUI* parent) :
+AddressesWidget::AddressesWidget(FUCUCOINGUI* parent) :
     PWidget(parent),
     ui(new Ui::AddressesWidget)
 {
@@ -185,8 +185,8 @@ void AddressesWidget::onStoreContactClicked()
             return;
         }
 
-        CTxDestination bibAdd = DecodeDestination(address.toUtf8().constData());
-        if (walletModel->isMine(bibAdd)) {
+        CTxDestination fucuAdd = DecodeDestination(address.toUtf8().constData());
+        if (walletModel->isMine(fucuAdd)) {
             setCssEditLine(ui->lineEditAddress, false, true);
             inform(tr("Cannot store your own address as contact"));
             return;
@@ -200,7 +200,7 @@ void AddressesWidget::onStoreContactClicked()
         }
 
         if (walletModel->updateAddressBookLabels(
-            bibAdd, label.toUtf8().constData(),AddressBook::AddressBookPurpose::SEND
+            fucuAdd, label.toUtf8().constData(),AddressBook::AddressBookPurpose::SEND
         )) {
             ui->lineEditAddress->setText("");
             ui->lineEditName->setText("");

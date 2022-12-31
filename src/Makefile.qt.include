@@ -342,7 +342,7 @@ RES_ICONS = \
   qt/fucucoin/res/img/ic-add-liliac.svg \
   qt/fucucoin/res/img/ic-check-theme-light.svg \
   qt/fucucoin/res/img/ic-nav-receive-hover.svg \
-  qt/fucucoin/res/img/img-empty-dark-multisend.png \
+  qt/fucucoin/res/img/img-empty-dark-multisend.svg \
   qt/fucucoin/res/img/ic-add-purple.svg \
   qt/fucucoin/res/img/ic-check-white.svg \
   qt/fucucoin/res/img/ic-nav-receive.svg \
@@ -350,12 +350,12 @@ RES_ICONS = \
   qt/fucucoin/res/img/ic-add.svg \
   qt/fucucoin/res/img/ic-check.svg \
   qt/fucucoin/res/img/ic-nav-send-active.svg \
-  qt/fucucoin/res/img/img-empty-dark-staking-off.png \
-  qt/fucucoin/res/img/img-empty-dark-staking-on.png \
+  qt/fucucoin/res/img/img-empty-dark-staking-off.svg \
+  qt/fucucoin/res/img/img-empty-dark-staking-on.svg \
   qt/fucucoin/res/img/ic-address-book-grey.svg \
   qt/fucucoin/res/img/ic-chevron-left.svg \
   qt/fucucoin/res/img/ic-nav-send-hover.svg \
-  qt/fucucoin/res/img/img-empty-dark-transactions.png \
+  qt/fucucoin/res/img/img-empty-dark-transactions.svg \
   qt/fucucoin/res/img/ic-address-book-white.svg \
   qt/fucucoin/res/img/ic-chevron-right.svg \
   qt/fucucoin/res/img/ic-nav-send.svg \
@@ -367,25 +367,27 @@ RES_ICONS = \
   qt/fucucoin/res/img/ic-address-send-white.svg \
   qt/fucucoin/res/img/ic-clear-purple.svg \
   qt/fucucoin/res/img/ic-nav-settings-hover.svg \
-  qt/fucucoin/res/img/img-empty-multisend.png \
+  qt/fucucoin/res/img/img-empty-multisend.svg \
   qt/fucucoin/res/img/ic-address-send.svg \
   qt/fucucoin/res/img/ic-close-white.svg \
   qt/fucucoin/res/img/ic-nav-settings.svg \
   qt/fucucoin/res/img/img-empty-peers.svg \
-  qt/fucucoin/res/img/img-empty-privacy.png \
-  qt/fucucoin/res/img/img-empty-privacy-dark.png \
+  qt/fucucoin/res/img/img-empty-privacy.svg \
+  qt/fucucoin/res/img/img-empty-privacy-dark.svg \
   qt/fucucoin/res/img/ic-arrow-drop-down-white.svg \
   qt/fucucoin/res/img/ic-close.svg \
   qt/fucucoin/res/img/ic-radio-liliac-on.svg \
-  qt/fucucoin/res/img/img-empty-staking-off.png \
+  qt/fucucoin/res/img/img-empty-staking-off.svg \
   qt/fucucoin/res/img/ic-arrow-drop-down.svg \
-  qt/fucucoin/res/img/ic-coin-bib.png \
+  qt/fucucoin/res/img/ic-coin-fucu.svg \
   qt/fucucoin/res/img/ic-receive-off.svg \
-  qt/fucucoin/res/img/img-empty-staking-on.png \
+  qt/fucucoin/res/img/img-empty-staking-on.svg \
   qt/fucucoin/res/img/ic-arrow-drop-up-white.svg \
+  qt/fucucoin/res/img/ic-coin-zfucu.png \
   qt/fucucoin/res/img/ic-receive-on.svg \
-  qt/fucucoin/res/img/img-empty-transactions.png \
+  qt/fucucoin/res/img/img-empty-transactions.svg \
   qt/fucucoin/res/img/ic-arrow-drop-up.svg \
+  qt/fucucoin/res/img/ic-coin-zfucu.svg \
   qt/fucucoin/res/img/ic-received.svg \
   qt/fucucoin/res/img/img-logo-fucucoin.png \
   qt/fucucoin/res/img/ic-arrow-drop-white-down.svg \
@@ -637,7 +639,7 @@ endif
 if ENABLE_ZMQ
 qt_fucucoin_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_fucucoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBZCASH_LIBS) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+qt_fucucoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBBITCOIN_ZEROCOIN) $(LIBZCASH_LIBS) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(SVG_LIBS) $(CHARTS_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 qt_fucucoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)

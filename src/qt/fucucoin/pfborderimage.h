@@ -1,10 +1,10 @@
 // Copyright (c) 2019 The PIVX developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FUCU_PFBorderImage_H
-#define FUCU_PFBorderImage_H
+#ifndef FUCUCOIN_PFBorderImage_H
+#define FUCUCOIN_PFBorderImage_H
 
 #include <QPainter>
 #include <QPixmap>
@@ -53,4 +53,4 @@ protected:
 
 };
 
-#endif //FUCU_PFBorderImage_H
+#endif //FUCUCOIN_PFBorderImage_H

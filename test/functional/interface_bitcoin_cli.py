@@ -3,11 +3,11 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test fucucoin-cli"""
-from test_framework.test_framework import FucuTestFramework
+from test_framework.test_framework import FucucoinTestFramework
 from test_framework.util import assert_equal, assert_raises_process_error, get_auth_cookie
 import time
 
-class TestBitcoinCli(FucuTestFramework):
+class TestBitcoinCli(FucucoinTestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True

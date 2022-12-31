@@ -939,6 +939,11 @@ for staking</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="-558"/>
+        <source>Amount of FUCU and zFUCU staked.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../fucucoin/dashboardwidget.cpp" line="+115"/>
         <source>Please wait until the wallet is fully synced to see your correct balance</source>
         <translation type="unfinished"></translation>
@@ -1119,7 +1124,7 @@ It will start automatically as soon as the wallet has enough confirmations on an
     </message>
     <message>
         <location line="+0"/>
-        <source>FUCU</source>
+        <source>FUCUCOIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1130,7 +1135,7 @@ It will start automatically as soon as the wallet has enough confirmations on an
     </message>
     <message>
         <location line="+6"/>
-        <source>About FUCU</source>
+        <source>About FUCUCOIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1198,17 +1203,17 @@ It will start automatically as soon as the wallet has enough confirmations on an
     </message>
     <message>
         <location line="+90"/>
-        <source>Welcome to FUCU.</source>
+        <source>Welcome to FUCUCOIN.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+35"/>
-        <source>As this is the first time the program is launched, you can choose where FUCU will store its data.</source>
+        <source>As this is the first time the program is launched, you can choose where FUCUCOIN will store its data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>FUCU will download and store a copy of the FUCU block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>FUCUCOIN will download and store a copy of the FUCU block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1233,7 +1238,7 @@ It will start automatically as soon as the wallet has enough confirmations on an
     </message>
     <message>
         <location filename="../intro.cpp" line="+100"/>
-        <source>FUCU</source>
+        <source>FUCUCOIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1976,7 +1981,7 @@ NODES</source>
     <message>
         <location line="+21"/>
         <source>Language missing or translation incomplete? Help contributing translations here:
-        https://discord.gg/PENeFRWvEj</source>
+        https://discord.gg/T3CYMwTfjJ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1985,14 +1990,44 @@ NODES</source>
         <translation>Map port using &amp;UPnP</translation>
     </message>
     <message>
+        <location line="-187"/>
+        <source>Enable automatic minting of FUCU units to zFUCU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Enable zFUCU Automint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Enable automatic zFUCU minting from specific addresses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Enable Automint Addresses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Percentage of incoming FUCU which get automatically converted to zFUCU via Zerocoin Protocol (min: 10%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Percentage of autominted zFUCU</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+30"/>
         <location line="+16"/>
         <source>Wait with automatic conversion to Zerocoin until enough FUCU for this denomination is available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-13"/>
+        <source>Preferred Automint zFUCU Denomination</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2185,12 +2220,12 @@ NODES</source>
     </message>
 </context>
 <context>
-    <name>FUCUGUI</name>
+    <name>FUCUCOINGUI</name>
     <message>
         <location filename="../fucucoin/fucucoingui.cpp" line="+69"/>
         <location line="+298"/>
         <location line="+69"/>
-        <source>FUCU</source>
+        <source>FUCUCOIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2225,7 +2260,7 @@ NODES</source>
     </message>
     <message>
         <location line="+39"/>
-        <source>FUCU client</source>
+        <source>FUCUCOIN client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2495,7 +2530,7 @@ Address: %4
         <location line="+7"/>
         <location line="+13"/>
         <location line="+19"/>
-        <source>FUCU</source>
+        <source>FUCUCOIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2520,7 +2555,7 @@ Address: %4
     </message>
     <message>
         <location line="+64"/>
-        <source>FUCU didn&apos;t yet exit safely...</source>
+        <source>FUCUCOIN didn&apos;t yet exit safely...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2990,6 +3025,11 @@ Address: %4
     <message>
         <location line="+104"/>
         <source>Custom Backup Path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Custom zFUCU Backup Path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4257,12 +4297,12 @@ Verify that you have installed a predetermined text editor.</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>FUCU_tx_csv_export(*.csv)</source>
+        <source>FUCUCOIN_tx_csv_export(*.csv)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>FUCU_addresses_csv_export(*.csv)</source>
+        <source>FUCUCOIN_addresses_csv_export(*.csv)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4355,7 +4395,7 @@ There was an error trying to save the address list to %1. Please try again.</sou
     </message>
     <message>
         <location line="+148"/>
-        <source>https://www.fucucoin.org</source>
+        <source>https://fucucoincoin.io/</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4449,7 +4489,7 @@ There was an error trying to save the address list to %1. Please try again.</sou
         <source>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;
                            We have support channels in most of our official chat groups, for example
-                           &lt;a style=&apos;color: #CCB363&apos; href=&apos;https://discord.gg/PENeFRWvEj&apos;&gt;
+                           &lt;a style=&apos;color: #b088ff&apos; href=&apos;https://discord.gg/T3CYMwTfjJ&apos;&gt;
                            #support in our Discord&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </source>
@@ -5498,7 +5538,7 @@ Are you sure?
     <name>ShutdownWindow</name>
     <message>
         <location filename="../utilitydialog.cpp" line="+71"/>
-        <source>FUCU is shutting down...</source>
+        <source>FUCUCOIN is shutting down...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5534,7 +5574,7 @@ Are you sure?
     </message>
     <message>
         <location filename="../fucucoin/splash.cpp" line="+30"/>
-        <source>FUCU</source>
+        <source>FUCUCOIN</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6231,7 +6271,7 @@ Select fewer inputs with coin control.</source>
     <message>
         <location line="+89"/>
         <source>Welcome to
-FUCU Wallet</source>
+FUCUCOIN Wallet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6299,7 +6339,7 @@ FUCU Wallet</source>
     </message>
     <message>
         <location line="+5"/>
-        <source>Cannot obtain a lock on data directory %s. FUCU is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s. FUCUCOIN is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6499,7 +6539,7 @@ FUCU Wallet</source>
     </message>
     <message>
         <location line="+3"/>
-        <source>Unable to bind to %s on this computer. FUCU is probably already running.</source>
+        <source>Unable to bind to %s on this computer. FUCUCOIN is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6519,7 +6559,7 @@ FUCU Wallet</source>
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong FUCU will not work properly.</source>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong FUCUCOIN will not work properly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6614,7 +6654,7 @@ FUCU Wallet</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2015-%i The Fucu Coin Developers</source>
+        <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6691,6 +6731,11 @@ FUCU Wallet</source>
         <location line="+1"/>
         <source>Error reading from database, shutting down.</source>
         <translation type="unfinished">Error reading from database, shutting down.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Error writing zerocoinDB to disk</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6774,7 +6819,7 @@ FUCU Wallet</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Initialization sanity check failed. FUCU is shutting down.</source>
+        <source>Initialization sanity check failed. FUCUCOIN is shutting down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6970,6 +7015,11 @@ FUCU Wallet</source>
     <message>
         <location line="+1"/>
         <source>Failed to select a zerocoin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to wipe zerocoinDB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7209,7 +7259,7 @@ FUCU Wallet</source>
     </message>
     <message>
         <location line="+7"/>
-        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong FUCU will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong FUCUCOIN will not work properly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7264,7 +7314,7 @@ FUCU Wallet</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading %s: Wallet requires newer version of FUCU</source>
+        <source>Error loading %s: Wallet requires newer version of FUCUCOIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7586,6 +7636,11 @@ FUCU Wallet</source>
     </message>
     <message>
         <location line="+1"/>
+        <source>Syncing zFUCU wallet...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>The threshold value cannot be less than %s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7736,6 +7791,11 @@ FUCU Wallet</source>
     </message>
     <message>
         <location line="+1"/>
+        <source>Value is below the smallest available denomination (= 1) of zFUCU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Verifying blocks...</source>
         <translation type="unfinished">Verifying blocks...</translation>
     </message>
@@ -7756,7 +7816,7 @@ FUCU Wallet</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart FUCU to complete</source>
+        <source>Wallet needed to be rewritten: restart FUCUCOIN to complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

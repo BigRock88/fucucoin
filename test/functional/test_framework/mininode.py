@@ -87,7 +87,7 @@ class P2PConnection(asyncore.dispatcher):
         self.network = net
         self.disconnect = False
 
-        logger.info('Connecting to FUCU Node: %s:%d' % (self.dstaddr, self.dstport))
+        logger.info('Connecting to FUCUCOIN Node: %s:%d' % (self.dstaddr, self.dstport))
 
         try:
             self.connect((dstaddr, dstport))

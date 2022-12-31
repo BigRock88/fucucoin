@@ -10,10 +10,10 @@
 - verify that getchaintips now returns two chain tips.
 """
 
-from test_framework.test_framework import FucuTestFramework
+from test_framework.test_framework import FucucoinTestFramework
 from test_framework.util import assert_equal
 
-class GetChainTipsTest (FucuTestFramework):
+class GetChainTipsTest (FucucoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 4
 

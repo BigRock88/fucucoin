@@ -23,7 +23,7 @@ Non-macOS host:
 --------
 
 Alternatively, you can use 7zip and SleuthKit to extract the files one by one.
-The script [extract-osx-sdk.sh](https://github.com/fucucoin910/fucucoin/blob/master/contrib/macdeploy/extract-osx-sdk.sh) automates this. First ensure
+The script [extract-osx-sdk.sh](https://github.com/fucucoin-project/fucucoin/blob/master/contrib/macdeploy/extract-osx-sdk.sh) automates this. First ensure
 the dmg file is in the current directory, and then run the script.
 
 You may wish to delete the intermediate `5.hfs` file and `MacOSX10.11.sdk` (the directory) when
@@ -61,4 +61,4 @@ mv MacOSX10.11.sdk.tar.gz gitian-builder/inputs
 
 Troubleshooting
 ---------------
-See [README_osx.md](https://github.com/fucucoin910/fucucoin/blob/master/doc/README_osx.md) for troubleshooting tips.
+See [README_osx.md](https://github.com/fucucoin-project/fucucoin/blob/master/doc/README_osx.md) for troubleshooting tips.

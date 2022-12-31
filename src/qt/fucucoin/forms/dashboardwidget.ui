@@ -565,7 +565,7 @@
                     <number>0</number>
                 </property>
                 <item>
-                    <widget class="QLabel" name="labelAmountBib">
+                    <widget class="QLabel" name="labelAmountFucu">
                         <property name="text">
                             <string notr="true">0 FUCU</string>
                         </property>
@@ -673,7 +673,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QLabel" name="labelSquareBib">
+                 <widget class="QLabel" name="labelSquareFucu">
                   <property name="minimumSize">
                    <size>
                     <width>14</width>
@@ -692,7 +692,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="labelBib">
+                 <widget class="QLabel" name="labelFucu">
                   <property name="text">
                    <string notr="true">FUCU</string>
                   </property>

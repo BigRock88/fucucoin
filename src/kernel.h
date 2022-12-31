@@ -3,12 +3,12 @@
 // Copyright (c) 2014-2018 The BlackCoin Developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FUCU_KERNEL_H
-#define FUCU_KERNEL_H
+#ifndef FUCUCOIN_KERNEL_H
+#define FUCUCOIN_KERNEL_H
 
 #include "main.h"
 #include "stakeinput.h"
@@ -79,4 +79,4 @@ bool CheckProofOfStake(const CBlock& block, std::string& strError, const CBlockI
  */
 bool GetStakeKernelHash(uint256& hashRet, const CBlock& block, const CBlockIndex* pindexPrev = nullptr);
 
-#endif // FUCU_KERNEL_H
+#endif // FUCUCOIN_KERNEL_H

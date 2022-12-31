@@ -5,10 +5,10 @@
 """Verify that starting fucucoin with -h works as expected."""
 import subprocess
 
-from test_framework.test_framework import FucuTestFramework
+from test_framework.test_framework import FucucoinTestFramework
 from test_framework.util import assert_equal
 
-class HelpTest(FucuTestFramework):
+class HelpTest(FucucoinTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

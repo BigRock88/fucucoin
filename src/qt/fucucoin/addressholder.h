@@ -1,10 +1,10 @@
 // Copyright (c) 2019 The PIVX developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FUCU_ADDRESSHOLDER_H
-#define FUCU_ADDRESSHOLDER_H
+#ifndef FUCUCOIN_ADDRESSHOLDER_H
+#define FUCUCOIN_ADDRESSHOLDER_H
 
 #include <QWidget>
 #include <QColor>
@@ -39,4 +39,4 @@ public:
 };
 
 
-#endif //FUCU_ADDRESSHOLDER_H
+#endif //FUCUCOIN_ADDRESSHOLDER_H

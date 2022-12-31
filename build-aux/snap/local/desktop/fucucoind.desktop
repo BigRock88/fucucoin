@@ -2,14 +2,14 @@
 
 [Desktop Entry]
 Encoding=UTF-8
-Name=FUCU Core Daemon SNAP
+Name=FUCUCOIN Core Daemon SNAP
 Comment=main
-GenericName=FUCU Digital Currency Daemon Client main network
+GenericName=FUCUCOIN Digital Currency Daemon Client main network
 Exec=fucucoin-core.daemon %u
 Terminal=true
 Type=Application
 Icon=${SNAP}/share/pixmaps/fucucoin.png
-MimeType=x-scheme-handler/bib;
+MimeType=x-scheme-handler/fucu;
 Categories=X-Office;X-Finance;
-Keywords=internet;fucucoin;core;wallet;daemon;main;snap;launchpad;crypto;digital;currency;coin;token;
+Keywords=internet;fucucoin;zfucu;core;wallet;daemon;main;snap;launchpad;crypto;digital;currency;coin;token;zerocoin;
 Version=1.0

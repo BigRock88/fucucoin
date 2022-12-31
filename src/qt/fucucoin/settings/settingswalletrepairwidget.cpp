@@ -1,5 +1,5 @@
 // Copyright (c) 2019 The PIVX developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -7,7 +7,7 @@
 #include "qt/fucucoin/settings/forms/ui_settingswalletrepairwidget.h"
 #include "qt/fucucoin/qtutils.h"
 
-SettingsWalletRepairWidget::SettingsWalletRepairWidget(FUCUGUI* _window, QWidget *parent) :
+SettingsWalletRepairWidget::SettingsWalletRepairWidget(FUCUCOINGUI* _window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::SettingsWalletRepairWidget)
 {
@@ -119,7 +119,7 @@ void SettingsWalletRepairWidget::buildParameterlist(QString arg)
     // Append repair parameter to command line.
     args.append(arg);
 
-    // Send command-line arguments to FUCUGUI::handleRestart()
+    // Send command-line arguments to FUCUCOINGUI::handleRestart()
     Q_EMIT handleRestart(args);
 }
 

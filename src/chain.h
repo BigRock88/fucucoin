@@ -5,7 +5,7 @@
 // Copyright (c) 2014-2018 The BlackCoin Developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,6 +19,7 @@
 #include "tinyformat.h"
 #include "uint256.h"
 #include "util.h"
+#include "libzerocoin/Denominations.h"
 
 #include <vector>
 
@@ -224,6 +225,7 @@ public:
     unsigned int nTime{0};
     unsigned int nBits{0};
     unsigned int nNonce{0};
+    uint256 nAccumulatorCheckpoint{};
 
     //! (memory only) Sequential id assigned to distinguish order in which blocks are received.
     uint32_t nSequenceId{0};
@@ -272,9 +274,9 @@ public:
 
 /** Used to marshal pointers into hashes for db storage. */
 
-// New serialization introduced on FUCU
-static const int DBI_OLD_SER_VERSION = 900000;
-static const int DBI_SER_VERSION_NO_ZC = 1000000; // removes mapZerocoinSupply, nMoneySupply
+// New serialization introduced on FUCUCOIN
+static const int DBI_OLD_SER_VERSION = 0;
+static const int DBI_SER_VERSION_NO_ZC = 0;   // removes mapZerocoinSupply, nMoneySupply
 
 class CDiskBlockIndex : public CBlockIndex
 {
@@ -320,9 +322,12 @@ public:
             READWRITE(nTime);
             READWRITE(nBits);
             READWRITE(nNonce);
+            if(this->nVersion > 3 && this->nVersion < 7)
+                READWRITE(nAccumulatorCheckpoint);
 
-        } else if (nSerVersion >= DBI_OLD_SER_VERSION && ser_action.ForRead()) {
+        } else if (nSerVersion > DBI_OLD_SER_VERSION && ser_action.ForRead()) {
             // Serialization with CLIENT_VERSION = 4009901
+            std::map<libzerocoin::CoinDenomination, int64_t> mapZerocoinSupply;
             int64_t nMoneySupply = 0;
             READWRITE(nMoneySupply);
             READWRITE(nFlags);
@@ -333,6 +338,10 @@ public:
             READWRITE(nTime);
             READWRITE(nBits);
             READWRITE(nNonce);
+            if(this->nVersion > 3) {
+                READWRITE(mapZerocoinSupply);
+                if(this->nVersion < 7) READWRITE(nAccumulatorCheckpoint);
+            }
 
         } else if (ser_action.ForRead()) {
             // Serialization with CLIENT_VERSION = 4009900-
@@ -364,6 +373,13 @@ public:
             READWRITE(nTime);
             READWRITE(nBits);
             READWRITE(nNonce);
+            if(this->nVersion > 3) {
+                std::map<libzerocoin::CoinDenomination, int64_t> mapZerocoinSupply;
+                std::vector<libzerocoin::CoinDenomination> vMintDenominationsInBlock;
+                READWRITE(nAccumulatorCheckpoint);
+                READWRITE(mapZerocoinSupply);
+                READWRITE(vMintDenominationsInBlock);
+            }
         }
     }
 
@@ -377,6 +393,8 @@ public:
         block.nTime = nTime;
         block.nBits = nBits;
         block.nNonce = nNonce;
+        if (nVersion > 3 && nVersion < 7)
+            block.nAccumulatorCheckpoint = nAccumulatorCheckpoint;
         return block.GetHash();
     }
 
@@ -395,6 +413,7 @@ public:
 class CLegacyBlockIndex : public CBlockIndex
 {
 public:
+    std::map<libzerocoin::CoinDenomination, int64_t> mapZerocoinSupply{};
     int64_t nMint = 0;
     uint256 hashNext{};
     uint256 hashPrev{};
@@ -402,6 +421,7 @@ public:
     uint256 nStakeModifierV2{};
     COutPoint prevoutStake{};
     unsigned int nStakeTime = 0;
+    std::vector<libzerocoin::CoinDenomination> vMintDenominationsInBlock;
     int64_t nMoneySupply = 0;
 
 
@@ -434,7 +454,7 @@ public:
         if (nStatus & BLOCK_HAVE_UNDO)
             READWRITE(VARINT(nUndoPos));
 
-        if (nSerVersion >= DBI_OLD_SER_VERSION) {
+        if (nSerVersion > DBI_OLD_SER_VERSION) {
             // Serialization with CLIENT_VERSION = 4009901
             READWRITE(nMoneySupply);
             READWRITE(nFlags);
@@ -445,6 +465,10 @@ public:
             READWRITE(nTime);
             READWRITE(nBits);
             READWRITE(nNonce);
+            if(this->nVersion > 3) {
+                READWRITE(mapZerocoinSupply);
+                if(this->nVersion < 7) READWRITE(nAccumulatorCheckpoint);
+            }
 
         } else {
             // Serialization with CLIENT_VERSION = 4009900-
@@ -467,6 +491,11 @@ public:
             READWRITE(nTime);
             READWRITE(nBits);
             READWRITE(nNonce);
+            if(this->nVersion > 3) {
+                READWRITE(nAccumulatorCheckpoint);
+                READWRITE(mapZerocoinSupply);
+                READWRITE(vMintDenominationsInBlock);
+            }
         }
     }
 };

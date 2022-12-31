@@ -1,6 +1,6 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,7 +20,7 @@
 #include "script/standard.h"
 #include "openuridialog.h"
 
-SendWidget::SendWidget(FUCUGUI* parent) :
+SendWidget::SendWidget(FUCUCOINGUI* parent) :
     PWidget(parent),
     ui(new Ui::send),
     coinIcon(new QPushButton()),
@@ -92,7 +92,7 @@ SendWidget::SendWidget(FUCUGUI* parent) :
     coinIcon->show();
     coinIcon->raise();
 
-    setCssProperty(coinIcon, "coin-icon-bib");
+    setCssProperty(coinIcon, "coin-icon-fucu");
 
     QSize BUTTON_SIZE = QSize(24, 24);
     coinIcon->setMinimumSize(BUTTON_SIZE);
@@ -607,8 +607,8 @@ void SendWidget::onContactMultiClicked()
             inform(tr("Invalid address"));
             return;
         }
-        CTxDestination bibAdd = DecodeDestination(address.toStdString());
-        if (walletModel->isMine(bibAdd)) {
+        CTxDestination fucuAdd = DecodeDestination(address.toStdString());
+        if (walletModel->isMine(fucuAdd)) {
             inform(tr("Cannot store your own address as contact"));
             return;
         }
@@ -628,7 +628,7 @@ void SendWidget::onContactMultiClicked()
             if (label == dialog->getLabel()) {
                 return;
             }
-            if (walletModel->updateAddressBookLabels(bibAdd, dialog->getLabel().toStdString(),
+            if (walletModel->updateAddressBookLabels(fucuAdd, dialog->getLabel().toStdString(),
                     AddressBook::AddressBookPurpose::SEND)) {
                 inform(tr("New Contact Stored"));
             } else {

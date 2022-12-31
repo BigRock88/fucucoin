@@ -404,7 +404,7 @@ Stake için kaldırın</translation>
     </message>
     <message>
         <source>Banned Until</source>
-        <translation>Yfucuklılık Bitiş Tarihi</translation>
+        <translation>Yasaklılık Bitiş Tarihi</translation>
     </message>
 </context>
 <context>
@@ -699,6 +699,10 @@ Stake için kaldırın</translation>
         <translation>Filtrele</translation>
     </message>
     <message>
+        <source>Amount of FUCU and zFUCU staked.</source>
+        <translation>Stake edilmiş FUCU ve zFUCU miktarı</translation>
+    </message>
+    <message>
         <source>Please wait until the wallet is fully synced to see your correct balance</source>
         <translation>Doğru bakiyenizi görmek için cüzdanınızın senkronizasyonunun tamamlanmasını bekleyiniz.</translation>
     </message>
@@ -844,16 +848,16 @@ Cüzdanınız senkronize olduktan ve harcanmamış bakiyeniz yeterli miktarda on
         <translation>versiyon</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About FUCU</source>
-        <translation>FUCU Hakkında </translation>
+        <source>About FUCUCOIN</source>
+        <translation>FUCUCOIN Hakkında </translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -903,16 +907,16 @@ Cüzdanınız senkronize olduktan ve harcanmamış bakiyeniz yeterli miktarda on
         <translation>Hoşgeldiniz</translation>
     </message>
     <message>
-        <source>Welcome to FUCU.</source>
-        <translation>FUCU'a hoşgeldiniz.</translation>
+        <source>Welcome to FUCUCOIN.</source>
+        <translation>FUCUCOIN'a hoşgeldiniz.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where FUCU will store its data.</source>
-        <translation>Program ilk başlatıldığında FUCU'un verilerini nerede saklayacağını seçebilirsiniz.</translation>
+        <source>As this is the first time the program is launched, you can choose where FUCUCOIN will store its data.</source>
+        <translation>Program ilk başlatıldığında FUCUCOIN'un verilerini nerede saklayacağını seçebilirsiniz.</translation>
     </message>
     <message>
-        <source>FUCU will download and store a copy of the FUCU block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>FUCU, FUCU blok zincirinin bir kopyasını indirecek ve depolayacaktır. Bu dizinde en az %1GB veri saklanacak ve zamanla büyüyecektir. Ayrıca cüzdanınız da bu dizinde saklanır.</translation>
+        <source>FUCUCOIN will download and store a copy of the FUCU block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>FUCUCOIN, FUCU blok zincirinin bir kopyasını indirecek ve depolayacaktır. Bu dizinde en az %1GB veri saklanacak ve zamanla büyüyecektir. Ayrıca cüzdanınız da bu dizinde saklanır.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -931,8 +935,8 @@ Cüzdanınız senkronize olduktan ve harcanmamış bakiyeniz yeterli miktarda on
         <translation>TAMAM</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1368,21 +1372,45 @@ Emin misiniz?</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-        https://discord.gg/PENeFRWvEj</source>
+        https://discord.gg/T3CYMwTfjJ</source>
         <translation>Dil eksik veya çeviri tamamlanmamış mı? Katkıda bulunan çevirilere yardımcı olun:
-        https://discord.gg/PENeFRWvEj</translation>
+        https://discord.gg/T3CYMwTfjJ</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Map port using &amp;UPnP</translation>
     </message>
     <message>
+        <source>Enable automatic minting of FUCU units to zFUCU</source>
+        <translation>FUCU birimlerinin zFUCU'e otomatik basımını ektinleştir</translation>
+    </message>
+    <message>
+        <source>Enable zFUCU Automint</source>
+        <translation>zFUCU Otomatik basımı etkinleştir</translation>
+    </message>
+    <message>
+        <source>Enable automatic zFUCU minting from specific addresses</source>
+        <translation>Belirli bir adresten otomatik zFUCU minting yapılmasını etkinleştir</translation>
+    </message>
+    <message>
         <source>Enable Automint Addresses</source>
         <translation>Automint adreslerini etkinleştir</translation>
     </message>
     <message>
+        <source>Percentage of incoming FUCU which get automatically converted to zFUCU via Zerocoin Protocol (min: 10%)</source>
+        <translation>Zerocoin Protokolü üzerinden otomatik olarak zFUCU'ye dönüştürülen gelen FUCU yüzdesi (dakika: 10%)</translation>
+    </message>
+    <message>
+        <source>Percentage of autominted zFUCU</source>
+        <translation>Otomatikleştirilmiş zFUCU yüzdesi</translation>
+    </message>
+    <message>
         <source>Wait with automatic conversion to Zerocoin until enough FUCU for this denomination is available</source>
         <translation>Bu bölen için yeterli FUCU bulunana kadar Zerocoin'e otomatik dönüştürmede kalın</translation>
+    </message>
+    <message>
+        <source>Preferred Automint zFUCU Denomination</source>
+        <translation>Tercih edilen Automint zFUCU Nominal değeri</translation>
     </message>
     <message>
         <source>Stake split threshold:</source>
@@ -1450,7 +1478,7 @@ Emin misiniz?</translation>
     </message>
     <message>
         <source>Decimal digits</source>
-        <translation>Ondalık bfucumak</translation>
+        <translation>Ondalık basamak</translation>
     </message>
     <message>
         <source>Hide empty balances</source>
@@ -1534,10 +1562,10 @@ Emin misiniz?</translation>
     </message>
 </context>
 <context>
-    <name>FUCUGUI</name>
+    <name>FUCUCOINGUI</name>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -1564,8 +1592,8 @@ Emin misiniz?</translation>
         <translation>Uygulamayı sonlandır</translation>
     </message>
     <message>
-        <source>FUCU client</source>
-        <translation>FUCU istemci</translation>
+        <source>FUCUCOIN client</source>
+        <translation>FUCUCOIN istemci</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1632,7 +1660,7 @@ Adres: %4
     </message>
     <message>
         <source>Cannot start fucucoin: click-to-pay handler</source>
-        <translation>FUCU başlatılamıyor: tıkla ve ödeme işleyicisi</translation>
+        <translation>FUCUCOIN başlatılamıyor: tıkla ve ödeme işleyicisi</translation>
     </message>
     <message>
         <source>URI cannot be parsed! This can be caused by an invalid FUCU address or malformed URI parameters.</source>
@@ -1765,8 +1793,8 @@ Adres: %4
         <translation>Onarılamaz bir hata oluştu. FUCU güvenli bir şekilde çalışamaz, kapanacaktır.</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" does not exist.</source>
@@ -1785,8 +1813,8 @@ Adres: %4
         <translation>Masternode konfigürasyon dosyası okuma hatası: %1</translation>
     </message>
     <message>
-        <source>FUCU didn't yet exit safely...</source>
-        <translation>FUCU henüz güvenle kapanmadı..</translation>
+        <source>FUCUCOIN didn't yet exit safely...</source>
+        <translation>FUCUCOIN henüz güvenle kapanmadı..</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -2042,6 +2070,10 @@ Adres: %4
     <message>
         <source>Custom Backup Path:</source>
         <translation>Özel Yedekleme Yolu:</translation>
+    </message>
+    <message>
+        <source>Custom zFUCU Backup Path:</source>
+        <translation>Özel zFUCU Yedekleme Yolu:</translation>
     </message>
     <message>
         <source>Custom Backups Threshold:</source>
@@ -2827,7 +2859,7 @@ Verify that you have installed a predetermined text editor.</source>
     </message>
     <message>
         <source>Decimal digits</source>
-        <translation>Ondalık bfucumak</translation>
+        <translation>Ondalık basamak</translation>
     </message>
     <message>
         <source>Third party transactions URLs</source>
@@ -3727,8 +3759,8 @@ Emin misiniz?
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>FUCU is shutting down...</source>
-        <translation>FUCU kapanıyor ...</translation>
+        <source>FUCUCOIN is shutting down...</source>
+        <translation>FUCUCOIN kapanıyor ...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -3757,8 +3789,8 @@ Emin misiniz?
         <translation>Yükleniyor...</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
 </context>
 <context>
@@ -4105,8 +4137,8 @@ Emin misiniz?
     </message>
     <message>
         <source>Welcome to
-FUCU Wallet</source>
-        <translation>FUCU Cüzdanı'na
+FUCUCOIN Wallet</source>
+        <translation>FUCUCOIN Cüzdanı'na
 Hoşgeldiniz</translation>
     </message>
     <message>
@@ -4157,8 +4189,8 @@ Hoşgeldiniz</translation>
         <translation>JSON-RPC bağlantılarını dinlemek için verilen adrese bağlanın. IPv6 için [host]: port gösterimini kullanın. Bu seçenek birden çok kez belirtilebilir (varsayılan: tüm arabirimlere bağlanır)</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. FUCU is probably already running.</source>
-        <translation>Veri dizini %s üzerinde bir kilit elde edemiyor. FUCU muhtemelen zaten çalışıyor.</translation>
+        <source>Cannot obtain a lock on data directory %s. FUCUCOIN is probably already running.</source>
+        <translation>Veri dizini %s üzerinde bir kilit elde edemiyor. FUCUCOIN muhtemelen zaten çalışıyor.</translation>
     </message>
     <message>
         <source>Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)</source>
@@ -4313,8 +4345,8 @@ Hoşgeldiniz</translation>
         <translation>Ağ versiyon dizisi toplam uzunluğu(%i) maksimum uzunluğu aşıyor(%i). Yorumların büyüklüğünü veya sayısını azaltın.</translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. FUCU is probably already running.</source>
-        <translation>Bu bilgisayarda %s 'e bağlanılamıyor. FUCU muhtemelen zaten çalışıyor.</translation>
+        <source>Unable to bind to %s on this computer. FUCUCOIN is probably already running.</source>
+        <translation>Bu bilgisayarda %s 'e bağlanılamıyor. FUCUCOIN muhtemelen zaten çalışıyor.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4329,8 +4361,8 @@ Hoşgeldiniz</translation>
         <translation>Uyarı: paytxfee değeri çok yüksek ayarlanmış! Bu para gönderirken ödeyeceğiniz transfer ücretidir.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong FUCU will not work properly.</source>
-        <translation>Uyarı: Bilgisayarınızın tarih ve saat ayarlarının doğruluğunu kontrol edin! Saatiniz yanlış ise FUCU düzgün çalışmayacaktır. </translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong FUCUCOIN will not work properly.</source>
+        <translation>Uyarı: Bilgisayarınızın tarih ve saat ayarlarının doğruluğunu kontrol edin! Saatiniz yanlış ise FUCUCOIN düzgün çalışmayacaktır. </translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -4346,7 +4378,7 @@ Hoşgeldiniz</translation>
     </message>
     <message>
         <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
-        <translation>Güvenli liste -whitelist eşleri DoS yfucuklı olamaz, önceden mompool içinde olsalar bile işlemleri herzaman iletilir, geçit için faydalı örnek </translation>
+        <translation>Güvenli liste -whitelist eşleri DoS yasaklı olamaz, önceden mompool içinde olsalar bile işlemleri herzaman iletilir, geçit için faydalı örnek </translation>
     </message>
     <message>
         <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
@@ -4405,8 +4437,8 @@ Hoşgeldiniz</translation>
         <translation>Copyright (C) 2014-%i The Dash Core Developers</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The Fucu Coin Developers</source>
-        <translation>Copyright (C) 2015-%i The Fucu Coin Developers</translation>
+        <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
+        <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -4467,6 +4499,10 @@ Hoşgeldiniz</translation>
     <message>
         <source>Error reading from database, shutting down.</source>
         <translation>Veritabanı okunurken hata oluştu, kapatılıyorç</translation>
+    </message>
+    <message>
+        <source>Error writing zerocoinDB to disk</source>
+        <translation>ZerocoinDB diske yazılırken hata oluştu</translation>
     </message>
     <message>
         <source>Error</source>
@@ -4533,8 +4569,8 @@ Hoşgeldiniz</translation>
         <translation>Bilgi</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. FUCU is shutting down.</source>
-        <translation>Sağlama kontrolü başlatımı başarısız. FUCU kapatılıyor.</translation>
+        <source>Initialization sanity check failed. FUCUCOIN is shutting down.</source>
+        <translation>Sağlama kontrolü başlatımı başarısız. FUCUCOIN kapatılıyor.</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -4663,6 +4699,10 @@ Hoşgeldiniz</translation>
     <message>
         <source>Failed to select a zerocoin</source>
         <translation>Zerocoin seçimi başarısız</translation>
+    </message>
+    <message>
+        <source>Failed to wipe zerocoinDB</source>
+        <translation>ZerocoinDB silinmesi başarısız</translation>
     </message>
     <message>
         <source>Failed to write coin serial number into wallet</source>
@@ -4969,6 +5009,10 @@ Hoşgeldiniz</translation>
         <translation>Sporklar eşzamanlanıyor..</translation>
     </message>
     <message>
+        <source>Syncing zFUCU wallet...</source>
+        <translation>zFUCU cüzdanı eşzamanlanıyor..</translation>
+    </message>
+    <message>
         <source>This help message</source>
         <translation>Bu yardım mesajı</translation>
     </message>
@@ -5061,6 +5105,10 @@ Hoşgeldiniz</translation>
         <translation>JSON-RPC bağlantısı için kullanıcı adı</translation>
     </message>
     <message>
+        <source>Value is below the smallest available denomination (= 1) of zFUCU</source>
+        <translation>Aşağıdaki değer zFUCU'in mümkün olan en küçük bölüm değeridir (=1)</translation>
+    </message>
+    <message>
         <source>Verifying blocks...</source>
         <translation>Bloklar doğrulanıyor...</translation>
     </message>
@@ -5073,8 +5121,8 @@ Hoşgeldiniz</translation>
         <translation>Cüzdan %s bilgi dizini %s dışında bulunuyor</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart FUCU to complete</source>
-        <translation>Cüzdanın tekrar yazılması gerekiyor: tamamlamak için FUCU uygulamasını tekrar başlatın.</translation>
+        <source>Wallet needed to be rewritten: restart FUCUCOIN to complete</source>
+        <translation>Cüzdanın tekrar yazılması gerekiyor: tamamlamak için FUCUCOIN uygulamasını tekrar başlatın.</translation>
     </message>
     <message>
         <source>Wallet options:</source>

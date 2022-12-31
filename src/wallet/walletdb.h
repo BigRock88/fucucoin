@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2013 The Bitcoin developers
 // Copyright (c) 2016-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -15,6 +15,10 @@
 #include "key.h"
 #include "keystore.h"
 #include "script/keyorigin.h"
+#include "zfucu/zerocoin.h"
+#include "libzerocoin/Accumulator.h"
+#include "libzerocoin/Denominations.h"
+#include "zfucu/zfucutracker.h"
 
 #include <list>
 #include <stdint.h>
@@ -33,6 +37,8 @@ class CScript;
 class CWallet;
 class CWalletTx;
 class CDeterministicMint;
+class CZerocoinMint;
+class CZerocoinSpend;
 class uint160;
 class uint256;
 
@@ -173,6 +179,39 @@ public:
     DBErrors ZapWalletTx(CWallet* pwallet, std::vector<CWalletTx>& vWtx);
     static bool Recover(CDBEnv& dbenv, std::string filename, bool fOnlyKeys);
     static bool Recover(CDBEnv& dbenv, std::string filename);
+
+    bool WriteDeterministicMint(const CDeterministicMint& dMint);
+    bool ReadDeterministicMint(const uint256& hashPubcoin, CDeterministicMint& dMint);
+    bool EraseDeterministicMint(const uint256& hashPubcoin);
+    bool WriteZerocoinMint(const CZerocoinMint& zerocoinMint);
+    bool EraseZerocoinMint(const CZerocoinMint& zerocoinMint);
+    bool ReadZerocoinMint(const CBigNum &bnPubcoinValue, CZerocoinMint& zerocoinMint);
+    bool ReadZerocoinMint(const uint256& hashPubcoin, CZerocoinMint& mint);
+    bool ArchiveMintOrphan(const CZerocoinMint& zerocoinMint);
+    bool ArchiveDeterministicOrphan(const CDeterministicMint& dMint);
+    bool UnarchiveZerocoinMint(const uint256& hashPubcoin, CZerocoinMint& mint);
+    bool UnarchiveDeterministicMint(const uint256& hashPubcoin, CDeterministicMint& dMint);
+    std::list<CZerocoinMint> ListMintedCoins();
+    std::list<CDeterministicMint> ListDeterministicMints();
+    std::list<CZerocoinSpend> ListSpentCoins();
+    std::list<CBigNum> ListSpentCoinsSerial();
+    std::list<CZerocoinMint> ListArchivedZerocoins();
+    std::list<CDeterministicMint> ListArchivedDeterministicMints();
+    bool WriteZerocoinSpendSerialEntry(const CZerocoinSpend& zerocoinSpend);
+    bool EraseZerocoinSpendSerialEntry(const CBigNum& serialEntry);
+    bool ReadZerocoinSpendSerialEntry(const CBigNum& bnSerial);
+    bool WriteCurrentSeedHash(const uint256& hashSeed);
+    bool ReadCurrentSeedHash(uint256& hashSeed);
+    bool WriteZFUCUSeed(const uint256& hashSeed, const std::vector<unsigned char>& seed);
+    bool ReadZFUCUSeed(const uint256& hashSeed, std::vector<unsigned char>& seed);
+    bool ReadZFUCUSeed_deprecated(uint256& seed);
+    bool EraseZFUCUSeed();
+    bool EraseZFUCUSeed_deprecated();
+
+    bool WriteZFUCUCount(const uint32_t& nCount);
+    bool ReadZFUCUCount(uint32_t& nCount);
+    std::map<uint256, std::vector<std::pair<uint256, uint32_t> > > MapMintPool();
+    bool WriteMintPoolPair(const uint256& hashMasterSeed, const uint256& hashPubcoin, const uint32_t& nCount);
 
     static void IncrementUpdateCounter();
     static unsigned int GetUpdateCounter();

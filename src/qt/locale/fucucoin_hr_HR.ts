@@ -731,6 +731,10 @@ za staking</translation>
         <translation>Filtriraj prema</translation>
     </message>
     <message>
+        <source>Amount of FUCU and zFUCU staked.</source>
+        <translation>Iznos FUCU i zFUCU koji se stakea.</translation>
+    </message>
+    <message>
         <source>Please wait until the wallet is fully synced to see your correct balance</source>
         <translation>Molimo pričekajte dok se novčanik u potpunosti ne sinkronizira kako bi vidjeli Vaš ispravan saldo</translation>
     </message>
@@ -876,16 +880,16 @@ Automatski će se pokrenuti čim novčanik dobije dovoljno potvrda o neiskorišt
         <translation>verzija</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About FUCU</source>
-        <translation>O FUCU-u</translation>
+        <source>About FUCUCOIN</source>
+        <translation>O FUCUCOIN-u</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -939,16 +943,16 @@ Automatski će se pokrenuti čim novčanik dobije dovoljno potvrda o neiskorišt
         <translation>Dobrodošli</translation>
     </message>
     <message>
-        <source>Welcome to FUCU.</source>
-        <translation>Dobrodošli u FUCU.</translation>
+        <source>Welcome to FUCUCOIN.</source>
+        <translation>Dobrodošli u FUCUCOIN.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where FUCU will store its data.</source>
-        <translation>Budući da je prvi put pokrenut program, možete odabrati gdje će FUCU pohraniti svoje podatke.</translation>
+        <source>As this is the first time the program is launched, you can choose where FUCUCOIN will store its data.</source>
+        <translation>Budući da je prvi put pokrenut program, možete odabrati gdje će FUCUCOIN pohraniti svoje podatke.</translation>
     </message>
     <message>
-        <source>FUCU will download and store a copy of the FUCU block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>FUCU preuzima i pohranjuje kopiju FUCU blok-lanca. Barem će %1GB podataka biti pohranjeno u ovom direktoriju i to će s vremenom rasti. Novčanik će također biti pohranjena u ovom direktoriju.</translation>
+        <source>FUCUCOIN will download and store a copy of the FUCU block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>FUCUCOIN preuzima i pohranjuje kopiju FUCU blok-lanca. Barem će %1GB podataka biti pohranjeno u ovom direktoriju i to će s vremenom rasti. Novčanik će također biti pohranjena u ovom direktoriju.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -967,8 +971,8 @@ Automatski će se pokrenuti čim novčanik dobije dovoljno potvrda o neiskorišt
         <translation>OK</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1187,7 +1191,7 @@ Automatski će se pokrenuti čim novčanik dobije dovoljno potvrda o neiskorišt
         <source>Full nodes that incentivize node operators to perform the core consensus functions
 and vote on the treasury system receiving a periodic reward.</source>
         <translation>Potpuni node-ovi koji potiču node operatore na izvršavanje glavnih funkcija konsenzusa
-i glfucuju o sustavu riznice koji prima periodičnu nagradu.</translation>
+i glasaju o sustavu riznice koji prima periodičnu nagradu.</translation>
     </message>
     <message>
         <source>Create Masternode Controller</source>
@@ -1573,21 +1577,45 @@ NODEOVI</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-        https://discord.gg/PENeFRWvEj</source>
+        https://discord.gg/T3CYMwTfjJ</source>
         <translation>Jezik nedostaje ili prijevod nije potpun? Pomozite s prijevodom ovdje:
-        https://discord.gg/PENeFRWvEj</translation>
+        https://discord.gg/T3CYMwTfjJ</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Mapiranje porta koristeći &amp;UPnP</translation>
     </message>
     <message>
+        <source>Enable automatic minting of FUCU units to zFUCU</source>
+        <translation>Omogući automatsko stvaranje FUCU jedinica na zFUCU</translation>
+    </message>
+    <message>
+        <source>Enable zFUCU Automint</source>
+        <translation>Omogući automatsko stvaranje zFUCU-a</translation>
+    </message>
+    <message>
+        <source>Enable automatic zFUCU minting from specific addresses</source>
+        <translation>Omogući automatsko stvaranje zFUCU-a s određjenih adresa</translation>
+    </message>
+    <message>
         <source>Enable Automint Addresses</source>
         <translation>Omogući Automint adrese</translation>
     </message>
     <message>
+        <source>Percentage of incoming FUCU which get automatically converted to zFUCU via Zerocoin Protocol (min: 10%)</source>
+        <translation>Postotak dolaznih FUCU koji se automatski pretvara u zFUCU putem Zerocoin Protokola (min: 10%)</translation>
+    </message>
+    <message>
+        <source>Percentage of autominted zFUCU</source>
+        <translation>Postotak automatski stvorenog zFUCU-a</translation>
+    </message>
+    <message>
         <source>Wait with automatic conversion to Zerocoin until enough FUCU for this denomination is available</source>
         <translation>Pričekajte s automatskom pretvorbom u Zerocoin dok ne bude dostupno dovoljno FUCU-a za ovu denominaciju</translation>
+    </message>
+    <message>
+        <source>Preferred Automint zFUCU Denomination</source>
+        <translation>Preferirana denominacija za automatsko stvaranje zFUCU-a</translation>
     </message>
     <message>
         <source>Stake split threshold:</source>
@@ -1739,10 +1767,10 @@ NODEOVI</translation>
     </message>
 </context>
 <context>
-    <name>FUCUGUI</name>
+    <name>FUCUCOINGUI</name>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -1769,8 +1797,8 @@ NODEOVI</translation>
         <translation>Napusti aplikaciju</translation>
     </message>
     <message>
-        <source>FUCU client</source>
-        <translation>FUCU Klijent</translation>
+        <source>FUCUCOIN client</source>
+        <translation>FUCUCOIN Klijent</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1978,8 +2006,8 @@ Adresa: %4
         <translation>Dogodila se fatalna pogreška. FUCU ne može sigurno nastaviti i izaći će.</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" does not exist.</source>
@@ -1998,8 +2026,8 @@ Adresa: %4
         <translation>Greška pri čitanju masternode konfiguracijske datoteke: %1</translation>
     </message>
     <message>
-        <source>FUCU didn't yet exit safely...</source>
-        <translation>FUCU nije ugašen sigurno...</translation>
+        <source>FUCUCOIN didn't yet exit safely...</source>
+        <translation>FUCUCOIN nije ugašen sigurno...</translation>
     </message>
     <message>
         <source>Contact</source>
@@ -2351,6 +2379,10 @@ Adresa: %4
     <message>
         <source>Custom Backup Path:</source>
         <translation>Put prilagođenog sigurnosnog kopiranja:</translation>
+    </message>
+    <message>
+        <source>Custom zFUCU Backup Path:</source>
+        <translation>Prilagođeni put zFUCU sigurnosne kopije:</translation>
     </message>
     <message>
         <source>Custom Backups Threshold:</source>
@@ -3326,12 +3358,12 @@ Provjerite jeste li instalirali unaprijed određjeni uređjivač teksta.</transl
         <translation>Izvezi popis adresa</translation>
     </message>
     <message>
-        <source>FUCU_tx_csv_export(*.csv)</source>
-        <translation>FUCU_transakcije_csv_izvoz(*.csv)</translation>
+        <source>FUCUCOIN_tx_csv_export(*.csv)</source>
+        <translation>FUCUCOIN_transakcije_csv_izvoz(*.csv)</translation>
     </message>
     <message>
-        <source>FUCU_addresses_csv_export(*.csv)</source>
-        <translation>FUCU_adrese_csv_izvoz(*.csv)</translation>
+        <source>FUCUCOIN_addresses_csv_export(*.csv)</source>
+        <translation>FUCUCOIN_adrese_csv_izvoz(*.csv)</translation>
     </message>
     <message>
         <source>Please select a folder to export the csv file first.</source>
@@ -3409,8 +3441,8 @@ Došlo je do greške prilikom spremanja popisa adresa u %1. Molimo pokušajte po
         <translation>2) Zašto se moji FUCU ne mogu potrošiti?</translation>
     </message>
     <message>
-        <source>https://www.fucucoin.org</source>
-        <translation>https://www.fucucoin.org</translation>
+        <source>https://fucucoincoin.io/</source>
+        <translation>https://fucucoincoin.io/</translation>
     </message>
     <message>
         <source>1</source>
@@ -3446,7 +3478,7 @@ koja je implementirala ZeroCoin (zFUCU) i Zerocoin staking.
 FUCU koristi algoritam konsenzusa Proof of Stake (PoS),
 omogućujući svim vlasnicima FUCU-a sudjelovanje u zarađi blokovih nagrada
 dok osiguravaju mrežu full node novčanicima, kao i
-vodjenje Masternode-ova za stvaranje i glfucunje o prijedlozima.
+vodjenje Masternode-ova za stvaranje i glasanje o prijedlozima.
 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 </translation>
     </message>
@@ -3558,14 +3590,14 @@ da biste vidjeli i mogli potrošiti sredstva na mreži.
                          </source>
         <translation>
 &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
-Masternode je računalo koje pokreće full node FUCU novčanik sa
+Masternode je računalo koje pokreće full node FUCUCOIN novčanik sa
 zahtjevanih 10,000 FUCU-a osiguranog zaloga da pruži dodatne usluge
 mreži, i zauzvrat redovito primi dio nagrade blokova.
 Te usluge uključuju:
 &lt;/p&gt;&lt;p align="justify"&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Decentralizirano upravljanje (glfucunje o zahtjevima)&lt;/li&gt;
+&lt;li&gt;Decentralizirano upravljanje (glasanje o zahtjevima)&lt;/li&gt;
 &lt;li&gt;Decentralizirani sustav proračuna (riznica)&lt;/li&gt;
 &lt;li&gt;Validacija transakcija unutar svakog bloka&lt;/li&gt;
 &lt;li&gt;Djeluje kao dodatni full node u mreži&lt;/li&gt;
@@ -4328,8 +4360,8 @@ Jeste li sigurni?
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>FUCU is shutting down...</source>
-        <translation>FUCU se zatvara...</translation>
+        <source>FUCUCOIN is shutting down...</source>
+        <translation>FUCUCOIN se zatvara...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -4358,8 +4390,8 @@ Jeste li sigurni?
         <translation>Učitavanje...</translation>
     </message>
     <message>
-        <source>FUCU</source>
-        <translation>FUCU</translation>
+        <source>FUCUCOIN</source>
+        <translation>FUCUCOIN</translation>
     </message>
 </context>
 <context>
@@ -4868,9 +4900,9 @@ se nova sigurnosna kopija.
     </message>
     <message>
         <source>Welcome to
-FUCU Wallet</source>
+FUCUCOIN Wallet</source>
         <translation>Dobrodošli u
-        FUCU temeljni novčanik</translation>
+        FUCUCOIN temeljni novčanik</translation>
     </message>
     <message>
         <source>FUCU is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
@@ -4920,8 +4952,8 @@ FUCU Wallet</source>
         <translation>Pridržavajte se na navedenu adresu da biste slušali veze JSON-RPC. Koristite [host]: port notation za IPv6. Ova se opcija može odrediti više puta (zadano: vezati se na sva sučelja)</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. FUCU is probably already running.</source>
-        <translation>Nije moguće dobiti zaključavanje na direktoriju podataka %s. FUCU vjerojatno već radi.</translation>
+        <source>Cannot obtain a lock on data directory %s. FUCUCOIN is probably already running.</source>
+        <translation>Nije moguće dobiti zaključavanje na direktoriju podataka %s. FUCUCOIN vjerojatno već radi.</translation>
     </message>
     <message>
         <source>Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)</source>
@@ -5080,8 +5112,8 @@ FUCU Wallet</source>
         <translation>Ukupna duljina teksta mrežne verzije (%i) prelazi maksimalnu duljinu (%i). Smanjite broj ili veličinu uacommentsa.</translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. FUCU is probably already running.</source>
-        <translation>Nije moguće vezati se na %s na ovom računalu. FUCU vjerojatno već radi.</translation>
+        <source>Unable to bind to %s on this computer. FUCUCOIN is probably already running.</source>
+        <translation>Nije moguće vezati se na %s na ovom računalu. FUCUCOIN vjerojatno već radi.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -5096,8 +5128,8 @@ FUCU Wallet</source>
         <translation>Upozorenje: -paytxfee je vrlo visoka! To je transakcijska naknada koju ćete platiti ako šaljete transakciju.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong FUCU will not work properly.</source>
-        <translation>Upozorenje: Provjerite jesu li datum i vrijeme vašeg računala točni! Ako je vaš sat pogrešan, FUCU neće raditi ispravno.</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong FUCUCOIN will not work properly.</source>
+        <translation>Upozorenje: Provjerite jesu li datum i vrijeme vašeg računala točni! Ako je vaš sat pogrešan, FUCUCOIN neće raditi ispravno.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -5172,8 +5204,8 @@ FUCU Wallet</source>
         <translation>Autorska prava (C) 2014-%i The Dash Core Developers</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The Fucu Coin Developers</source>
-        <translation>Autorska prava (C) 2015-%i The Fucu Coin Developers</translation>
+        <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
+        <translation>Autorska prava (C) 2015-%i The PIVX Core Developers</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -5235,6 +5267,10 @@ FUCU Wallet</source>
     <message>
         <source>Error reading from database, shutting down.</source>
         <translation>Pogreška pri čitanju iz baze podataka, zatvaranje.</translation>
+    </message>
+    <message>
+        <source>Error writing zerocoinDB to disk</source>
+        <translation>Greška u zapisivanju zerocoinDB na disk</translation>
     </message>
     <message>
         <source>Error</source>
@@ -5301,8 +5337,8 @@ FUCU Wallet</source>
         <translation>Informacije</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. FUCU is shutting down.</source>
-        <translation>Provjera ispravnosti inicijalizacije nije uspjela. FUCU se zatvara.</translation>
+        <source>Initialization sanity check failed. FUCUCOIN is shutting down.</source>
+        <translation>Provjera ispravnosti inicijalizacije nije uspjela. FUCUCOIN se zatvara.</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -5431,6 +5467,10 @@ FUCU Wallet</source>
     <message>
         <source>Failed to select a zerocoin</source>
         <translation>Odabir Zerocoina nije uspjelo</translation>
+    </message>
+    <message>
+        <source>Failed to wipe zerocoinDB</source>
+        <translation>Neuspjelo brisanje zerocoinDB</translation>
     </message>
     <message>
         <source>Failed to write coin serial number into wallet</source>
@@ -5585,8 +5625,8 @@ FUCU Wallet</source>
         <translation>Priprema za resinkronizaciju...</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong FUCU will not work properly.</source>
-        <translation>Provjerite jesu li datum i vrijeme vašeg računala točni! Ako je vaš sat pogrešan, FUCU neće raditi ispravno.</translation>
+        <source>Please check that your computer's date and time are correct! If your clock is wrong FUCUCOIN will not work properly.</source>
+        <translation>Provjerite jesu li datum i vrijeme vašeg računala točni! Ako je vaš sat pogrešan, FUCUCOIN neće raditi ispravno.</translation>
     </message>
     <message>
         <source>Specify location of debug log file: this can be an absolute path or a path relative to the data directory (default: %s)</source>
@@ -5791,6 +5831,10 @@ FUCU Wallet</source>
         <translation>Sinkronizacija sporkova...</translation>
     </message>
     <message>
+        <source>Syncing zFUCU wallet...</source>
+        <translation>Sinkronizacija zFUCU novčanika...</translation>
+    </message>
+    <message>
         <source>This help message</source>
         <translation>Ova poruka za pomoć</translation>
     </message>
@@ -5899,6 +5943,10 @@ FUCU Wallet</source>
         <translation>Korisničko ime za JSON-RPC veze</translation>
     </message>
     <message>
+        <source>Value is below the smallest available denomination (= 1) of zFUCU</source>
+        <translation>Vrijednost je niža od najmanje dostupne denominacije (= 1) zFUCU-a</translation>
+    </message>
+    <message>
         <source>Verifying blocks...</source>
         <translation>Provjera blokova...</translation>
     </message>
@@ -5911,8 +5959,8 @@ FUCU Wallet</source>
         <translation>Novčanik %s nalazi se izvan direktorija podataka %s</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart FUCU to complete</source>
-        <translation>Potrebno je prepisati novčanik: ponovo pokrenite FUCU</translation>
+        <source>Wallet needed to be rewritten: restart FUCUCOIN to complete</source>
+        <translation>Potrebno je prepisati novčanik: ponovo pokrenite FUCUCOIN</translation>
     </message>
     <message>
         <source>Wallet options:</source>

@@ -30,7 +30,7 @@ QT_TRANSLATE_NOOP("fucucoin-core", ""
 "notation for IPv6. This option can be specified multiple times (default: "
 "bind to all interfaces)"),
 QT_TRANSLATE_NOOP("fucucoin-core", ""
-"Cannot obtain a lock on data directory %s. FUCU is probably already "
+"Cannot obtain a lock on data directory %s. FUCUCOIN is probably already "
 "running."),
 QT_TRANSLATE_NOOP("fucucoin-core", ""
 "Change automatic finalized budget voting behavior. mode=auto: Vote for only "
@@ -151,7 +151,7 @@ QT_TRANSLATE_NOOP("fucucoin-core", ""
 "Output debugging information (default: %u, supplying <category> is optional)"),
 QT_TRANSLATE_NOOP("fucucoin-core", ""
 "Please check that your computer's date and time are correct! If your clock "
-"is wrong FUCU will not work properly."),
+"is wrong FUCUCOIN will not work properly."),
 QT_TRANSLATE_NOOP("fucucoin-core", ""
 "Query for peer addresses via DNS lookup, if low on addresses (default: 1 "
 "unless -connect/-noconnect)"),
@@ -198,7 +198,7 @@ QT_TRANSLATE_NOOP("fucucoin-core", ""
 "Total length of network version string (%i) exceeds maximum length (%i). "
 "Reduce the number or size of uacomments."),
 QT_TRANSLATE_NOOP("fucucoin-core", ""
-"Unable to bind to %s on this computer. FUCU is probably already running."),
+"Unable to bind to %s on this computer. FUCUCOIN is probably already running."),
 QT_TRANSLATE_NOOP("fucucoin-core", ""
 "Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: "
 "%s)"),
@@ -213,7 +213,7 @@ QT_TRANSLATE_NOOP("fucucoin-core", ""
 "pay if you send a transaction."),
 QT_TRANSLATE_NOOP("fucucoin-core", ""
 "Warning: Please check that your computer's date and time are correct! If "
-"your clock is wrong FUCU will not work properly."),
+"your clock is wrong FUCUCOIN will not work properly."),
 QT_TRANSLATE_NOOP("fucucoin-core", ""
 "Warning: The network does not appear to fully agree! Some miners appear to "
 "be experiencing issues."),
@@ -261,7 +261,7 @@ QT_TRANSLATE_NOOP("fucucoin-core", "Connect to a node to retrieve peer addresses
 QT_TRANSLATE_NOOP("fucucoin-core", "Connection options:"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Copyright (C) 2009-%i The Bitcoin Core Developers"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Copyright (C) 2014-%i The Dash Core Developers"),
-QT_TRANSLATE_NOOP("fucucoin-core", "Copyright (C) 2015-%i The Fucu Coin Developers"),
+QT_TRANSLATE_NOOP("fucucoin-core", "Copyright (C) 2015-%i The PIVX Core Developers"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Corrupted block database detected"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Could not parse masternode.conf"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Debugging/Testing options:"),
@@ -282,12 +282,13 @@ QT_TRANSLATE_NOOP("fucucoin-core", "Enable the client to act as a masternode (0-
 QT_TRANSLATE_NOOP("fucucoin-core", "Error initializing block database"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error initializing wallet database environment %s!"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error loading %s: Wallet corrupted"),
-QT_TRANSLATE_NOOP("fucucoin-core", "Error loading %s: Wallet requires newer version of FUCU"),
+QT_TRANSLATE_NOOP("fucucoin-core", "Error loading %s: Wallet requires newer version of FUCUCOIN"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error loading %s\n"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error loading block database"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error opening block database"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error reading from database, shutting down."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error upgrading chainstate database"),
+QT_TRANSLATE_NOOP("fucucoin-core", "Error writing zerocoinDB to disk"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error: -listen must be true if -masternode is set."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error: -maxmempool must be at least %d MB"),
@@ -299,9 +300,12 @@ QT_TRANSLATE_NOOP("fucucoin-core", "Error: No valid utxo!"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error: Unsupported argument -tor found, use -onion."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Error: Wallet locked, unable to create transaction!"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Failed to accept tx in the memory pool (reason: %s)\n"),
+QT_TRANSLATE_NOOP("fucucoin-core", "Failed to find Zerocoins in wallet database"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Failed to listen on any port. Use -listen=0 if you want this."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Failed to parse host:port string"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Failed to parse public spend"),
+QT_TRANSLATE_NOOP("fucucoin-core", "Failed to select a zerocoin"),
+QT_TRANSLATE_NOOP("fucucoin-core", "Failed to wipe zerocoinDB"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Failed to write coin serial number into wallet"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Fee (in %s/kB) to add to transactions you send (default: %s)"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Force safe mode (default: %u)"),
@@ -313,7 +317,7 @@ QT_TRANSLATE_NOOP("fucucoin-core", "Imports blocks from external blk000??.dat fi
 QT_TRANSLATE_NOOP("fucucoin-core", "Include IP addresses in debug output (default: %u)"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Incorrect or no genesis block found. Wrong datadir for network?"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Information"),
-QT_TRANSLATE_NOOP("fucucoin-core", "Initialization sanity check failed. FUCU is shutting down."),
+QT_TRANSLATE_NOOP("fucucoin-core", "Initialization sanity check failed. FUCUCOIN is shutting down."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Insufficient funds"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Insufficient funds."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Invalid -masternodeaddr address: %s"),
@@ -375,6 +379,8 @@ QT_TRANSLATE_NOOP("fucucoin-core", "Randomly fuzz 1 of every <n> network message
 QT_TRANSLATE_NOOP("fucucoin-core", "Rebuild block chain index from current blk000??.dat files"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Recalculating FUCU supply..."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Reindex the %s and z%s money supply statistics"),
+QT_TRANSLATE_NOOP("fucucoin-core", "Reindexing zerocoin database..."),
+QT_TRANSLATE_NOOP("fucucoin-core", "Reindexing zerocoin failed"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Relay and mine data carrier transactions (default: %u)"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Relay non-P2SH multisig (default: %u)"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Rescan the block chain for missing wallet transactions"),
@@ -413,6 +419,7 @@ QT_TRANSLATE_NOOP("fucucoin-core", "Synchronizing budgets..."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Synchronizing masternode winners..."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Synchronizing masternodes..."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Synchronizing sporks..."),
+QT_TRANSLATE_NOOP("fucucoin-core", "Syncing zFUCU wallet..."),
 QT_TRANSLATE_NOOP("fucucoin-core", "The threshold value cannot be less than %s"),
 QT_TRANSLATE_NOOP("fucucoin-core", "This help message"),
 QT_TRANSLATE_NOOP("fucucoin-core", "This is experimental software."),
@@ -446,20 +453,24 @@ QT_TRANSLATE_NOOP("fucucoin-core", "Use block spam filter (default: %u)"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Use the test network"),
 QT_TRANSLATE_NOOP("fucucoin-core", "User Agent comment (%s) contains unsafe characters."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Username for JSON-RPC connections"),
+QT_TRANSLATE_NOOP("fucucoin-core", "Value is below the smallest available denomination (= 1) of zFUCU"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Verifying blocks..."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Verifying wallet..."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Wallet %s resides outside data directory %s"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Wallet debugging/testing options:"),
-QT_TRANSLATE_NOOP("fucucoin-core", "Wallet needed to be rewritten: restart FUCU to complete"),
+QT_TRANSLATE_NOOP("fucucoin-core", "Wallet needed to be rewritten: restart FUCUCOIN to complete"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Wallet options:"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Wallet window title"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Warning"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Warning: This version is obsolete, upgrade required!"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Warning: Unsupported argument -benchmark ignored, use -debug=bench."),
 QT_TRANSLATE_NOOP("fucucoin-core", "Warning: Unsupported argument -debugnet ignored, use -debug=net."),
+QT_TRANSLATE_NOOP("fucucoin-core", "You don't have enough Zerocoins in your wallet"),
 QT_TRANSLATE_NOOP("fucucoin-core", "You need to rebuild the database using -reindex to change -txindex"),
 QT_TRANSLATE_NOOP("fucucoin-core", "Zapping all transactions from wallet..."),
 QT_TRANSLATE_NOOP("fucucoin-core", "ZeroMQ notification options:"),
+QT_TRANSLATE_NOOP("fucucoin-core", "Zerocoin minting available only on regtest"),
+QT_TRANSLATE_NOOP("fucucoin-core", "Zerocoin options:"),
 QT_TRANSLATE_NOOP("fucucoin-core", "isValid(): Invalid -proxy address or hostname: '%s'"),
 QT_TRANSLATE_NOOP("fucucoin-core", "on startup"),
 };

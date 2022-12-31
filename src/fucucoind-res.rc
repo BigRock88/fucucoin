@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "FUCU"
-            VALUE "FileDescription",    "fucucoind (OSS daemon/client for FUCU)"
+            VALUE "CompanyName",        "FUCUCOIN"
+            VALUE "FileDescription",    "fucucoind (OSS daemon/client for FUCUCOIN)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "fucucoind"
             VALUE "LegalCopyright",     COPYRIGHT_STR

@@ -7,11 +7,11 @@
 
 from time import sleep
 
-from test_framework.test_framework import FucuTestFramework
+from test_framework.test_framework import FucucoinTestFramework
 from test_framework.util import set_node_times, assert_equal
 
 
-class FUCU_RPCSporkTest(FucuTestFramework):
+class FUCUCOIN_RPCSporkTest(FucucoinTestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True
@@ -71,5 +71,5 @@ class FUCU_RPCSporkTest(FucuTestFramework):
 
 
 if __name__ == '__main__':
-    FUCU_RPCSporkTest().main()
+    FUCUCOIN_RPCSporkTest().main()
 

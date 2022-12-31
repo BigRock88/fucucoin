@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,6 +10,7 @@
 #define BITCOIN_RPCSERVER_H
 
 #include "amount.h"
+#include "zfucu/zerocoin.h"
 #include "rpc/protocol.h"
 #include "uint256.h"
 
@@ -189,6 +190,7 @@ extern std::string HelpExampleRpc(std::string methodname, std::string args);
 extern void EnsureWalletIsUnlocked(bool fAllowAnonOnly = false);
 // Ensure the wallet's existence.
 extern void EnsureWallet();
+extern UniValue DoZfucuSpend(const CAmount nAmount, std::vector<CZerocoinMint>& vMintsSelected, std::string address_str);
 
 extern UniValue getconnectioncount(const JSONRPCRequest& request); // in rpc/net.cpp
 extern UniValue getpeerinfo(const JSONRPCRequest& request);
@@ -219,6 +221,26 @@ extern UniValue getaddressinfo(const JSONRPCRequest& request);
 extern UniValue getblockchaininfo(const JSONRPCRequest& request);
 extern UniValue getnetworkinfo(const JSONRPCRequest& request);
 extern UniValue multisend(const JSONRPCRequest& request);
+extern UniValue getzerocoinbalance(const JSONRPCRequest& request);
+extern UniValue listmintedzerocoins(const JSONRPCRequest& request);
+extern UniValue listspentzerocoins(const JSONRPCRequest& request);
+extern UniValue listzerocoinamounts(const JSONRPCRequest& request);
+extern UniValue mintzerocoin(const JSONRPCRequest& request);
+extern UniValue spendzerocoin(const JSONRPCRequest& request);
+extern UniValue spendrawzerocoin(const JSONRPCRequest& request);
+extern UniValue spendzerocoinmints(const JSONRPCRequest& request);
+extern UniValue resetmintzerocoin(const JSONRPCRequest& request);
+extern UniValue resetspentzerocoin(const JSONRPCRequest& request);
+extern UniValue getarchivedzerocoin(const JSONRPCRequest& request);
+extern UniValue importzerocoins(const JSONRPCRequest& request);
+extern UniValue exportzerocoins(const JSONRPCRequest& request);
+extern UniValue reconsiderzerocoins(const JSONRPCRequest& request);
+extern UniValue getspentzerocoinamount(const JSONRPCRequest& request);
+extern UniValue setzfucuseed(const JSONRPCRequest& request);
+extern UniValue getzfucuseed(const JSONRPCRequest& request);
+extern UniValue generatemintlist(const JSONRPCRequest& request);
+extern UniValue searchdzfucu(const JSONRPCRequest& request);
+extern UniValue dzfucustate(const JSONRPCRequest& request);
 
 extern UniValue getrawtransaction(const JSONRPCRequest& request); // in rpc/rawtransaction.cpp
 extern UniValue createrawtransaction(const JSONRPCRequest& request);
@@ -227,7 +249,9 @@ extern UniValue decodescript(const JSONRPCRequest& request);
 extern UniValue fundrawtransaction(const JSONRPCRequest& request);
 extern UniValue signrawtransaction(const JSONRPCRequest& request);
 extern UniValue sendrawtransaction(const JSONRPCRequest& request);
+extern UniValue createrawzerocoinspend(const JSONRPCRequest& request);
 
+extern UniValue findserial(const JSONRPCRequest& request); // in rpc/blockchain.cpp
 extern UniValue getblockcount(const JSONRPCRequest& request);
 extern UniValue getbestblockhash(const JSONRPCRequest& request);
 extern UniValue waitfornewblock(const JSONRPCRequest& request);
@@ -246,7 +270,8 @@ extern UniValue verifychain(const JSONRPCRequest& request);
 extern UniValue getchaintips(const JSONRPCRequest& request);
 extern UniValue invalidateblock(const JSONRPCRequest& request);
 extern UniValue reconsiderblock(const JSONRPCRequest& request);
-//extern UniValue getblockindexstats(const JSONRPCRequest& request);
+extern UniValue getblockindexstats(const JSONRPCRequest& request);
+extern UniValue getserials(const JSONRPCRequest& request);
 extern UniValue getburnaddresses(const JSONRPCRequest& request);
 extern void validaterange(const UniValue& params, int& heightStart, int& heightEnd, int minHeightStart=1);
 

@@ -1,6 +1,6 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -38,9 +38,9 @@
 #define BASE_WINDOW_MIN_WIDTH 1100
 
 
-const QString FUCUGUI::DEFAULT_WALLET = "~Default";
+const QString FUCUCOINGUI::DEFAULT_WALLET = "~Default";
 
-FUCUGUI::FUCUGUI(const NetworkStyle* networkStyle, QWidget* parent) :
+FUCUCOINGUI::FUCUCOINGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         QMainWindow(parent),
         clientModel(0){
 
@@ -68,7 +68,7 @@ FUCUGUI::FUCUGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
     QString windowTitle = QString::fromStdString(GetArg("-windowtitle", ""));
     if (windowTitle.isEmpty()) {
-        windowTitle = tr("FUCU") + " - ";
+        windowTitle = tr("FUCUCOIN") + " - ";
         windowTitle += ((enableWallet) ? tr("Wallet") : tr("Node"));
     }
     windowTitle += " " + networkStyle->getTitleAddText();
@@ -165,7 +165,7 @@ FUCUGUI::FUCUGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
 }
 
-void FUCUGUI::createActions(const NetworkStyle* networkStyle)
+void FUCUCOINGUI::createActions(const NetworkStyle* networkStyle)
 {
     toggleHideAction = new QAction(networkStyle->getAppIcon(), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
@@ -175,14 +175,14 @@ void FUCUGUI::createActions(const NetworkStyle* networkStyle)
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
 
-    connect(toggleHideAction, &QAction::triggered, this, &FUCUGUI::toggleHidden);
+    connect(toggleHideAction, &QAction::triggered, this, &FUCUCOINGUI::toggleHidden);
     connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
 }
 
 /**
  * Here add every event connection
  */
-void FUCUGUI::connectActions()
+void FUCUCOINGUI::connectActions()
 {
     QShortcut *consoleShort = new QShortcut(this);
     consoleShort->setKey(QKeySequence(SHORT_KEY + Qt::Key_C));
@@ -191,23 +191,23 @@ void FUCUGUI::connectActions()
         settingsWidget->showDebugConsole();
         goToSettings();
     });
-    connect(topBar, &TopBar::showHide, this, &FUCUGUI::showHide);
-    connect(topBar, &TopBar::themeChanged, this, &FUCUGUI::changeTheme);
-    connect(settingsWidget, &SettingsWidget::showHide, this, &FUCUGUI::showHide);
-    connect(sendWidget, &SendWidget::showHide, this, &FUCUGUI::showHide);
-    connect(receiveWidget, &ReceiveWidget::showHide, this, &FUCUGUI::showHide);
-    connect(addressesWidget, &AddressesWidget::showHide, this, &FUCUGUI::showHide);
-    connect(masterNodesWidget, &MasterNodesWidget::showHide, this, &FUCUGUI::showHide);
-    connect(masterNodesWidget, &MasterNodesWidget::execDialog, this, &FUCUGUI::execDialog);
-    connect(settingsWidget, &SettingsWidget::execDialog, this, &FUCUGUI::execDialog);
+    connect(topBar, &TopBar::showHide, this, &FUCUCOINGUI::showHide);
+    connect(topBar, &TopBar::themeChanged, this, &FUCUCOINGUI::changeTheme);
+    connect(settingsWidget, &SettingsWidget::showHide, this, &FUCUCOINGUI::showHide);
+    connect(sendWidget, &SendWidget::showHide, this, &FUCUCOINGUI::showHide);
+    connect(receiveWidget, &ReceiveWidget::showHide, this, &FUCUCOINGUI::showHide);
+    connect(addressesWidget, &AddressesWidget::showHide, this, &FUCUCOINGUI::showHide);
+    connect(masterNodesWidget, &MasterNodesWidget::showHide, this, &FUCUCOINGUI::showHide);
+    connect(masterNodesWidget, &MasterNodesWidget::execDialog, this, &FUCUCOINGUI::execDialog);
+    connect(settingsWidget, &SettingsWidget::execDialog, this, &FUCUCOINGUI::execDialog);
 }
 
 
-void FUCUGUI::createTrayIcon(const NetworkStyle* networkStyle)
+void FUCUCOINGUI::createTrayIcon(const NetworkStyle* networkStyle)
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
-    QString toolTip = tr("FUCU client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("FUCUCOIN client") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->hide();
@@ -215,7 +215,7 @@ void FUCUGUI::createTrayIcon(const NetworkStyle* networkStyle)
     notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
 }
 
-FUCUGUI::~FUCUGUI()
+FUCUCOINGUI::~FUCUCOINGUI()
 {
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
@@ -230,14 +230,14 @@ FUCUGUI::~FUCUGUI()
 
 
 /** Get restart command-line parameters and request restart */
-void FUCUGUI::handleRestart(QStringList args)
+void FUCUCOINGUI::handleRestart(QStringList args)
 {
     if (!ShutdownRequested())
         Q_EMIT requestedRestart(args);
 }
 
 
-void FUCUGUI::setClientModel(ClientModel* clientModel)
+void FUCUCOINGUI::setClientModel(ClientModel* clientModel)
 {
     this->clientModel = clientModel;
     if (this->clientModel) {
@@ -251,7 +251,7 @@ void FUCUGUI::setClientModel(ClientModel* clientModel)
         settingsWidget->setClientModel(clientModel);
 
         // Receive and report messages from client model
-        connect(clientModel, &ClientModel::message, this, &FUCUGUI::message);
+        connect(clientModel, &ClientModel::message, this, &FUCUCOINGUI::message);
         connect(topBar, &TopBar::walletSynced, dashboard, &DashboardWidget::walletSynced);
         
         // Get restart command-line parameters and handle restart
@@ -274,7 +274,7 @@ void FUCUGUI::setClientModel(ClientModel* clientModel)
     }
 }
 
-void FUCUGUI::createTrayIconMenu()
+void FUCUCOINGUI::createTrayIconMenu()
 {
 #ifndef Q_OS_MAC
     // return if trayIcon is unset (only on non-macOSes)
@@ -284,11 +284,11 @@ void FUCUGUI::createTrayIconMenu()
     trayIconMenu = new QMenu(this);
     trayIcon->setContextMenu(trayIconMenu);
 
-    connect(trayIcon, &QSystemTrayIcon::activated, this, &FUCUGUI::trayIconActivated);
+    connect(trayIcon, &QSystemTrayIcon::activated, this, &FUCUCOINGUI::trayIconActivated);
 #else
     // Note: On macOS, the Dock icon is used to provide the tray's functionality.
     MacDockIconHandler* dockIconHandler = MacDockIconHandler::instance();
-    connect(dockIconHandler, &MacDockIconHandler::dockIconClicked, this, &FUCUGUI::macosDockIconActivated);
+    connect(dockIconHandler, &MacDockIconHandler::dockIconClicked, this, &FUCUCOINGUI::macosDockIconActivated);
 
     trayIconMenu = new QMenu(this);
     trayIconMenu->setAsDockMenu();
@@ -305,7 +305,7 @@ void FUCUGUI::createTrayIconMenu()
 }
 
 #ifndef Q_OS_MAC
-void FUCUGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
+void FUCUCOINGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason == QSystemTrayIcon::Trigger) {
         // Click on system tray icon triggers show/hide of the main window
@@ -313,14 +313,14 @@ void FUCUGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
     }
 }
 #else
-void FUCUGUI::macosDockIconActivated()
+void FUCUCOINGUI::macosDockIconActivated()
  {
      show();
      activateWindow();
  }
 #endif
 
-void FUCUGUI::changeEvent(QEvent* e)
+void FUCUCOINGUI::changeEvent(QEvent* e)
 {
     QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
@@ -328,7 +328,7 @@ void FUCUGUI::changeEvent(QEvent* e)
         if (clientModel && clientModel->getOptionsModel() && clientModel->getOptionsModel()->getMinimizeToTray()) {
             QWindowStateChangeEvent* wsevt = static_cast<QWindowStateChangeEvent*>(e);
             if (!(wsevt->oldState() & Qt::WindowMinimized) && isMinimized()) {
-                QTimer::singleShot(0, this, &FUCUGUI::hide);
+                QTimer::singleShot(0, this, &FUCUCOINGUI::hide);
                 e->ignore();
             }
         }
@@ -336,7 +336,7 @@ void FUCUGUI::changeEvent(QEvent* e)
 #endif
 }
 
-void FUCUGUI::closeEvent(QCloseEvent* event)
+void FUCUCOINGUI::closeEvent(QCloseEvent* event)
 {
 #ifndef Q_OS_MAC // Ignored on Mac
     if (clientModel && clientModel->getOptionsModel()) {
@@ -349,7 +349,7 @@ void FUCUGUI::closeEvent(QCloseEvent* event)
 }
 
 
-void FUCUGUI::messageInfo(const QString& text)
+void FUCUCOINGUI::messageInfo(const QString& text)
 {
     if (!this->snackBar) this->snackBar = new SnackBar(this, this);
     this->snackBar->setText(text);
@@ -358,9 +358,9 @@ void FUCUGUI::messageInfo(const QString& text)
 }
 
 
-void FUCUGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
+void FUCUCOINGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
 {
-    QString strTitle =  tr("FUCU"); // default title
+    QString strTitle =  tr("FUCUCOIN"); // default title
     // Default to information icon
     int nNotifyIcon = Notificator::Information;
 
@@ -417,7 +417,7 @@ void FUCUGUI::message(const QString& title, const QString& message, unsigned int
     }
 }
 
-bool FUCUGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn)
+bool FUCUCOINGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn)
 {
     DefaultDialog *dialog;
     if (isVisible()) {
@@ -429,7 +429,7 @@ bool FUCUGUI::openStandardDialog(QString title, QString body, QString okBtn, QSt
     } else {
         dialog = new DefaultDialog();
         dialog->setText(title, body, okBtn);
-        dialog->setWindowTitle(tr("FUCU"));
+        dialog->setWindowTitle(tr("FUCUCOIN"));
         dialog->adjustSize();
         dialog->raise();
         dialog->exec();
@@ -440,7 +440,7 @@ bool FUCUGUI::openStandardDialog(QString title, QString body, QString okBtn, QSt
 }
 
 
-void FUCUGUI::showNormalIfMinimized(bool fToggleHidden)
+void FUCUCOINGUI::showNormalIfMinimized(bool fToggleHidden)
 {
     if (!clientModel)
         return;
@@ -451,12 +451,12 @@ void FUCUGUI::showNormalIfMinimized(bool fToggleHidden)
     }
 }
 
-void FUCUGUI::toggleHidden()
+void FUCUCOINGUI::toggleHidden()
 {
     showNormalIfMinimized(true);
 }
 
-void FUCUGUI::detectShutdown()
+void FUCUCOINGUI::detectShutdown()
 {
     if (ShutdownRequested()) {
         if (rpcConsole)
@@ -465,7 +465,7 @@ void FUCUGUI::detectShutdown()
     }
 }
 
-void FUCUGUI::goToDashboard()
+void FUCUCOINGUI::goToDashboard()
 {
     if (stackedContainer->currentWidget() != dashboard) {
         stackedContainer->setCurrentWidget(dashboard);
@@ -473,55 +473,55 @@ void FUCUGUI::goToDashboard()
     }
 }
 
-void FUCUGUI::goToSend()
+void FUCUCOINGUI::goToSend()
 {
     showTop(sendWidget);
 }
 
-void FUCUGUI::goToAddresses()
+void FUCUCOINGUI::goToAddresses()
 {
     showTop(addressesWidget);
 }
 
-void FUCUGUI::goToMasterNodes()
+void FUCUCOINGUI::goToMasterNodes()
 {
     showTop(masterNodesWidget);
 }
 
-void FUCUGUI::goToSettings(){
+void FUCUCOINGUI::goToSettings(){
     showTop(settingsWidget);
 }
 
-void FUCUGUI::goToSettingsInfo()
+void FUCUCOINGUI::goToSettingsInfo()
 {
     navMenu->selectSettings();
     settingsWidget->showInformation();
     goToSettings();
 }
 
-void FUCUGUI::goToDebugConsole()
+void FUCUCOINGUI::goToDebugConsole()
 {
     navMenu->selectSettings();
     settingsWidget->showDebugConsole();
     goToSettings();
 }
 
-void FUCUGUI::goToReceive()
+void FUCUCOINGUI::goToReceive()
 {
     showTop(receiveWidget);
 }
 
-void FUCUGUI::openNetworkMonitor()
+void FUCUCOINGUI::openNetworkMonitor()
 {
     settingsWidget->openNetworkMonitor();
 }
 
-void FUCUGUI::showPeers()
+void FUCUCOINGUI::showPeers()
 {
     settingsWidget->showPeers();
 }
 
-void FUCUGUI::showTop(QWidget* view)
+void FUCUCOINGUI::showTop(QWidget* view)
 {
     if (stackedContainer->currentWidget() != view) {
         stackedContainer->setCurrentWidget(view);
@@ -529,7 +529,7 @@ void FUCUGUI::showTop(QWidget* view)
     }
 }
 
-void FUCUGUI::changeTheme(bool isLightTheme)
+void FUCUCOINGUI::changeTheme(bool isLightTheme)
 {
 
     QString css = GUIUtil::loadStyleSheet();
@@ -542,7 +542,7 @@ void FUCUGUI::changeTheme(bool isLightTheme)
     updateStyle(this);
 }
 
-void FUCUGUI::resizeEvent(QResizeEvent* event)
+void FUCUCOINGUI::resizeEvent(QResizeEvent* event)
 {
     // Parent..
     QMainWindow::resizeEvent(event);
@@ -552,12 +552,12 @@ void FUCUGUI::resizeEvent(QResizeEvent* event)
     Q_EMIT windowResizeEvent(event);
 }
 
-bool FUCUGUI::execDialog(QDialog *dialog, int xDiv, int yDiv)
+bool FUCUCOINGUI::execDialog(QDialog *dialog, int xDiv, int yDiv)
 {
     return openDialogWithOpaqueBackgroundY(dialog, this);
 }
 
-void FUCUGUI::showHide(bool show)
+void FUCUCOINGUI::showHide(bool show)
 {
     if (!op) op = new QLabel(this);
     if (!show) {
@@ -585,12 +585,12 @@ void FUCUGUI::showHide(bool show)
     }
 }
 
-int FUCUGUI::getNavWidth()
+int FUCUCOINGUI::getNavWidth()
 {
     return this->navMenu->width();
 }
 
-void FUCUGUI::openFAQ(int section)
+void FUCUCOINGUI::openFAQ(int section)
 {
     showHide(true);
     SettingsFaqWidget* dialog = new SettingsFaqWidget(this);
@@ -601,7 +601,7 @@ void FUCUGUI::openFAQ(int section)
 
 
 #ifdef ENABLE_WALLET
-bool FUCUGUI::addWallet(const QString& name, WalletModel* walletModel)
+bool FUCUCOINGUI::addWallet(const QString& name, WalletModel* walletModel)
 {
     // Single wallet supported for now..
     if (!stackedContainer || !clientModel || !walletModel)
@@ -618,32 +618,32 @@ bool FUCUGUI::addWallet(const QString& name, WalletModel* walletModel)
     settingsWidget->setWalletModel(walletModel);
 
     // Connect actions..
-    connect(walletModel, &WalletModel::message, this, &FUCUGUI::message);
-    connect(masterNodesWidget, &MasterNodesWidget::message, this, &FUCUGUI::message);
-    connect(topBar, &TopBar::message, this, &FUCUGUI::message);
-    connect(sendWidget, &SendWidget::message,this, &FUCUGUI::message);
-    connect(receiveWidget, &ReceiveWidget::message,this, &FUCUGUI::message);
-    connect(addressesWidget, &AddressesWidget::message,this, &FUCUGUI::message);
-    connect(settingsWidget, &SettingsWidget::message, this, &FUCUGUI::message);
+    connect(walletModel, &WalletModel::message, this, &FUCUCOINGUI::message);
+    connect(masterNodesWidget, &MasterNodesWidget::message, this, &FUCUCOINGUI::message);
+    connect(topBar, &TopBar::message, this, &FUCUCOINGUI::message);
+    connect(sendWidget, &SendWidget::message,this, &FUCUCOINGUI::message);
+    connect(receiveWidget, &ReceiveWidget::message,this, &FUCUCOINGUI::message);
+    connect(addressesWidget, &AddressesWidget::message,this, &FUCUCOINGUI::message);
+    connect(settingsWidget, &SettingsWidget::message, this, &FUCUCOINGUI::message);
 
     // Pass through transaction notifications
-    connect(dashboard, &DashboardWidget::incomingTransaction, this, &FUCUGUI::incomingTransaction);
+    connect(dashboard, &DashboardWidget::incomingTransaction, this, &FUCUCOINGUI::incomingTransaction);
 
     return true;
 }
 
-bool FUCUGUI::setCurrentWallet(const QString& name)
+bool FUCUCOINGUI::setCurrentWallet(const QString& name)
 {
     // Single wallet supported.
     return true;
 }
 
-void FUCUGUI::removeAllWallets()
+void FUCUCOINGUI::removeAllWallets()
 {
     // Single wallet supported.
 }
 
-void FUCUGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address)
+void FUCUCOINGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address)
 {
     // Only send notifications when not disabled
     if (!bdisableSystemnotifications) {
@@ -666,7 +666,7 @@ void FUCUGUI::incomingTransaction(const QString& date, int unit, const CAmount& 
 #endif // ENABLE_WALLET
 
 
-static bool ThreadSafeMessageBox(FUCUGUI* gui, const std::string& message, const std::string& caption, unsigned int style)
+static bool ThreadSafeMessageBox(FUCUCOINGUI* gui, const std::string& message, const std::string& caption, unsigned int style)
 {
     bool modal = (style & CClientUIInterface::MODAL);
     // The SECURE flag has no effect in the Qt GUI.
@@ -685,13 +685,13 @@ static bool ThreadSafeMessageBox(FUCUGUI* gui, const std::string& message, const
 }
 
 
-void FUCUGUI::subscribeToCoreSignals()
+void FUCUCOINGUI::subscribeToCoreSignals()
 {
     // Connect signals to client
     uiInterface.ThreadSafeMessageBox.connect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
 }
 
-void FUCUGUI::unsubscribeFromCoreSignals()
+void FUCUCOINGUI::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from client
     uiInterface.ThreadSafeMessageBox.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));

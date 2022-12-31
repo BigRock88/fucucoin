@@ -26,6 +26,7 @@ bench_bench_fucucoin_LDADD = \
   $(LIBLEVELDB) \
   $(LIBMEMENV) \
   $(LIBSECP256K1) \
+  $(LIBBITCOIN_ZEROCOIN) \
   $(LIBZCASH_LIBS)
 
 if ENABLE_ZMQ

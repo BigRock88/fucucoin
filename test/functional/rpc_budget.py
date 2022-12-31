@@ -4,11 +4,11 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test RPC commands for budget proposal creation, submission, and verification."""
 
-from test_framework.test_framework import FucuTestFramework
+from test_framework.test_framework import FucucoinTestFramework
 from test_framework.util import *
 
 
-class BudgetProposalTest(FucuTestFramework):
+class BudgetProposalTest(FucucoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
 
@@ -42,8 +42,8 @@ class BudgetProposalTest(FucuTestFramework):
         assert_raises_rpc_error(-8, "Invalid block start", self.nodes[0].preparebudget,
                                 name, scheme + url, numcycles, nextsuperblock - budgetcycleblocks, address, cycleamount)
 
-        self.log.info("Test with invalid FUCU address")
-        assert_raises_rpc_error(-5, "Invalid FUCU address", self.nodes[0].preparebudget,
+        self.log.info("Test with invalid FUCUCOIN address")
+        assert_raises_rpc_error(-5, "Invalid FUCUCOIN address", self.nodes[0].preparebudget,
                                 name, scheme + url, numcycles, nextsuperblock, "DBREvBPNQguwuC4YMoCG5FoH1sA2YntvZm", cycleamount)
 
         self.log.info("Test with too low amount")

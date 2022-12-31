@@ -5,7 +5,7 @@
 """Test the listreceivedbyaddress RPC."""
 from decimal import Decimal
 
-from test_framework.test_framework import FucuTestFramework
+from test_framework.test_framework import FucucoinTestFramework
 from test_framework.util import (
     assert_array_result,
     assert_equal,
@@ -14,7 +14,7 @@ from test_framework.util import (
 )
 
 
-class ReceivedByTest(FucuTestFramework):
+class ReceivedByTest(FucucoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
 

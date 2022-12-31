@@ -121,7 +121,7 @@
          </layout>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalPercentagezBib">
+         <layout class="QHBoxLayout" name="horizontalPercentagezFucu">
           <item>
            <widget class="QLabel" name="labelTitleUnit">
             <property name="text">
@@ -130,7 +130,7 @@
            </widget>
           </item>
           <item>
-           <spacer name="horizontalSpacerPercentagezBib">
+           <spacer name="horizontalSpacerPercentagezFucu">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -161,7 +161,7 @@
          </layout>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalDenomzBib">
+         <layout class="QHBoxLayout" name="horizontalDenomzFucu">
           <item>
            <widget class="QLabel" name="labelTitleDigits">
             <property name="text">
@@ -170,7 +170,7 @@
            </widget>
           </item>
           <item>
-           <spacer name="horizontalDenomzBib_1">
+           <spacer name="horizontalDenomzFucu_1">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>

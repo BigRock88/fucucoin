@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2018 The Bitcoin Core developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FUCU_KEY_IO_H
-#define FUCU_KEY_IO_H
+#ifndef FUCUCOIN_KEY_IO_H
+#define FUCUCOIN_KEY_IO_H
 
 #include "chainparams.h"
 #include "key.h"
@@ -29,4 +29,4 @@ namespace KeyIO {
     std::string EncodeExtPubKey(const CExtPubKey &extkey);
 }
 
-#endif //FUCU_KEY_IO_H
+#endif //FUCUCOIN_KEY_IO_H

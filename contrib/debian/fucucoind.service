@@ -8,7 +8,7 @@
 # /etc/fucucoin/fucucoin.conf
 
 [Unit]
-Description=FUCU daemon
+Description=FUCUCOIN daemon
 After=network.target
 
 [Service]

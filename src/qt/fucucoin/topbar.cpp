@@ -1,6 +1,6 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -30,7 +30,7 @@
 
 #define REQUEST_UPGRADE_WALLET 1
 
-TopBar::TopBar(FUCUGUI* _mainWindow, QWidget* parent) : PWidget(_mainWindow, parent),
+TopBar::TopBar(FUCUCOINGUI* _mainWindow, QWidget* parent) : PWidget(_mainWindow, parent),
                                                         ui(new Ui::TopBar)
 {
     ui->setupUi(this);
@@ -49,10 +49,10 @@ TopBar::TopBar(FUCUGUI* _mainWindow, QWidget* parent) : PWidget(_mainWindow, par
     // Amount information top
     ui->widgetTopAmount->setVisible(false);
     ui->widgetAmount->setVisible(true);
-    setCssProperty({ui->labelAmountTopBib}, "amount-small-topbar");
-    setCssProperty({ui->labelAmountBib}, "amount-topbar");
-    setCssProperty({ui->labelPendingBib, ui->labelImmatureBib, ui->labelAvailableBib,
-                       ui->labelLockedBib, ui->labelMasternodeCount, ui->labelCollateralBib,
+    setCssProperty({ui->labelAmountTopFucu}, "amount-small-topbar");
+    setCssProperty({ui->labelAmountFucu}, "amount-topbar");
+    setCssProperty({ui->labelPendingFucu, ui->labelImmatureFucu, ui->labelAvailableFucu,
+                       ui->labelLockedFucu, ui->labelMasternodeCount, ui->labelCollateralFucu,
                        ui->labelNextCollateralBlocks, ui->labelNextCollateralValue},
         "amount-small-topbar");
 
@@ -654,7 +654,7 @@ void TopBar::refreshStatus()
     updateStyle(ui->pushButtonLock);
 
     // Collateral
-    ui->labelCollateralBib->setText(GUIUtil::formatBalance(CMasternode::GetMasternodeNodeCollateral(chainActive.Tip()->nHeight), nDisplayUnit));
+    ui->labelCollateralFucu->setText(GUIUtil::formatBalance(CMasternode::GetMasternodeNodeCollateral(chainActive.Tip()->nHeight), nDisplayUnit));
 }
 
 void TopBar::updateDisplayUnit()
@@ -679,18 +679,18 @@ void TopBar::updateBalances(const interfaces::WalletBalances& newBalance)
 
     // FUCU
     // Top
-    ui->labelAmountTopBib->setText(GUIUtil::formatBalance(nAvailableBalance, nDisplayUnit));
+    ui->labelAmountTopFucu->setText(GUIUtil::formatBalance(nAvailableBalance, nDisplayUnit));
     // Expanded
-    ui->labelAmountBib->setText(GUIUtil::formatBalance(newBalance.balance + newBalance.immature_balance, nDisplayUnit));
-    ui->labelAvailableBib->setText(GUIUtil::formatBalance(nAvailableBalance, nDisplayUnit));
-    ui->labelPendingBib->setText(GUIUtil::formatBalance(newBalance.unconfirmed_balance, nDisplayUnit));
-    ui->labelImmatureBib->setText(GUIUtil::formatBalance(newBalance.immature_balance, nDisplayUnit));
-    ui->labelLockedBib->setText(GUIUtil::formatBalance(nLockedBalance, nDisplayUnit));
+    ui->labelAmountFucu->setText(GUIUtil::formatBalance(newBalance.balance + newBalance.immature_balance, nDisplayUnit));
+    ui->labelAvailableFucu->setText(GUIUtil::formatBalance(nAvailableBalance, nDisplayUnit));
+    ui->labelPendingFucu->setText(GUIUtil::formatBalance(newBalance.unconfirmed_balance, nDisplayUnit));
+    ui->labelImmatureFucu->setText(GUIUtil::formatBalance(newBalance.immature_balance, nDisplayUnit));
+    ui->labelLockedFucu->setText(GUIUtil::formatBalance(nLockedBalance, nDisplayUnit));
 
     refreshMasternodeStatus();
 
     // Collateral
-    ui->labelCollateralBib->setText(GUIUtil::formatBalance(CMasternode::GetMasternodeNodeCollateral(chainActive.Tip()->nHeight), nDisplayUnit));
+    ui->labelCollateralFucu->setText(GUIUtil::formatBalance(CMasternode::GetMasternodeNodeCollateral(chainActive.Tip()->nHeight), nDisplayUnit));
 }
 
 void TopBar::resizeEvent(QResizeEvent* event)

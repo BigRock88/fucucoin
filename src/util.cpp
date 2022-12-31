@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -85,12 +85,12 @@
 #include <openssl/crypto.h>
 #include <openssl/rand.h>
 
-const char * const FUCU_CONF_FILENAME = "fucucoin.conf";
-const char * const FUCU_PID_FILENAME = "fucucoin.pid";
-const char * const FUCU_MASTERNODE_CONF_FILENAME = "masternode.conf";
+const char * const FUCUCOIN_CONF_FILENAME = "fucucoin.conf";
+const char * const FUCUCOIN_PID_FILENAME = "fucucoin.pid";
+const char * const FUCUCOIN_MASTERNODE_CONF_FILENAME = "masternode.conf";
 
 
-// FUCU only features
+// FUCUCOIN only features
 // Masternode
 bool fMasterNode = false;
 std::string strMasterNodePrivKey = "";
@@ -293,7 +293,7 @@ fs::path GetDefaultDataDir()
 // Unix: ~/.fucucoin
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "FUCU";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "FUCUCOIN";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -305,7 +305,7 @@ fs::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "FUCU";
+    return pathRet / "FUCUCOIN";
 #else
     // Unix
     return pathRet / ".fucucoin";
@@ -315,7 +315,65 @@ fs::path GetDefaultDataDir()
 
 static fs::path pathCached;
 static fs::path pathCachedNetSpecific;
+static fs::path zc_paramsPathCached;
 static RecursiveMutex csPathCached;
+
+static fs::path ZC_GetBaseParamsDir()
+{
+    // Copied from GetDefaultDataDir and adapter for zcash params.
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\fucucoinParams
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\fucucoinParams
+    // Mac: ~/Library/Application Support/fucucoinParams
+    // Unix: ~/.fucucoin-params
+#ifdef WIN32
+    // Windows
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "FUCUCOINParams";
+#else
+    fs::path pathRet;
+    char* pszHome = getenv("HOME");
+    if (pszHome == NULL || strlen(pszHome) == 0)
+        pathRet = fs::path("/");
+    else
+        pathRet = fs::path(pszHome);
+#ifdef MAC_OSX
+    // Mac
+    pathRet /= "Library/Application Support";
+    TryCreateDirectory(pathRet);
+    return pathRet / "FUCUCOINParams";
+#else
+    // Unix
+    return pathRet / ".fucucoin-params";
+#endif
+#endif
+}
+
+const fs::path &ZC_GetParamsDir()
+{
+    LOCK(csPathCached); // Reuse the same lock as upstream.
+
+    fs::path &path = zc_paramsPathCached;
+
+    // This can be called during exceptions by LogPrintf(), so we cache the
+    // value so we don't have to do memory allocations after that.
+    if (!path.empty())
+        return path;
+
+#ifdef USE_CUSTOM_PARAMS
+    path = fs::system_complete(PARAMS_DIR);
+#else
+    if (mapArgs.count("-paramsdir")) {
+        path = fs::system_complete(mapArgs["-paramsdir"]);
+        if (!fs::is_directory(path)) {
+            path = "";
+            return path;
+        }
+    } else {
+        path = ZC_GetBaseParamsDir();
+    }
+#endif
+
+    return path;
+}
 
 const fs::path& GetDataDir(bool fNetSpecific)
 {
@@ -353,13 +411,13 @@ void ClearDatadirCache()
 
 fs::path GetConfigFile()
 {
-    fs::path pathConfigFile(GetArg("-conf", FUCU_CONF_FILENAME));
+    fs::path pathConfigFile(GetArg("-conf", FUCUCOIN_CONF_FILENAME));
     return AbsPathForConfigVal(pathConfigFile, false);
 }
 
 fs::path GetMasternodeConfigFile()
 {
-    fs::path pathConfigFile(GetArg("-mnconf", FUCU_MASTERNODE_CONF_FILENAME));
+    fs::path pathConfigFile(GetArg("-mnconf", FUCUCOIN_MASTERNODE_CONF_FILENAME));
     return AbsPathForConfigVal(pathConfigFile);
 }
 
@@ -402,7 +460,7 @@ fs::path AbsPathForConfigVal(const fs::path& path, bool net_specific)
 #ifndef WIN32
 fs::path GetPidFile()
 {
-    fs::path pathPidFile(GetArg("-pid", FUCU_PID_FILENAME));
+    fs::path pathPidFile(GetArg("-pid", FUCUCOIN_PID_FILENAME));
     return AbsPathForConfigVal(pathPidFile);
 }
 

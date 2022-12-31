@@ -1,10 +1,10 @@
 // Copyright (c) 2015-2019 The PIVX developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FUCU_TEST_TEST_FUCU_H
-#define FUCU_TEST_TEST_FUCU_H
+#ifndef FUCUCOIN_TEST_TEST_FUCUCOIN_H
+#define FUCUCOIN_TEST_TEST_FUCUCOIN_H
 
 #include "fs.h"
 #include "txdb.h"

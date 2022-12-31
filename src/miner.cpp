@@ -6,7 +6,7 @@
 // Copyright (c) 2014-2018 The BlackCoin Developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -32,7 +32,9 @@
 #include "masternode-payments.h"
 #include "blocksignature.h"
 #include "spork.h"
+#include "invalid.h"
 #include "policy/policy.h"
+#include "zfucuchain.h"
 
 
 #include <boost/thread.hpp>
@@ -100,6 +102,52 @@ void UpdateTime(CBlockHeader* pblock, const CBlockIndex* pindexPrev)
         pblock->nBits = GetNextWorkRequired(pindexPrev, pblock);
 }
 
+bool CheckForDuplicatedSerials(const CTransaction& tx, const Consensus::Params& consensus,
+                               std::vector<CBigNum>& vBlockSerials)
+{
+    // double check that there are no double spent zFUCU spends in this block or tx
+    if (tx.HasZerocoinSpendInputs()) {
+        int nHeightTx = 0;
+        if (IsTransactionInChain(tx.GetHash(), nHeightTx)) {
+            return false;
+        }
+
+        bool fDoubleSerial = false;
+        for (const CTxIn& txIn : tx.vin) {
+            bool isPublicSpend = txIn.IsZerocoinPublicSpend();
+            if (txIn.IsZerocoinSpend() || isPublicSpend) {
+                libzerocoin::CoinSpend* spend;
+                if (isPublicSpend) {
+                    libzerocoin::ZerocoinParams* params = consensus.Zerocoin_Params(false);
+                    PublicCoinSpend publicSpend(params);
+                    CValidationState state;
+                    if (!ZFUCUModule::ParseZerocoinPublicSpend(txIn, tx, state, publicSpend)){
+                        throw std::runtime_error("Invalid public spend parse");
+                    }
+                    spend = &publicSpend;
+                } else {
+                    libzerocoin::CoinSpend spendObj = TxInToZerocoinSpend(txIn);
+                    spend = &spendObj;
+                }
+
+                bool fUseV1Params = spend->getCoinVersion() < libzerocoin::PrivateCoin::PUBKEY_VERSION;
+                if (!spend->HasValidSerial(consensus.Zerocoin_Params(fUseV1Params)))
+                    fDoubleSerial = true;
+                if (std::count(vBlockSerials.begin(), vBlockSerials.end(), spend->getCoinSerialNumber()))
+                    fDoubleSerial = true;
+                if (fDoubleSerial)
+                    break;
+                vBlockSerials.emplace_back(spend->getCoinSerialNumber());
+            }
+        }
+        //This zFUCU serial has already been included in the block, do not add this tx.
+        if (fDoubleSerial) {
+            return false;
+        }
+    }
+    return true;
+}
+
 bool CreateCoinbaseTx(CBlock* pblock, const CScript& scriptPubKeyIn, CBlockIndex* pindexPrev)
 {
     // Create coinbase tx
@@ -159,14 +207,16 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
     // Make sure to create the correct block version
     const Consensus::Params& consensus = Params().GetConsensus();
 
-   /* if (consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_TIME_PROTOCOL_V2))
+    if (consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_TIME_PROTOCOL_V2))
         pblock->nVersion = 7;
     else if (consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_STAKE_MODIFIER_V2))
         pblock->nVersion = 6;
     else if (consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_BIP65))
         pblock->nVersion = 5;
+    else if (consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_ZC))
+        pblock->nVersion = 4;
     else
-        pblock->nVersion = 3;*/
+        pblock->nVersion = 3;
 
     // -regtest only: allow overriding block.nVersion with
     // -blockversion=N to test forking scenarios
@@ -227,11 +277,17 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
             if (tx.IsCoinBase() || tx.IsCoinStake() || !IsFinalTx(tx, nHeight)){
                 continue;
             }
+            if(tx.ContainsZerocoins()){
+                continue;
+            }
 
             COrphan* porphan = NULL;
             double dPriority = 0;
             CAmount nTotalIn = 0;
             bool fMissingInputs = false;
+            bool hasZerocoinSpends = tx.HasZerocoinSpendInputs();
+            if (hasZerocoinSpends)
+                nTotalIn = tx.GetZerocoinSpent();
 
             for (const CTxIn& txin : tx.vin) {
                 // Read prev transaction
@@ -260,14 +316,14 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
                 }
 
                 const Coin& coin = view.AccessCoin(txin.prevout);
-
-                assert(!coin.IsSpent());
+                assert(hasZerocoinSpends || !coin.IsSpent());
 
                 CAmount nValueIn = coin.out.nValue;
                 nTotalIn += nValueIn;
 
                 int nConf = nHeight - coin.nHeight;
 
+                // zFUCU spends can have very large priority, use non-overflowing safe functions
                 dPriority = double_safe_addition(dPriority, ((double)nValueIn * nConf));
 
             }
@@ -298,6 +354,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         TxPriorityCompare comparer(fSortedByFee);
         std::make_heap(vecPriority.begin(), vecPriority.end(), comparer);
 
+        std::vector<CBigNum> vBlockSerials;
         while (!vecPriority.empty()) {
             // Take highest priority transaction off the priority queue:
             double dPriority = vecPriority.front().get<0>();
@@ -323,7 +380,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
             double dPriorityDelta = 0;
             CAmount nFeeDelta = 0;
             mempool.ApplyDeltas(hash, dPriorityDelta, nFeeDelta);
-            if ( fSortedByFee && (dPriorityDelta <= 0) && (nFeeDelta <= 0) && (feeRate < ::minRelayTxFee) && (nBlockSize + nTxSize >= nBlockMinSize))
+            if (!tx.HasZerocoinSpendInputs() && fSortedByFee && (dPriorityDelta <= 0) && (nFeeDelta <= 0) && (feeRate < ::minRelayTxFee) && (nBlockSize + nTxSize >= nBlockMinSize))
                 continue;
 
             // Prioritise by fee once past the priority size or we run out of high-priority
@@ -339,9 +396,9 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
                 continue;
 
             // zFUCU check to not include duplicated serials in the same block.
-            //if (!CheckForDuplicatedSerials(tx, consensus, vBlockSerials)) {
-            //continue;
-            //}
+            if (!CheckForDuplicatedSerials(tx, consensus, vBlockSerials)) {
+                continue;
+            }
 
             CAmount nTxFees = view.GetValueIn(tx) - tx.GetValueOut();
 
@@ -556,6 +613,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
 
             // update fStakeableCoins (5 minute check time);
             CheckForCoins(pwallet, 5, &availableCoins);
+
             while ((g_connman && g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL) == 0 && Params().MiningRequiresPeers()) || pwallet->IsLocked() || !fStakeableCoins || !fMasternodeSync) {
                 MilliSleep(5000);
                 // Do a separate 1 minute check here to ensure fStakeableCoins and fMasternodeSync is updated
@@ -567,7 +625,6 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
                 pwallet->pStakerStatus->GetLastHash() == pindexPrev->GetBlockHash() &&
                 pwallet->pStakerStatus->GetLastTime() >= GetCurrentTimeSlot()) {
                 MilliSleep(2000);
-
                 continue;
             }
 

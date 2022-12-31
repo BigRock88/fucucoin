@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2018 The BlackCoin Developers
 // Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -16,6 +16,8 @@
 #include "policy/policy.h"
 #include "stakeinput.h"
 #include "utilmoneystr.h"
+#include "zfucuchain.h"
+#include "zfucu/zpos.h"
 
 #include <boost/assign/list_of.hpp>
 
@@ -68,7 +70,7 @@ bool CStakeKernel::CheckKernelHash(bool fSkipLog) const
     const uint256& hashProofOfStake = GetHash();
     const bool res = hashProofOfStake < bnTarget;
 
-    if (!fSkipLog) {
+    if (!fSkipLog || res) {
         LogPrint(BCLog::STAKING, "%s : Proof Of Stake:"
                             "\nssUniqueID=%s"
                             "\nnTimeTx=%d"
@@ -107,7 +109,9 @@ bool LoadStakeInput(const CBlock& block, const CBlockIndex* pindexPrev, std::uni
 
     // Construct the stakeinput object
     const CTxIn& txin = block.vtx[1].vin[0];
-    stake = std::unique_ptr<CStakeInput>(new CBibStake());
+    stake = txin.IsZerocoinSpend() ?
+            std::unique_ptr<CStakeInput>(new CLegacyZFucuStake()) :
+            std::unique_ptr<CStakeInput>(new CFucuStake());
 
     return stake->InitFromTxIn(txin);
 }
@@ -145,7 +149,7 @@ bool Stake(const CBlockIndex* pindexPrev, CStakeInput* stakeInput, unsigned int 
     while(nTimeTx <= (fTimeProtocolV2 ? pindexPrev->MaxFutureBlockTime() : pindexPrev->GetBlockTime() + HASH_DRIFT)) {
         // Verify Proof Of Stake
         CStakeKernel stakeKernel(pindexPrev, stakeInput, nBits, nTimeTx);
-        if(stakeKernel.CheckKernelHash(false)) return true;
+        if(stakeKernel.CheckKernelHash(true)) return true;
         nTimeTx += slotStep;
     }
 
@@ -189,6 +193,9 @@ bool CheckProofOfStake(const CBlock& block, std::string& strError, const CBlockI
         strError = "kernel hash check fails";
         return false;
     }
+
+    // zPoS disabled (ContextCheck) before blocks V7, and the tx input signature is in CoinSpend
+    if (stakeInput->IsZFUCU()) return true;
 
     // Verify tx input signature
     CTxOut stakePrevout;

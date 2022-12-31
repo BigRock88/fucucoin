@@ -1,6 +1,6 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -39,7 +39,7 @@ using namespace QtCharts;
 
 #endif
 
-class FUCUGUI;
+class FUCUCOINGUI;
 class WalletModel;
 
 namespace Ui {
@@ -66,9 +66,9 @@ public:
 
 	QMap<int, QMap<QString, qint64>> amountsByCache;
     qreal maxValue = 0;
-    qint64 totalBib = 0;
+    qint64 totalFucu = 0;
 	qint64 totalMNRewards = 0;
-    QList<qreal> valuesBib;
+    QList<qreal> valuesFucu;
 	QList<qreal> valuesMNRewards;
     QStringList xLabels;
 };
@@ -82,7 +82,7 @@ class DashboardWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit DashboardWidget(FUCUGUI* _window);
+    explicit DashboardWidget(FUCUCOINGUI* _window);
     ~DashboardWidget();
 
     void loadWalletModel() override;

@@ -1,11 +1,11 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FUCU_CORE_NEW_GUI_FUCUGUI_H
-#define FUCU_CORE_NEW_GUI_FUCUGUI_H
+#ifndef FUCUCOIN_CORE_NEW_GUI_FUCUCOINGUI_H
+#define FUCUCOIN_CORE_NEW_GUI_FUCUCOINGUI_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/fucucoin-config.h"
@@ -35,18 +35,18 @@ class WalletModel;
 
 
 /**
-  FUCU GUI main class. This class represents the main window of the FUCU UI. It communicates with both the client and
+  FUCUCOIN GUI main class. This class represents the main window of the FUCUCOIN UI. It communicates with both the client and
   wallet models to give the user an up-to-date view of the current core state.
 */
-class FUCUGUI : public QMainWindow
+class FUCUCOINGUI : public QMainWindow
 {
     Q_OBJECT
 
 public:
     static const QString DEFAULT_WALLET;
 
-    explicit FUCUGUI(const NetworkStyle* networkStyle, QWidget* parent = 0);
-    ~FUCUGUI();
+    explicit FUCUCOINGUI(const NetworkStyle* networkStyle, QWidget* parent = 0);
+    ~FUCUCOINGUI();
 
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
@@ -190,4 +190,4 @@ Q_SIGNALS:
 };
 
 
-#endif //FUCU_CORE_NEW_GUI_FUCUGUI_H
+#endif //FUCUCOIN_CORE_NEW_GUI_FUCUCOINGUI_H

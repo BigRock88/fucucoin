@@ -1,5 +1,5 @@
 // Copyright (c) 2019 The PIVX developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -30,7 +30,16 @@ void TxViewHolder::init(QWidget* holder,const QModelIndex &index, bool isHovered
     QString label = indexType.data(Qt::DisplayRole).toString();
     int type = rIndex.data(TransactionTableModel::TypeRole).toInt();
 
-    if (type == TransactionRecord::Other) {
+    if (type != TransactionRecord::ZerocoinMint &&
+            type !=  TransactionRecord::ZerocoinSpend_Change_zFucu &&
+            type !=  TransactionRecord::StakeZFUCU &&
+            type != TransactionRecord::Other) {
+        QString address = rIndex.data(Qt::DisplayRole).toString();
+        if (address.length() > 20) {
+            address = address.left(ADDRESS_SIZE) + "..." + address.right(ADDRESS_SIZE);
+        }
+        label += " " + address;
+    } else if (type == TransactionRecord::Other) {
         label += rIndex.data(Qt::DisplayRole).toString();
     }
 

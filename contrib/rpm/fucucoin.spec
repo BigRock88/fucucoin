@@ -24,18 +24,18 @@ URL:		https://fucucoin.org/
 Source0:	https://fucucoin.org/bin/fucucoin-core-%{version}/fucucoin-%{version}.tar.gz
 Source1:	http://download.oracle.com/berkeley-db/db-%{bdbv}.NC.tar.gz
 
-Source10:	https://raw.githubusercontent.com/fucucoin910/fucucoin/v%{version}/contrib/debian/examples/fucucoin.conf
+Source10:	https://raw.githubusercontent.com/fucucoin-project/fucucoin/v%{version}/contrib/debian/examples/fucucoin.conf
 
 #man pages
-Source20:	https://raw.githubusercontent.com/fucucoin910/fucucoin/v%{version}/doc/man/fucucoind.1
-Source21:	https://raw.githubusercontent.com/fucucoin910/fucucoin/v%{version}/doc/man/fucucoin-cli.1
-Source22:	https://raw.githubusercontent.com/fucucoin910/fucucoin/v%{version}/doc/man/fucucoin-qt.1
+Source20:	https://raw.githubusercontent.com/fucucoin-project/fucucoin/v%{version}/doc/man/fucucoind.1
+Source21:	https://raw.githubusercontent.com/fucucoin-project/fucucoin/v%{version}/doc/man/fucucoin-cli.1
+Source22:	https://raw.githubusercontent.com/fucucoin-project/fucucoin/v%{version}/doc/man/fucucoin-qt.1
 
 #selinux
-Source30:	https://raw.githubusercontent.com/fucucoin910/fucucoin/v%{version}/contrib/rpm/fucucoin.te
+Source30:	https://raw.githubusercontent.com/fucucoin-project/fucucoin/v%{version}/contrib/rpm/fucucoin.te
 # Source31 - what about fucucoin-tx and bench_fucucoin ???
-Source31:	https://raw.githubusercontent.com/fucucoin910/fucucoin/v%{version}/contrib/rpm/fucucoin.fc
-Source32:	https://raw.githubusercontent.com/fucucoin910/fucucoin/v%{version}/contrib/rpm/fucucoin.if
+Source31:	https://raw.githubusercontent.com/fucucoin-project/fucucoin/v%{version}/contrib/rpm/fucucoin.fc
+Source32:	https://raw.githubusercontent.com/fucucoin-project/fucucoin/v%{version}/contrib/rpm/fucucoin.if
 
 Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg
 

@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
 // Copyright (c) 2017-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -64,9 +64,9 @@ bool TransactionFilterProxy::filterAcceptsRow(int sourceRow, const QModelIndex& 
     }
     if (amount < minAmount)
         return false;
-    /*if (fOnlyZc && !isZcTx(type)){
+    if (fOnlyZc && !isZcTx(type)){
         return false;
-    }*/
+    }
     if (fOnlyStakesandMN && !isStakeTx(type) && !isMasternodeRewardTx(type))
         return false;
 
@@ -153,8 +153,14 @@ int TransactionFilterProxy::rowCount(const QModelIndex& parent) const
 
 bool TransactionFilterProxy::isOrphan(const int status, const int type)
 {
-    return ( (type == TransactionRecord::Generated || type == TransactionRecord::StakeMint || type == TransactionRecord::MNReward || type == TransactionRecord::DevReward)
+    return ( (type == TransactionRecord::Generated || type == TransactionRecord::StakeMint ||
+            type == TransactionRecord::StakeZFUCU || type == TransactionRecord::MNReward || type == TransactionRecord::DevReward)
             && (status == TransactionStatus::Conflicted || status == TransactionStatus::NotAccepted) );
+}
+
+bool TransactionFilterProxy::isZcTx(int type) const {
+    return (type == TransactionRecord::ZerocoinMint || type == TransactionRecord::ZerocoinSpend || type == TransactionRecord::ZerocoinSpend_Change_zFucu
+            || type == TransactionRecord::ZerocoinSpend_FromMe || type == TransactionRecord::RecvFromZerocoinSpend);
 }
 
 bool TransactionFilterProxy::isStakeTx(int type) const {

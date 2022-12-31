@@ -1,6 +1,6 @@
 // Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2021-2022 The DECENOMY Core Developers
-// Copyright (c) 2022 The Fucu Coin Developers
+// Copyright (c) 2022 The FUCUCOIN Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +13,7 @@
 #include "qt/fucucoin/qtutils.h"
 #include "guiinterface.h"
 
-SettingsExportCSV::SettingsExportCSV(FUCUGUI* _window, QWidget *parent) :
+SettingsExportCSV::SettingsExportCSV(FUCUCOINGUI* _window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::SettingsExportCSV)
 {
@@ -55,7 +55,7 @@ void SettingsExportCSV::selectFileOutput(const bool& isTxExport)
 {
     QString filename = GUIUtil::getSaveFileName(this,
                                         isTxExport ? tr("Export CSV") : tr("Export Address List"), QString(),
-                                        isTxExport ? tr("FUCU_tx_csv_export(*.csv)") : tr("FUCU_addresses_csv_export(*.csv)"),
+                                        isTxExport ? tr("FUCUCOIN_tx_csv_export(*.csv)") : tr("FUCUCOIN_addresses_csv_export(*.csv)"),
                                         nullptr);
 
     if (isTxExport) {
