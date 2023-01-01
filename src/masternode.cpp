@@ -329,7 +329,7 @@ CAmount CMasternode::GetMasternodeNodeCollateral(int nHeight)
     if (nHeight >  180000) return   100000 * COIN;
     if (nHeight >  120000) return    50000 * COIN;
     if (nHeight >   60000) return    25000 * COIN;
-	if (nHeight >     200) return    10000 * COIN;
+	if (nHeight >     100) return    10000 * COIN;
 
     return 0;
 }
@@ -362,7 +362,7 @@ CAmount CMasternode::GetBlockValue(int nHeight)
     if (nHeight >   60000) return     100 * COIN;   
     if (nHeight >   45000) return      20 * COIN;  
 	if (nHeight >   15000) return      35 * COIN; 
-    if (nHeight >     200) return      50 * COIN;  // POW ends here
+    if (nHeight >    1000) return      50 * COIN;  // POW ends here
 	if (nHeight >     100) return    2000 * COIN; 
     if (nHeight >       1) return    1000 * COIN; 
     if (nHeight >       0) return    800000000 * COIN;
@@ -397,9 +397,7 @@ CAmount CMasternode::GetMasternodePayment(int nHeight)
     if (nHeight >   60000) return      70 * COIN;
     if (nHeight >   45000) return      14 * COIN;
     if (nHeight >   15000) return      25 * COIN;
-    if (nHeight >     200) return      35 * COIN; //test where POW ends
-	if (nHeight >     100) return     600 * COIN;
-	if (nHeight >     1) return       300 * COIN; //test setup
+    if (nHeight >    1000) return      35 * COIN; //where POW ends
 
     return 0;
 }
@@ -430,9 +428,8 @@ CAmount CMasternode::GetDevPayment(int nHeight)
     if (nHeight >   60000) return        5 * COIN;
     if (nHeight >   45000) return        1 * COIN;
     if (nHeight >   15000) return      1.8 * COIN;
-    if (nHeight >     200) return      2.5 * COIN;  //test where POW ends
-    if (nHeight >       1) return       50 * COIN;
-	
+    if (nHeight >    1000) return      2.5 * COIN;  //where POW ends
+  
     return 0;
 }
 
